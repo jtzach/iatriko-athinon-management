@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Το αόρατο οργανόγραμμα · Πριν και μετά το SAP</title>
+  <meta name="description" content="Διαδραστικό χρονολόγιο διοικητικών ρόλων, εποπτείας και εμπειρίας ασθενών στο Ιατρικό Αθηνών. Τεκμήρια, εταιρικοί ισχυρισμοί και ερευνητικές υποθέσεις με πηγές.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/executive.css">
+  <link rel="stylesheet" href="assets/sap-timeline.css">
+  <script defer src="data/sap-timeline.js"></script>
+  <script defer src="assets/sap-timeline.js"></script>
+</head>
+<body class="sap-page">
+  <a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="assets/favicon.svg" alt="" width="34" height="34"><span>Ιατρικό Αθηνών<small>ΜΙΑ ΔΙΟΙΚΗΤΙΚΗ ΜΕΛΕΤΗ</small></span></a>
+    <nav aria-label="Κύρια πλοήγηση"><a class="sap-home-link" href="index.html">← Η μελέτη</a><a href="history.html">Η διαδρομή στον χρόνο</a><a href="#sap-workspace">Ο διαδραστικός χάρτης</a><a href="#sap-sources">Πηγές</a></nav>
+  </header>
+  <main id="main">
+    <section class="sap-intro wrap" aria-labelledby="sap-title">
+      <div>
+        <p class="eyebrow">ΔΙΟΙΚΗΣΗ ΣΤΟΝ ΧΡΟΝΟ · 2022–2026</p>
+        <h1 id="sap-title">Το αόρατο<br><em>οργανόγραμμα.</em></h1>
+        <p class="sap-intro-question">Τι αλλάζει στις ευθύνες και στην πληροφόρηση πριν και μετά το SAP;</p>
+      </div>
+      <div class="sap-intro-context">
+        <p>Το SAP είναι το πληροφοριακό σύστημα που υποστηρίζει κοινές διαδικασίες και τη διαχείριση δεδομένων. Η εφαρμογή του ξεκίνησε την <strong>1η Ιανουαρίου 2025</strong>.</p>
+        <p>Ο χάρτης συγκρίνει επιλεγμένους ρόλους και σχέσεις. Κάθε κάρτα ανοίγει την πηγή και τα όρια όσων μπορούμε να συμπεράνουμε.</p>
+        <p class="sap-causality-note"><span aria-hidden="true">≠</span> Το «μετά το SAP» δεν σημαίνει «εξαιτίας του SAP».</p>
+      </div>
+    </section>
+
+    <section id="sap-workspace" class="sap-workspace wrap section-anchor" aria-labelledby="sap-map-heading">
+      <div class="sap-explore-heading"><div><p class="eyebrow">ΕΠΙΛΕΞΤΕ ΤΙ ΘΕΛΕΤΕ ΝΑ ΔΕΙΤΕ</p><h2 id="sap-map-heading">Οι σχέσεις αποκαλύπτονται σταδιακά.</h2></div><a href="#sap-reading" class="sap-method-link">Πώς διαβάζεται ο χάρτης ↓</a></div>
+      <div id="sap-track-buttons" class="sap-track-buttons" role="group" aria-label="Θέμα του χάρτη"></div>
+
+      <div class="sap-timeline" aria-label="Χρονολόγιο της μελέτης">
+        <div class="sap-timeline-heading"><span>ΣΤΑΘΜΟΙ ΣΤΟΝ ΧΡΟΝΟ</span><small>Επιλεγμένες περίοδοι, όχι αναλογική κλίμακα χρόνου</small></div>
+        <div id="sap-time-buttons" class="sap-time-buttons" role="group" aria-label="Επιλογή περιόδου"></div>
+      </div>
+
+      <div class="sap-current-row">
+        <div><p id="sap-period" class="sap-period" aria-live="polite"></p><p id="sap-period-note" class="sap-period-note"></p></div>
+        <label class="sap-hypothesis-toggle"><input type="checkbox" id="sap-hypotheses"><span>Εμφάνιση υποθέσεων<span class="sap-toggle-description">Η δική μας ερευνητική ανάγνωση</span></span></label>
+      </div>
+
+      <div class="sap-legend" aria-label="Υπόμνημα χάρτη">
+        <span><i class="fact" aria-hidden="true"></i>Δημοσιευμένο στοιχείο</span>
+        <span><i class="change" aria-hidden="true"></i>Τεκμηριωμένη μεταβολή</span>
+        <span><i class="claim" aria-hidden="true"></i>Εταιρικός ισχυρισμός</span>
+        <span><i class="hypothesis" aria-hidden="true"></i>Δική μας υπόθεση</span>
+      </div>
+
+      <div class="sap-graph-layout">
+        <div class="sap-map-column">
+          <div class="sap-map-heading"><span>ΧΑΡΤΗΣ ΡΟΛΩΝ ΚΑΙ ΣΧΕΣΕΩΝ</span><span>Επιλέξτε κάρτα ή σύνδεση ↗</span></div>
+          <div id="sap-map" class="sap-map" aria-label="Διαδραστικός γράφος επιλεγμένου θέματος και περιόδου">
+            <svg id="sap-lines" aria-hidden="true"></svg>
+            <div id="sap-nodes"></div>
+            <div id="sap-edge-labels"></div>
+          </div>
+          <div class="sap-period-controls"><button id="sap-time-prev" type="button">← Προηγούμενη περίοδος</button><button id="sap-time-next" type="button">Επόμενη περίοδος →</button></div>
+          <p id="sap-summary" class="sap-summary" aria-live="polite"></p>
+        </div>
+        <aside id="sap-detail" class="sap-detail" aria-live="polite" aria-label="Εξήγηση επιλεγμένου στοιχείου και πηγές"><p class="sap-detail-kicker">ΤΟ ΣΤΟΙΧΕΙΟ ΚΑΙ Η ΠΗΓΗ ΤΟΥ</p><h3>Επιλέξτε μια σχέση.</h3><p>Εδώ εμφανίζονται η εξήγηση, η περίμετρος, οι σελίδες και τα όρια της ερμηνείας.</p></aside>
+      </div>
+
+      <section id="sap-nps" class="sap-nps" aria-label="Σύγκριση δημοσιευμένων δεικτών εμπειρίας ασθενών" hidden></section>
+    </section>
+
+    <section id="sap-reading" class="sap-reading wrap section-anchor" aria-labelledby="sap-reading-title">
+      <div><p class="eyebrow">ΤΕΚΜΗΡΙΟ, ΙΣΧΥΡΙΣΜΟΣ, ΥΠΟΘΕΣΗ</p><h2 id="sap-reading-title">Τι μας επιτρέπουν να πούμε οι πηγές;</h2></div>
+      <div class="sap-reading-grid">
+        <article><span class="sap-reading-number">01</span><h3>Διακρίνουμε τη σχέση.</h3><p>Η κατοχή ενός ρόλου, η διοικητική αναφορά και μια ενημέρωση προς επιτροπή έχουν διαφορετικό νόημα. Το βέλος περιγράφει συγκεκριμένα ποια σχέση τεκμηριώνεται.</p></article>
+        <article><span class="sap-reading-number">02</span><h3>Κρατάμε τα όρια.</h3><p>Εταιρεία, Όμιλος και κλινικές δεν ταυτίζονται. Η ημερομηνία ενός γεγονότος μπορεί να διαφέρει από τη δημοσίευσή του. Νέα γνωστοποίηση δεν σημαίνει κατ’ ανάγκη νέα πρακτική.</p></article>
+        <article><span class="sap-reading-number">03</span><h3>Ελέγχουμε την ερμηνεία.</h3><p>Η χρονική σύμπτωση δεν αποδεικνύει αιτιότητα. Οι υποθέσεις εμφανίζονται χωριστά και αναφέρουν ποια πρόσθετα δεδομένα θα χρειάζονταν για να ελεγχθούν.</p></article>
+      </div>
+      <p class="sap-reading-limit">Ο χάρτης είναι ερευνητική αναπαράσταση επιλεγμένων δημόσιων τεκμηρίων. Δεν αποτελεί πλήρες ή επίσημο οργανόγραμμα του Ιατρικού Αθηνών.</p>
+    </section>
+
+    <section class="sap-references wrap section-anchor">
+      <details id="sap-sources"><summary>Πρωτογενείς πηγές και τεκμηρίωση <span aria-hidden="true">+</span></summary><ol id="sap-source-list"></ol><a class="sap-data-link" href="data/sap-timeline.json" download>Λήψη πίνακα τεκμηρίωσης ↓</a></details>
+    </section>
+
+    <section class="sap-ai wrap" aria-labelledby="sap-ai-title"><h2 id="sap-ai-title">Διαφάνεια στην έρευνα</h2><p>Η σύγκριση πηγών, η οργάνωση των τεκμηρίων, οι υπολογισμοί και η κατασκευή του χάρτη έγιναν με υποστήριξη ΤΝ. Ο ουσιαστικός έλεγχος από τα μέλη της ομάδας εκκρεμεί. Η σελίδα παρουσιάζει επιμελημένη ερευνητική σύνθεση και δεν παράγει ζωντανές απαντήσεις με μοντέλο.</p><a href="index.html#ai-declaration">Δήλωση χρήσης ΤΝ ↗</a></section>
+
+    <footer class="wrap"><div><strong>Ιατρικό Αθηνών · Το αόρατο οργανόγραμμα</strong><p>Μάνατζμεντ και Ηγετικές Ικανότητες · MBA-4<br>Ανεξάρτητη ακαδημαϊκή μελέτη. Δεν αποτελεί επίσημη εταιρική ιστοσελίδα.</p></div><div class="footer-links"><a href="index.html">Επιστροφή στη μελέτη ↗</a><a href="history.html">Η διαδρομή στον χρόνο ↗</a><a href="graph.html">Πλήρης χάρτης τεκμηρίων ↗</a><a href="#sap-sources">Πηγές της σύγκρισης ↗</a></div></footer>
+  </main>
+  <noscript><p class="wrap sap-noscript">Ο διαδραστικός χάρτης χρειάζεται JavaScript. Τα τεκμήρια είναι διαθέσιμα στον <a href="data/sap-timeline.json">πίνακα πηγών</a> και η μελέτη στην <a href="index.html">αρχική σελίδα</a>.</p></noscript>
+</body>
+</html>

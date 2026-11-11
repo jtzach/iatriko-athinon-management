@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>1984–2026 · Η διαδρομή του Ιατρικού Αθηνών στον χρόνο</title>
+  <meta name="description" content="Διαδραστικό χρονολόγιο της γεωγραφικής παρουσίας και της διοίκησης του Ιατρικού Αθηνών, με επιλεγμένα δημόσια τεκμήρια και σαφή όρια της ιστορικής εικόνας.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/executive.css">
+  <link rel="stylesheet" href="assets/history.css">
+  <script defer src="data/history-timeline.js"></script>
+  <script defer src="assets/history.js"></script>
+</head>
+<body class="history-page">
+  <a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+  <header class="site-header"><a class="brand" href="index.html"><img src="assets/favicon.svg" alt="" width="34" height="34"><span>Ιατρικό Αθηνών<small>ΜΙΑ ΔΙΟΙΚΗΤΙΚΗ ΜΕΛΕΤΗ</small></span></a><nav aria-label="Κύρια πλοήγηση"><a class="history-home" href="index.html">← Η μελέτη</a><a href="sap.html">Πριν και μετά το SAP</a><a href="#history-sources">Πηγές</a></nav></header>
+  <main id="main">
+    <section class="history-intro wrap" aria-labelledby="history-title"><div><p class="eyebrow">ΕΠΙΛΕΓΜΕΝΟΙ ΣΤΑΘΜΟΙ · 1984–2026</p><h1 id="history-title">Η διαδρομή<br><em>στον χρόνο.</em></h1></div><div><p class="history-lead">Πού καταγράφεται η παρουσία του Ομίλου και τι γνωρίζουμε για τη διοίκησή του;</p><p class="history-intro-note">Προχωρήστε στο χρονολόγιο. Η γεωγραφική και η διοικητική εικόνα ακολουθούν την ίδια περίοδο, με τις πηγές και τα κενά της.</p><a class="history-sap-link" href="sap.html">Εστίαση στη μετάβαση του SAP →</a></div></section>
+
+    <section class="history-explorer wrap" aria-labelledby="history-explorer-title">
+      <h2 id="history-explorer-title" class="sr-only">Διαδραστικό χρονολόγιο</h2>
+      <div class="history-time-panel">
+        <div class="history-time-heading"><div class="history-now"><span>ΣΤΑΘΜΟΣ</span><strong id="history-year" class="history-year">1984</strong></div><div class="history-player" role="group" aria-label="Έλεγχος αναπαραγωγής χρονολογίου"><button id="history-prev" type="button" aria-label="Προηγούμενος σταθμός">←</button><button id="history-play" type="button" aria-pressed="false"><span aria-hidden="true">▶</span> Αναπαραγωγή</button><button id="history-next" type="button" aria-label="Επόμενος σταθμός">→</button></div></div>
+        <label for="history-range" class="sr-only">Επιλεγμένος σταθμός του χρονολογίου</label><input id="history-range" class="history-range" type="range" min="0" max="10" value="0" step="1" aria-valuetext="1984">
+        <div id="history-years" class="history-years" role="group" aria-label="Επιλογή έτους"></div>
+        <p class="history-time-note">Διαδοχικοί τεκμηριωμένοι σταθμοί · όχι αναλογική κλίμακα χρόνου</p>
+      </div>
+
+      <div class="history-event"><div><p class="eyebrow">Η ΕΙΚΟΝΑ ΑΥΤΗΣ ΤΗΣ ΠΕΡΙΟΔΟΥ</p><h2 id="history-step-title">Φόρτωση χρονολογίου</h2><p id="history-step-summary"></p></div><div id="history-step-sources" class="history-step-sources"></div></div>
+      <div id="history-limitations" class="history-limitations" aria-label="Όρια των διαθέσιμων στοιχείων"></div>
+      <p id="history-status" class="sr-only" role="status" aria-live="polite"></p>
+
+      <div class="history-paired-view">
+        <section class="history-geography" aria-labelledby="history-map-title"><div class="history-panel-heading"><div><span class="history-panel-index">01</span><h3 id="history-map-title">Η γεωγραφική εικόνα</h3></div><span id="history-location-count" class="history-count"></span></div>
+          <div class="history-map-key"><span><i aria-hidden="true"></i>Καταγεγραμμένη παρουσία</span><span><i class="new" aria-hidden="true"></i>Προστίθεται στην αποτύπωση</span></div>
+          <div id="history-map" class="history-map" aria-label="Σχηματικός χάρτης περιοχών, χωρίς αναλογική γεωγραφική κλίμακα"></div>
+          <p class="history-map-note">Σχηματικός χάρτης περιοχών, όχι χάρτης ακριβών θέσεων. Οι τοποθεσίες συγκεντρώνουν τεκμήρια έως τον σταθμό· δεν αποτελούν πλήρη απογραφή ενεργών κλινικών ή ιστορικό διακοπών λειτουργίας.</p>
+        </section>
+        <section class="history-management" aria-labelledby="history-management-title"><div class="history-panel-heading"><div><span class="history-panel-index">02</span><h3 id="history-management-title">Η διοικητική εικόνα</h3></div></div><div id="history-management-cards"></div><p class="history-management-note">Επιλεγμένοι τεκμηριωμένοι ρόλοι και μεταβολές. Οι κάρτες δεν δηλώνουν μεταξύ τους σχέση διοικητικής υπαγωγής.</p></section>
+      </div>
+
+      <section id="history-detail" class="history-detail" aria-labelledby="history-detail-title" aria-live="polite"><div class="history-detail-heading"><p class="eyebrow">ΤΟ ΣΤΟΙΧΕΙΟ ΚΑΙ Η ΠΗΓΗ ΤΟΥ</p><h3 id="history-detail-title">Επιλέξτε μια τοποθεσία ή έναν διοικητικό ρόλο.</h3></div><div id="history-detail-body"><p>Η εξήγηση και οι σχετικές πηγές εμφανίζονται εδώ.</p></div></section>
+      <div class="history-next-reading"><div><p class="eyebrow">ΜΙΑ ΜΕΤΑΒΑΣΗ ΜΕ ΜΕΓΑΛΥΤΕΡΗ ΑΝΑΛΥΣΗ</p><h2>Τι αλλάζει γύρω από το SAP;</h2><p>Δείτε ρόλους, ενημερώσεις προς όργανα εποπτείας και εμπειρία ασθενών, με χωριστή σήμανση των ερευνητικών υποθέσεων.</p></div><a class="primary" href="sap.html">Ανοίξτε το αόρατο οργανόγραμμα →</a></div>
+    </section>
+
+    <section class="history-method wrap" aria-labelledby="history-method-title"><h2 id="history-method-title">Διαβάζουμε ιστορία με τεκμήρια.</h2><div><p><strong>Γεγονός και δημοσίευση:</strong> αρκετές πηγές περιγράφουν αναδρομικά παλαιότερα γεγονότα. Η εμφάνιση μιας τοποθεσίας στον χάρτη δεν σημαίνει αυτόματα ότι ιδρύθηκε στο συγκεκριμένο έτος.</p><p><strong>Εταιρεία, Όμιλος, κλινική:</strong> διατηρούμε τη διαφορετική περίμετρο κάθε πηγής. Μία πόλη μπορεί να περιλαμβάνει περισσότερες δομές και ένας χώρος περισσότερες κλινικές.</p><p><strong>Κενά και αποκλίσεις:</strong> όπου οι πηγές δεν επαρκούν ή διαφέρουν στη χρονολόγηση, το επισημαίνουμε. Δεν κατασκευάζουμε ιστορικά οργανογράμματα για να συμπληρώσουμε τα κενά.</p></div></section>
+    <section class="history-references wrap"><details id="history-sources"><summary>Πηγές του χρονολογίου <span aria-hidden="true">+</span></summary><div id="history-source-list"></div><a href="data/history-timeline.json" class="history-data-link" download>Λήψη τεκμηρίωσης χρονολογίου ↓</a></details></section>
+    <section class="history-ai wrap"><h2>Διαφάνεια στην προετοιμασία</h2><p>Η αναζήτηση και σύνθεση πηγών και η κατασκευή της διαδραστικής παρουσίασης έγιναν με υποστήριξη ΤΝ. Η αποτύπωση είναι επιλεγμένη και αναδρομική, όχι ζωντανό εταιρικό μητρώο. Ο ουσιαστικός έλεγχος από την ομάδα εκκρεμεί. <a href="index.html#ai-declaration">Δήλωση χρήσης ΤΝ ↗</a></p></section>
+    <footer class="wrap"><div><strong>Ιατρικό Αθηνών · Η διαδρομή στον χρόνο</strong><p>Μάνατζμεντ και Ηγετικές Ικανότητες · MBA-4<br>Ανεξάρτητη ακαδημαϊκή μελέτη. Δεν αποτελεί επίσημη εταιρική ιστοσελίδα.</p></div><div class="footer-links"><a href="index.html">Η μελέτη ↗</a><a href="sap.html">Πριν και μετά το SAP ↗</a><a href="#history-sources">Πηγές χρονολογίου ↗</a></div></footer>
+  </main>
+  <noscript><p class="wrap history-noscript">Το χρονολόγιο χρειάζεται JavaScript. Μπορείτε να διαβάσετε την <a href="data/history-timeline.json">τεκμηρίωση</a> ή να επιστρέψετε στη <a href="index.html">μελέτη</a>.</p></noscript>
+</body>
+</html>
