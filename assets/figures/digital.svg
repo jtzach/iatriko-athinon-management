@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="figure-title figure-description">
+<title id="figure-title">Τεχνολογία και αποφάσεις</title>
+<desc id="figure-description">Τι συνδέει την εφαρμογή SAP με την παρακολούθηση αποτελεσμάτων και τι χρειάζεται ακόμη να μετρηθεί; Εξαμηνιαία έκθεση 2026 · PDF σ. 16, έντυπη σ. 15. Ετήσια έκθεση 2025 · PDF σ. 10, 93–94, έντυπες σ. 10, 94–95. Η λειτουργία και οι στόχοι SAP αποδίδονται ως εταιρική αναφορά. Η γραμμή SAP–παρακολούθηση αποτελεσμάτων δηλώνει ερευνητική συσχέτιση, όχι τεκμηριωμένη αιτιώδη επίδραση. Η υιοθέτηση ERP δεν τεκμηριώνει από μόνη της εταιρική χρήση μεγάλων γλωσσικών μοντέλων.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#276f5d"/></marker></defs>
+<g font-family="Arial">
+<rect x="0" y="0" width="1600" height="1050" rx="0" fill="#ffffff" stroke="none" stroke-width="2"/>
+<rect x="0" y="0" width="1600" height="12" rx="0" fill="#276f5d" stroke="none" stroke-width="2"/>
+<text x="70" y="67" font-family="Arial" font-size="18" fill="#276f5d" font-weight="700" text-anchor="start" letter-spacing="2">ΨΗΦΙΟΠΟΙΗΣΗ ΜΕ ΔΙΟΙΚΗΤΙΚΟ ΣΚΟΠΟ</text>
+<text x="70" y="127" font-family="Arial" font-size="48" fill="#22343d" font-weight="650" text-anchor="start" >Τεχνολογία και αποφάσεις</text>
+<text x="70" y="170" font-family="Arial" font-size="23" fill="#4e626a" font-weight="400" text-anchor="start" >Όμιλος Ιατρικού Αθηνών · Εταιρικές αναφορές 2025 και Α΄ εξαμήνου 2026</text>
+<path d="M70.00,195.00 L1530.00,195.00" fill="none" stroke="#dce4e7" stroke-width="3"/>
+<path d="M690.00,310.00 L385.00,420.00" fill="none" stroke="#276f5d" stroke-width="3"/><polygon points="385,420 398.61688292505045,407.6476520691218 403.3665997324293,420.81732139867233" fill="#276f5d"/>
+<path d="M910.00,310.00 L1215.00,420.00" fill="none" stroke="#276f5d" stroke-width="3"/><polygon points="1215,420 1196.6334002675708,420.81732139867233 1201.3831170749495,407.6476520691218" fill="#276f5d"/>
+<text x="485" y="329" font-family="Arial" font-size="21" fill="#4e626a" font-weight="400" text-anchor="middle" >αναφέρει λειτουργία</text>
+<text x="1115" y="329" font-family="Arial" font-size="21" fill="#4e626a" font-weight="400" text-anchor="middle" >περιγράφει πρακτική</text>
+<rect x="590" y="230" width="420" height="80" rx="18" fill="#e5f1eb" stroke="#90b6a7" stroke-width="2"/>
+<text x="800" y="280" font-family="Arial" font-size="28" fill="#276f5d" font-weight="650" text-anchor="middle" >Όμιλος Ιατρικού Αθηνών</text>
+<rect x="100" y="425" width="550" height="160" rx="18" fill="#fff" stroke="#90b6a7" stroke-width="2"/>
+<text x="375" y="462" font-family="Arial" font-size="18" fill="#276f5d" font-weight="650" text-anchor="middle" >ΕΤΑΙΡΙΚΗ ΑΝΑΦΟΡΑ · Ε09</text>
+<text x="375" y="507" font-family="Arial" font-size="34" fill="#22343d" font-weight="700" text-anchor="middle" >ERP SAP</text>
+<text x="375" y="552" font-family="Arial" font-size="23" fill="#4e626a" font-weight="400" text-anchor="middle" >Παραγωγική λειτουργία από 1/1/2025</text>
+<rect x="950" y="425" width="550" height="160" rx="18" fill="#fff" stroke="#90b6a7" stroke-width="2"/>
+<text x="1225" y="462" font-family="Arial" font-size="18" fill="#276f5d" font-weight="650" text-anchor="middle" >ΕΤΑΙΡΙΚΗ ΑΝΑΦΟΡΑ · Ε20</text>
+<text x="1225" y="507" font-family="Arial" font-size="28" fill="#22343d" font-weight="650" text-anchor="middle" >Μηνιαία παρακολούθηση</text>
+<text x="1225" y="552" font-family="Arial" font-size="24" fill="#4e626a" font-weight="400" text-anchor="middle" >Αποτελέσματα και αποκλίσεις</text>
+<path d="M670.00,505.00 L679.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M687.00,505.00 L696.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M704.00,505.00 L713.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M721.00,505.00 L730.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M738.00,505.00 L747.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M755.00,505.00 L764.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M772.00,505.00 L781.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M789.00,505.00 L798.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M806.00,505.00 L815.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M823.00,505.00 L832.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M840.00,505.00 L849.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M857.00,505.00 L866.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M874.00,505.00 L883.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M891.00,505.00 L900.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M908.00,505.00 L917.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/><path d="M925.00,505.00 L930.00,505.00" fill="none" stroke="#276f5d" stroke-width="3"/>
+<text x="800" y="480" font-family="Arial" font-size="20" fill="#276f5d" font-weight="400" text-anchor="middle" >θεματική σύνδεση</text>
+<text x="800" y="539" font-family="Arial" font-size="18" fill="#4e626a" font-weight="400" text-anchor="middle" >προς διερεύνηση</text>
+<rect x="70" y="640" width="1460" height="160" rx="18" fill="#e5f1eb" stroke="none" stroke-width="2"/>
+<text x="100" y="681" font-family="Arial" font-size="28" fill="#276f5d" font-weight="650" text-anchor="start" >Τι θα μπορούσε να μετρήσει η διοίκηση;</text>
+<text x="100" y="732" font-family="Arial" font-size="24" fill="#22343d" font-weight="600" text-anchor="start" >Χρόνο παραγωγής αναφορών</text>
+<text x="590" y="732" font-family="Arial" font-size="24" fill="#22343d" font-weight="600" text-anchor="start" >Έγκαιρο εντοπισμό αποκλίσεων</text>
+<text x="1120" y="732" font-family="Arial" font-size="24" fill="#22343d" font-weight="600" text-anchor="start" >Σφάλματα πληροφόρησης</text>
+<text x="100" y="772" font-family="Arial" font-size="22" fill="#4e626a" font-weight="400" text-anchor="start" >Προτεινόμενα κριτήρια αξιολόγησης — δεν αποτελούν ήδη μετρημένα αποτελέσματα.</text>
+<text x="70" y="842" font-family="Arial" font-size="22" fill="#22343d" font-weight="550" text-anchor="start" >Η θεματική σύνδεση δεν αποδεικνύει επίδραση του SAP στους συγκεκριμένους ελέγχους.</text>
+<text x="70" y="877" font-family="Arial" font-size="22" fill="#4e626a" font-weight="400" text-anchor="start" >Η αναφορά σε ERP δεν τεκμηριώνει εταιρική χρήση μεγάλων γλωσσικών μοντέλων (LLMs).</text>
+<path d="M70.00,910.00 L1530.00,910.00" fill="none" stroke="#dce4e7" stroke-width="3"/>
+<text x="70" y="949" font-family="Arial" font-size="22" fill="#22343d" font-weight="600" text-anchor="start" >Σχήμα 3. Τεχνολογική αλλαγή και διοικητική πληροφόρηση: ένα ερώτημα προς έλεγχο.</text>
+<text x="70" y="984" font-family="Arial" font-size="22" fill="#304f68" font-weight="400" text-anchor="start" text-decoration="underline">Πηγές: Εξαμηνιαία έκθεση 2026 · PDF σ. 16 / έντυπη σ. 15 · Ε09.</text><a href="https://www.iatriko.gr/wp-content/uploads/2026/10/%CE%95%CE%9E%CE%91%CE%9C%CE%97%CE%9D%CE%99%CE%91%CE%99%CE%91-%CE%9F%CE%99%CE%9A%CE%9F%CE%9D%CE%9F%CE%9C%CE%99%CE%9A%CE%97-%CE%95%CE%9A%CE%98%CE%95%CE%A3%CE%97_30.06.2026.pdf#page=16" xlink:href="https://www.iatriko.gr/wp-content/uploads/2026/10/%CE%95%CE%9E%CE%91%CE%9C%CE%97%CE%9D%CE%99%CE%91%CE%99%CE%91-%CE%9F%CE%99%CE%9A%CE%9F%CE%9D%CE%9F%CE%9C%CE%99%CE%9A%CE%97-%CE%95%CE%9A%CE%98%CE%95%CE%A3%CE%97_30.06.2026.pdf#page=16" target="_blank"><rect x="70" y="962" width="1460" height="27" fill="transparent"/></a>
+<text x="70" y="1013" font-family="Arial" font-size="22" fill="#304f68" font-weight="400" text-anchor="start" text-decoration="underline">Ετήσια έκθεση 2025 · PDF σ. 10, 93–94 / έντυπες σ. 10, 94–95 · Ε20.</text><a href="https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=10" xlink:href="https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=10" target="_blank"><rect x="70" y="991" width="1460" height="27" fill="transparent"/></a>
+</g></svg>

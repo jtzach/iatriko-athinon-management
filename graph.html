@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Τοπικός διαδραστικός χάρτης τεκμηρίων για τη διοικητική ανάλυση του Ιατρικού Αθηνών. Ερευνητικό πρωτότυπο MBA-4.">
+  <meta name="color-scheme" content="light">
+  <title>Ιατρικό Αθηνών · Χάρτης τεκμηρίων</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="data/knowledge.js"></script>
+  <script defer src="assets/core.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Μετάβαση στον χάρτη</a>
+  <header class="masthead">
+    <a class="brand" href="index.html" aria-label="Αρχική σελίδα χάρτη τεκμηρίων">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 10L30 12L23 31L10 10M10 10L8 29L23 31"/><circle cx="10" cy="10" r="5"/><circle cx="30" cy="12" r="4"/><circle cx="23" cy="31" r="5"/><circle cx="8" cy="29" r="3"/></svg>
+      <span><strong>ΙΑΤΡΙΚΟ ΑΘΗΝΩΝ</strong><small>ΧΑΡΤΗΣ ΔΙΟΙΚΗΤΙΚΩΝ ΤΕΚΜΗΡΙΩΝ</small></span>
+    </a>
+    <div class="header-actions"><span class="prototype"><i></i> Τοπικό πρωτότυπο · v0.1</span><button id="method-button" class="text-button">Πώς διαβάζεται <span aria-hidden="true">↗</span></button><button id="sources-button" class="outline-button">Πηγές <span id="source-count">—</span></button></div>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">ΜΑΝΑΤΖΜΕΝΤ & ΗΓΕΤΙΚΕΣ ΙΚΑΝΟΤΗΤΕΣ · MBA-4</p><h1 id="page-title">Μια εταιρεία. Πολλές συνδέσεις.</h1><p class="intro-copy">Εξερευνήστε τη δομή, τους ανθρώπους και το περιβάλλον της μέσα από τα δημοσιευμένα τεκμήρια.</p></div>
+      <div class="dataset-stats" aria-label="Περιεχόμενο βάσης"><div><strong id="node-count">—</strong><span>κόμβοι</span></div><div><strong id="edge-count">—</strong><span>συνδέσεις</span></div><div><strong id="evidence-count">—</strong><span>τεκμήρια</span></div></div>
+    </section>
+    <div class="workspace">
+      <aside class="filters" aria-label="Φίλτρα γράφου">
+        <div class="section-heading"><h2>Εξερεύνηση</h2><button id="reset" class="small-link">Επαναφορά</button></div>
+        <label class="field-label" for="search">Αναζήτηση στον γράφο</label>
+        <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="π.χ. SAP, εκπαίδευση" autocomplete="off"></div>
+        <p class="filter-label">ΘΕΜΑΤΙΚΗ ΕΣΤΙΑΣΗ</p>
+        <nav id="topics" class="topic-list" aria-label="Θεματικές"><button data-topic="all" class="topic active" aria-pressed="true"><span class="topic-symbol">◉</span> Συνολική εικόνα <span class="count"></span></button><button data-topic="environment" class="topic" aria-pressed="false"><span class="topic-dot environment"></span> Εξωτερικό περιβάλλον <span class="count"></span></button><button data-topic="structure" class="topic" aria-pressed="false"><span class="topic-dot structure"></span> Οργανωσιακή δομή <span class="count"></span></button><button data-topic="culture" class="topic" aria-pressed="false"><span class="topic-dot culture"></span> Κουλτούρα <span class="count"></span></button><button data-topic="leadership" class="topic" aria-pressed="false"><span class="topic-dot leadership"></span> Ηγεσία <span class="count"></span></button></nav>
+        <div class="filter-fields"><label class="field-label" for="scope">Επίπεδο ανάλυσης</label><select id="scope"><option value="all">Όλα τα επίπεδα</option value="company">Νομική εταιρεία</option><option value="group">Όμιλος</option><option value="clinic">Κλινική / μονάδα</option><option value="national">Εθνικό περιβάλλον</option><option value="mixed">Μικτή περίμετρος</option></select><label class="field-label" for="period">Περίοδος τεκμηρίου</label><select id="period"><option value="all">Όλες οι περίοδοι</option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select><label class="checkbox"><input type="checkbox" id="context-toggle" checked> Θεματικές συσχετίσεις</label></div>
+        <div class="guided"><p class="filter-label">ΔΙΑΔΡΟΜΕΣ ΑΝΑΓΝΩΣΗΣ</p><button data-tour="people"><span>01</span> Οι άνθρωποι <b>↗</b></button><button data-tour="structure"><span>02</span> Δομή & έλεγχος <b>↗</b></button><button data-tour="digital"><span>03</span> Ψηφιακή αλλαγή <b>↗</b></button></div>
+        <p class="sidebar-note">Κάθε κόμβος οδηγεί σε στοιχεία.<br>Κάθε στοιχείο επιστρέφει στην πηγή.</p>
+      </aside>
+      <section class="graph-section" aria-label="Διαδραστικός χάρτης">
+        <div class="graph-toolbar"><div class="view-switch" role="group" aria-label="Τρόπος προβολής"><button id="graph-view" class="active" aria-pressed="true">Γράφος</button><button id="list-view" aria-pressed="false">Κατάλογος</button></div><span id="visible-count" aria-live="polite"></span><button id="export" class="icon-button" aria-label="Εξαγωγή των ορατών δεδομένων σε JSON" title="Εξαγωγή ορατών δεδομένων">↓</button></div>
+        <div id="graph-wrap" class="graph-wrap">
+          <div class="graph-heading"><span class="live-dot"></span><span id="graph-title">ΣΥΝΟΛΙΚΟΣ ΧΑΡΤΗΣ</span></div>
+          <svg id="graph" viewBox="0 0 1200 960" role="img" aria-labelledby="graph-accessible-title graph-description"><title id="graph-accessible-title">Γράφος τεκμηρίων Ιατρικού Αθηνών</title><desc id="graph-description">Επιλέξτε κόμβο ή σύνδεση για να δείτε πηγές. Μετακινήστε τον χάρτη με σύρσιμο και αλλάξτε μεγέθυνση με τα κουμπιά. Εναλλακτική προσβάσιμη προβολή στον Κατάλογο.</desc><defs><filter id="node-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter></defs><g id="viewport"><g id="edges"></g><g id="nodes"></g></g></svg>
+          <div id="empty-state" class="empty-state" hidden><strong>Δεν βρέθηκαν κόμβοι</strong><p>Δοκιμάστε άλλη λέξη ή επαναφέρετε τα φίλτρα.</p><button class="light-button" id="empty-reset">Επαναφορά φίλτρων</button></div>
+          <div class="graph-bottom"><div class="edge-legend"><span><i></i> Δημοσιευμένη σχέση</span><span><i class="dashed"></i> Θεματική συσχέτιση</span></div><div class="zoom-controls"><button id="zoom-out" aria-label="Σμίκρυνση">−</button><span id="zoom-level">100%</span><button id="zoom-in" aria-label="Μεγέθυνση">+</button><button id="fit" aria-label="Προσαρμογή ολόκληρου γράφου" title="Προσαρμογή">⌗</button></div></div>
+          <p class="canvas-hint">Επιλογή κόμβου · Σύρσιμο χάρτη ή κόμβου · Ctrl + κύλιση για μεγέθυνση</p>
+        </div>
+        <div id="node-list" class="node-list" hidden></div>
+        <div class="graph-footnote"><span>●</span> Ο γράφος αποτυπώνει τεκμήρια και συσχετίσεις. Δεν αποτελεί λειτουργικό οργανόγραμμα.</div>
+      </section>
+      <aside class="detail-panel" aria-label="Λεπτομέρειες και παραπομπές"><div class="detail-header"><span class="eyebrow">ΚΑΡΤΕΛΑ ΤΕΚΜΗΡΙΩΣΗΣ</span><button id="clear-selection" class="icon-button" aria-label="Επιστροφή στην αρχική εταιρεία">↺</button></div><div id="detail" aria-live="polite"></div></aside>
+    </div>
+    <section class="retrieval-section" aria-labelledby="retrieval-title">
+      <div class="retrieval-intro"><p class="eyebrow">ΑΠΟ ΤΗΝ ΕΡΩΤΗΣΗ ΣΤΙΣ ΠΗΓΕΣ</p><h2 id="retrieval-title">Βρείτε τα σχετικά τεκμήρια.</h2><p>Αναζήτηση λέξεων και συνδεδεμένων κόμβων. Η δοκιμαστική έκδοση επιστρέφει τεκμήρια, χωρίς να συντάσσει απάντηση με LLM.</p></div>
+      <div class="retrieval-work"><form id="retrieval-form"><label class="sr-only" for="question">Ερώτημα αναζήτησης τεκμηρίων</label><input id="question" placeholder="Τι γνωρίζουμε για την εκπαίδευση προσωπικού;" autocomplete="off"><button type="submit">Αναζήτηση <span aria-hidden="true">→</span></button></form><div class="question-chips"><button data-question="εκπαίδευση προσωπικού">Εκπαίδευση προσωπικού</button><button data-question="διαχείριση κινδύνων">Διαχείριση κινδύνων</button><button data-question="SAP ψηφιοποίηση">SAP & ψηφιοποίηση</button></div><div id="retrieval-results" aria-live="polite"></div></div>
+    </section>
+    <footer><p><strong>Ερευνητικό πρωτότυπο MBA-4.</strong> Ανεξάρτητη ακαδημαϊκή προετοιμασία · Δεν αποτελεί επίσημη εταιρική ιστοσελίδα.</p><p id="coverage-note"></p><p>Η τελική επαλήθευση από την ομάδα εκκρεμεί. <button id="method-footer" class="small-link">Μεθοδολογία & όρια</button></p></footer>
+  </main>
+  <dialog id="info-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" aria-label="Κλείσιμο">×</button></div><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" hidden></div>
+  <noscript><p class="noscript">Ενεργοποιήστε JavaScript για να εξερευνήσετε τον γράφο. Τα δεδομένα είναι διαθέσιμα στο data/knowledge.json.</p></noscript>
+</body>
+</html>
