@@ -64,6 +64,8 @@
   const params=new URLSearchParams(location.search);
   let state={period:Math.max(0,Math.min(3,Number(params.get('period'))||0)),track:tracks.some(t=>t.id===params.get('track'))?params.get('track'):'roles',hypotheses:false},scene,selected=null;
   const button=(text,cls,fn)=>{const b=el('button',cls,text);b.type='button';b.addEventListener('click',fn);return b;};
+  const personIds={george:'george-apostolopoulos',vasilis:'vasilis-apostolopoulos',christos:'christos-apostolopoulos',talaris:'theodoros-talaris','quality-person':'giannis-kalofysoudis'};
+  const portrait=id=>personIds[id]?window.MEDIA_CATALOG?.photos.find(p=>p.kind==='person'&&p.personId===personIds[id]):undefined;
   function reference(r) {
     const s=sources.get(r.source),a=el('a','sap-reference');a.href=s.url+(r.pdf_page?'#page='+r.pdf_page:'');a.target='_blank';a.rel='noopener noreferrer';
     a.textContent=s.title+(r.pdf_page?' · PDF σ. '+r.pdf_page+(r.printed_page!==r.pdf_page?' / έντυπη '+r.printed_page:''):'')+' ↗';
@@ -74,6 +76,10 @@
     document.querySelectorAll('.sap-node,.sap-edge-label').forEach(b=>b.classList.toggle('is-selected',b.dataset.key===item.id));
     const box=$('sap-detail');box.replaceChildren();
     box.append(el('span','sap-status status-'+item.status,kinds[item.status]),el('h3','',item.title||item.label));
+    if(personIds[item.id]){
+      const a=el('a','sap-reference','Ακολουθήστε το πρόσωπο στον χάρτη →');a.href='history.html?people='+personIds[item.id]+'#year-'+(state.period===3?2026:state.period===0?2024:2025);box.append(a);
+      const photo=portrait(item.id);if(photo){const credit=el('a','sap-reference','Φωτογραφία: '+photo.caption+' ↗');credit.href=photo.sourceUrl;credit.target='_blank';credit.rel='noopener noreferrer';box.append(credit,el('p','sap-meta','Η φωτογραφία αναγνωρίζει το πρόσωπο· δεν χρονολογεί τον ρόλο.'));}
+    }
     if(item.hypothesisId) {
       const h=data.hypotheses.find(h=>h.id===item.hypothesisId);
       box.append(el('p','',h.statement),el('h4','','Τι χρειάζεται για να ελεγχθεί;'));
@@ -127,6 +133,7 @@
     scene=getScene(state.period,state.track,state.hypotheses);selected=null;
     $('sap-period').textContent=periods[state.period].date+' · '+tracks.find(t=>t.id===state.track).title;
     $('sap-period-note').textContent='Αναδρομική αποτύπωση: οι πηγές μπορεί να δημοσιεύθηκαν αργότερα. Οι άγνωστες λήξεις ρόλων παραμένουν άγνωστες.';
+    if(state.period===3&&state.track!=='leadership')$('sap-period-note').textContent='Για αυτή τη θεματική εμφανίζονται οι τελευταίες καταγραφές του 2025. Δεν πιστοποιείται συνέχιση ρόλων ή ίδια επίδοση το 2026.';
     $('sap-summary').textContent=scene.summary;
     document.querySelectorAll('[data-track]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.track===state.track)));
     document.querySelectorAll('[data-period]').forEach(b=>{const active=Number(b.dataset.period)===state.period;b.setAttribute('aria-pressed',String(active));if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
@@ -134,6 +141,7 @@
     const nodes=$('sap-nodes');nodes.replaceChildren();scene.nodes.forEach(n=>{
       const b=button('','sap-node status-'+n.status,()=>detail(n));b.dataset.key=n.id;b.style.left=n.x+'%';b.style.top=n.y+'%';
       const img=el('img');img.src='assets/illustrations/'+n.icon+'.svg';img.alt='';img.width=40;img.height=34;
+      const photo=portrait(n.id);if(photo){img.src=photo.src;img.alt=photo.alt;img.referrerPolicy='no-referrer';img.style.cssText='width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:'+photo.objectPosition;img.addEventListener('error',()=>{img.src='assets/illustrations/'+n.icon+'.svg';img.alt='';},{once:true});}
       b.append(img,el('strong','',n.title),el('small','',n.sub));b.setAttribute('aria-label',n.title+' · '+kinds[n.status]+' · Εξήγηση και πηγές');nodes.append(b);
     });
     let list=$('sap-mobile-relations');if(!list){list=el('div','sap-mobile-relations');list.id='sap-mobile-relations';$('sap-map').after(list);}list.replaceChildren();
