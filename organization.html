@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="el"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ποιος αναλαμβάνει τι · Ιατρικό Αθηνών</title>
+<meta name="description" content="Οι τεκμηριωμένοι διοικητικοί ρόλοι του Ιατρικού Αθηνών ανά έτος. Μετακινήστε πρόσωπα και εξερευνήστε τις αρμοδιότητες και τις πηγές τους.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/organization.css">
+<script defer src="assets/organization.js"></script>
+</head><body>
+<a class="skip" href="#org-stage">Στον γράφο</a>
+<header class="org-header"><a class="org-brand" href="index.html"><b>ι.</b><span>Ιατρικό Αθηνών<small>ΔΙΟΙΚΗΤΙΚΗ ΜΕΛΕΤΗ</small></span></a><nav><a href="index.html#roles">← Παρουσίαση</a><button id="method-button">Πηγές & μέθοδος ↗</button></nav></header>
+<main>
+<div class="org-title"><div><p class="eyebrow">ΠΡΟΣΩΠΑ · ΡΟΛΟΙ · ΑΡΜΟΔΙΟΤΗΤΕΣ</p><h1>Ποιος αναλαμβάνει <em>τι;</em></h1></div><p>Διαλέξτε έτος. Αγγίξτε ένα πρόσωπο.<br><strong>Σύρετε για να οργανώσετε τον γράφο.</strong></p></div>
+<section class="year-panel" aria-label="Χρονική περίοδος"><div class="year-display"><button id="year-prev" aria-label="Προηγούμενο έτος">←</button><output id="year-value" for="year-range">2025</output><button id="year-next" aria-label="Επόμενο έτος">→</button></div><div class="year-track"><label for="year-range" class="sr-only">Έτος</label><input type="range" id="year-range" min="1984" max="2026" value="2025"><div id="year-marks" aria-label="Έτη με διαθέσιμα στοιχεία"></div></div><div class="coverage"><span id="coverage-label">Φόρτωση…</span><small id="coverage-count"></small></div></section>
+<div class="org-toolbar"><div class="mode-switch" role="group" aria-label="Προβολή"><button data-mode="people" aria-pressed="true">Πρόσωπα & ρόλοι</button><button data-mode="structure" aria-pressed="false">Δομή διοίκησης</button></div><div class="org-filters"><label for="person-filter" class="sr-only">Εστίαση σε πρόσωπο</label><select id="person-filter"><option value="">Όλα τα πρόσωπα</option></select><button id="reset-layout">Επαναφορά ↺</button></div></div>
+<p class="mobile-canvas-hint">↔ Κυλήστε τον καμβά οριζόντια. Σύρετε τους κόμβους για να τους μετακινήσετε.</p><div class="org-workspace"><section id="org-stage" tabindex="-1" aria-label="Δυναμικός γράφος διοικητικών ρόλων"><svg id="org-svg" viewBox="0 0 1000 640" aria-labelledby="graph-title graph-description"><title id="graph-title">Διοικητικοί ρόλοι ανά έτος</title><desc id="graph-description">Επιλέξτε πρόσωπο για τους τεκμηριωμένους ρόλους και τις πηγές του. Οι θέσεις των κόμβων μετακινούνται ελεύθερα και δεν δηλώνουν ιεραρχία.</desc><defs><marker id="arrow-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#7d9297"/></marker></defs><g id="graph-viewport"><g id="graph-edges"></g><g id="graph-nodes"></g></g></svg><div id="empty-state" hidden><b>Δεν έχουμε τεκμηρίωση γι’ αυτό το έτος.</b><p>Οι άγνωστοι ρόλοι παραμένουν άγνωστοι.</p><button id="nearest-year">Στο κοντινότερο τεκμηριωμένο έτος →</button></div><div class="graph-tools"><button id="zoom-out" aria-label="Σμίκρυνση">−</button><button id="zoom-reset" aria-label="Αρχική κλίμακα">100%</button><button id="zoom-in" aria-label="Μεγέθυνση">+</button></div><div class="graph-legend"><span class="person-key">Πρόσωπο</span><span class="role-key">Ρόλος</span><span class="unit-key">Μονάδα / πεδίο</span></div></section>
+<aside id="inspector" aria-label="Στοιχεία επιλεγμένου κόμβου"><div id="inspector-content"><p class="eyebrow">ΕΞΕΡΕΥΝΗΣΤΕ</p><h2>Ένα πρόσωπο.<br>Οι συνδέσεις του.</h2><p>Πατήστε έναν κόμβο για ρόλους, αρμοδιότητες και πηγές.</p><div class="inspector-hint">Η θέση στον καμβά δεν δηλώνει ιεραρχία.</div></div></aside></div>
+<div class="org-footer"><span id="temporal-note">Τεκμηριωμένες καταγραφές· όχι πλήρης απογραφή κάθε έτους.</span><button id="graph-data">Neo4j · δεδομένα ↗</button></div>
+<details class="accessible-list"><summary>Προβολή ως κατάλογος</summary><div id="graph-list"></div></details>
+</main>
+<dialog id="org-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><h2 id="dialog-title">Πηγές & μέθοδος</h2><button id="close-dialog" aria-label="Κλείσιμο">×</button></div><div id="dialog-content"></div></dialog>
+<p id="org-status" class="sr-only" role="status" aria-live="polite"></p>
+<noscript><p>Ο γράφος χρειάζεται JavaScript. <a href="data/organization-timeline.json">Δείτε το αρχείο τεκμηρίωσης.</a></p></noscript>
+</body></html>

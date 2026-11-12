@@ -4,7 +4,7 @@
   const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const num = (n, digits=0) => new Intl.NumberFormat('el-GR',{minimumFractionDigits:digits,maximumFractionDigits:digits}).format(n);
   const H = window.HISTORY_TIMELINE, M = window.MEDIA_CATALOG, C = window.CONTEXT_TIMELINE;
-  let evidence, sourceMap = new Map(), lastStep = -1, lastTick = null;
+  let evidence, additional, sourceMap = new Map(), lastStep = -1, lastTick = null, sceneDetails='';
   const state = {index:-1, phase:'intro', elapsedMs:0, sourcesOpen:false};
   const slides = [
     {id:'company', title:'Ποιον οργανισμό μελετάμε;', chapter:'Η αφετηρία / τρεις διαφορετικές κλίμακες', duration:25000, refs:['am25-finance','A25_NETWORK']},
@@ -12,8 +12,10 @@
     {id:'pandemic', title:'Όταν αλλάζει το εξωτερικό περιβάλλον.', chapter:'2020 / η πανδημία αλλάζει τις συνθήκες', duration:35000, refs:['am20-covid','am20-patients','CTX_COVID2020']},
     {id:'gaia', title:'Μια πώληση που ελευθερώνει χώρο.', chapter:'Εύρημα 01 / ανακατανομή πόρων', duration:0, finding:'gaia'},
     {id:'roles', title:'Η τεχνολογία και οι ρόλοι κινούνται παράλληλα.', chapter:'2024—2026 / δομή & ηγεσία', duration:55000, refs:['A24_REGIONAL','am24-sap','A25_REGIONAL','A25_QUALITY','A25_CFO','BOARD26','BOARD22']},
-    {id:'nps', title:'Ο συνολικός δείκτης δεν λέει όλη την ιστορία.', chapter:'Εύρημα 02 / η εμπειρία ανά μονάδα', duration:0, finding:'nps'},
-    {id:'margins', title:'Η πίεση είχε αρχίσει πριν από το SAP.', chapter:'Εύρημα 03 / ελέγχουμε την αρχική μας εξήγηση', duration:0, finding:'margins'},
+    {id:'role-concentration', title:'Ένα στέλεχος, τρεις ρόλοι.', chapter:'Εύρημα 02 / η κατανομή ευθύνης', duration:0, finding:'role-concentration'},
+    {id:'nps', title:'Ο συνολικός δείκτης δεν λέει όλη την ιστορία.', chapter:'Εύρημα 03 / η εμπειρία ανά μονάδα', duration:0, finding:'nps'},
+    {id:'margins', title:'Η πίεση είχε αρχίσει πριν από το SAP.', chapter:'Εύρημα 04 / ελέγχουμε την αρχική μας εξήγηση', duration:0, finding:'margins'},
+    {id:'cashflow', title:'Κέρδος και μετρητά ακολουθούν άλλη πορεία.', chapter:'Εύρημα 05 / από την υπηρεσία στην είσπραξη', duration:0, finding:'cashflow'},
     {id:'journey', title:'Η ευθύνη ανάμεσα στα τμήματα.', chapter:'Το αόρατο οργανόγραμμα / η δική μας υπόθεση', duration:45000, refs:['am25-nps-method','am25-nps-units','A25_ORG']},
     {id:'culture', title:'Η αλλαγή περνά από τους ανθρώπους.', chapter:'Οργανωσιακή κουλτούρα / επτά φακοί', duration:45000, refs:['A25_VALUES','A25_SAFETY','am25-nps-units']},
     {id:'actions', title:'Τέσσερις προτάσεις προς τη διοίκηση.', chapter:'Από την παρατήρηση στην πράξη', duration:40000, refs:['am25-nps-units','am26h1-cash','A25_ORG','BOARD26']},
@@ -35,9 +37,9 @@
     ['Σταθερότητα','Τι διατηρείται όταν αλλάζουν οι ρόλοι;','Προς έλεγχο: ισορροπία σταθερών διαδικασιών και αλλαγής. Οι αλλαγές τίτλων δεν μετρούν αυτή τη διάσταση.']
   ];
   function badge(type,label){return '<span class="evidence-badge '+(type==='company_claim'?'claim':type==='hypothesis'?'hypothesis':'')+'">'+esc(label || ({fact:'Δημοσιευμένο στοιχείο',company_claim:'Εταιρική εξήγηση',hypothesis:'Δική μας υπόθεση'}[type]))+'</span>';}
-  function finding(id){return evidence.findings.find(f=>f.id===id);}
+  function finding(id){return evidence.findings.find(f=>f.id===id)||additional.findings.find(f=>f.id===id);}
   function photo(id,cls=''){const p=M.photos.find(p=>p.id===id);return p?'<img class="'+cls+'" src="'+esc(p.src)+'" alt="'+esc(p.alt)+'" style="object-position:'+esc(p.objectPosition||'50% 50%')+'" loading="eager">':'';}
-  function copy(era,title,lead,tail='',findingNo=0){return '<div class="scene-copy">'+(findingNo?'<span class="finding-label"><b>Ⅱ</b> ΣΤΑΣΗ '+String(findingNo).padStart(2,'0')+' / 03 · ΣΧΟΛΙΑΣΜΟΣ</span>':'<div class="era">'+era+'</div>')+'<h2 id="scene-title" tabindex="-1">'+title+'</h2><p class="lead">'+lead+'</p>'+tail+'</div>';}
+  function copy(era,title,lead,tail='',findingNo=0){const order=slides.filter(s=>s.finding).findIndex(s=>s.id===slides[state.index]?.id)+1;return '<div class="scene-copy">'+(findingNo?'<span class="finding-label"><b>Ⅱ</b> ΣΤΑΣΗ '+String(order).padStart(2,'0')+' / 05</span>':'<div class="era">'+era+'</div>')+'<h2 id="scene-title" tabindex="-1">'+title+'</h2><p class="lead">'+lead+'</p>'+tail+'</div>';}
   function statement(text,type='fact',label){return '<div class="statement '+(type==='hypothesis'?'hypothesis':'')+'"><strong>'+esc(label || (type==='hypothesis'?'ΥΠΟΘΕΣΗ ΠΡΟΣ ΕΛΕΓΧΟ':'ΤΟ ΔΙΟΙΚΗΤΙΚΟ ΕΡΩΤΗΜΑ'))+'</strong>'+text+'</div>';}
   const note=(text)=>'<p class="scene-note">'+text+'</p>';
   const sourceLink=(text='Πώς τεκμηριώνεται;')=>'<button class="tiny-source" data-action="sources">'+text+' ↗</button>';
@@ -122,13 +124,63 @@
     return copy('Η συμβολή','Συνδέουμε στοιχεία.<br><em>Ελέγχουμε εξηγήσεις.</em>','Το Ιατρικό Αθηνών προσφέρει μια περίπτωση όπου η γεωγραφία, η κατανομή πόρων και η ψηφιακή μετάβαση μπορούν να μελετηθούν μαζί.','<div class="closing-actions"><button data-action="archive">Δείτε την έρευνα ↗</button><button data-action="restart">Από την αρχή ↺</button></div>'+note('Έρευνα και κατασκευή με υποστήριξη ΤΝ. Ο ουσιαστικός έλεγχος της ομάδας εκκρεμεί. Δεν ισχυριζόμαστε ότι η σύνθεση δεν έχει δημοσιευθεί ποτέ αλλού.'))+
     '<div class="scene-visual closing-visual"><h3>Το «αόρατο» βρίσκεται<br><em>στις συνδέσεις.</em></h3><div class="closing-row"><b>01</b><span>Δραστηριότητες → κατανομή πόρων</span></div><div class="closing-row"><b>02</b><span>Κοινό σύστημα → διαφορετικές εμπειρίες</span></div><div class="closing-row"><b>03</b><span>Χρονική ακολουθία → έλεγχος της εξήγησης</span></div><p style="font-size:11px;color:#bfd5d0;margin:24px 0 0">Δημοσιευμένα στοιχεία · εταιρικές εξηγήσεις · δικές μας υποθέσεις</p></div>';
   }
-  const renderers={company,growth,pandemic,gaia,roles,nps,margins,journey,culture:cultureScene,actions,closing};
+  function cashflow(){
+    const f=finding('cashflow'),metrics=['ebitda','operating-cash-flow'].map(id=>f.metrics.find(m=>m.id===id)),zero=255,scale=8;
+    let bars='';metrics.forEach((m,i)=>[m.before,m.after].forEach((p,j)=>{const v=p.value/1000,x=90+i*290+j*100,y=zero-v*scale;bars+='<rect x="'+x+'" y="'+Math.min(zero,y)+'" width="66" height="'+Math.abs(v*scale)+'" rx="4" fill="'+(v<0?'#b74340':j?'#007b73':'#a8ccc0')+'"/><text class="cash-value" x="'+(x+33)+'" y="'+(v<0?y+25:y-13)+'" text-anchor="middle">'+num(v,2)+'</text><text x="'+(x+33)+'" y="378" text-anchor="middle">'+(j?'2026':'2025')+'</text>';}));
+    const chart='<svg class="cash-svg" viewBox="0 0 620 410" role="img" aria-label="Α΄ εξάμηνα2025 και2026, Όμιλος, εκατομμύρια ευρώ. EBITDA17,105 και20,038. Λειτουργικές ταμειακές ροές0,717 και μείον7,557.">'+[20,10,0,-10].map(v=>'<line x1="55" x2="580" y1="'+(zero-v*scale)+'" y2="'+(zero-v*scale)+'" stroke="'+(v===0?'#809b96':'#dce3dc')+'" stroke-dasharray="'+(v===0?'0':'3 5')+'"/><text x="35" y="'+(zero-v*scale+4)+'" text-anchor="end">'+v+'</text>').join('')+bars+'<text class="cash-label" x="173" y="30" text-anchor="middle">EBITDA</text><text class="cash-label" x="463" y="30" text-anchor="middle">Λειτουργικές ροές</text></svg>';
+    return copy('','Ανάκαμψη κερδοφορίας.<br><em>Εκροή μετρητών.</em>','Α΄ εξάμηνο2025→2026 · ενοποιημένος Όμιλος',statement('Ποιος συντονίζει τη διαδρομή μέχρι την είσπραξη;','hypothesis'),5)+'<div class="scene-visual visual-panel"><div class="panel-label">ΟΜΙΛΟΣ · Α΄ ΕΞΑΜΗΝΟ · € ΕΚΑΤ.</div>'+chart+'<div class="cash-summary"><span>EBITDA <b>≈ +17,1%</b></span><span>Λειτουργικές ροές <b>−€7,56 εκατ.</b></span></div><p class="essential-caption">Δεν αποδεικνύει αφερεγγυότητα ή επίδραση SAP.</p></div>';
+  }
+  function roleConcentration(){
+    return copy('','Ένα στέλεχος.<br><em>Τρεις ρόλοι.</em>','Θεόδωρος Τάλαρης · καταγραφές2024–2025',statement('Κοινός συντονισμός ή εξάρτηση από ένα πρόσωπο;','hypothesis'),2)+'<div class="scene-visual"><div class="role-network"><div class="role-person"><span aria-hidden="true">ΘΤ</span><h3>Θεόδωρος Τάλαρης</h3></div><div class="role-branches" aria-label="Τρεις δημοσιευμένοι ρόλοι του ίδιου προσώπου">'+[['09 /2024','Περιφερειακός διευθυντής','Όμιλος'],['01 /2025','Γενικός διευθυντής','Παλαιό Φάληρο'],['07 /2025','Γενικός διευθυντής','Περιστέρι']].map(r=>'<div><time>'+r[0]+'</time><h4>'+r[1]+'</h4><p>'+r[2]+'</p></div>').join('')+'</div></div><p class="essential-caption">Τίτλοι ρόλων· δεν μετρούν φόρτο ή απόδοση.</p><a class="graph-link" href="organization.html#2025">Εξερευνήστε το οργανόγραμμα <span>↗</span></a></div>';
+  }
+  const renderers={company,growth,pandemic,gaia,roles,'role-concentration':roleConcentration,nps,margins,cashflow,journey,culture:cultureScene,actions,closing};
+  const sceneBrief={
+    company:['Εταιρεία · Όμιλος · μονάδα','Διαφορετική κλίμακα. Διαφορετικοί αριθμοί.',''],
+    growth:['Επιλεγμένοι ιστορικοί σταθμοί','Η επέκταση αυξάνει την ανάγκη συντονισμού.','Υπόθεση'],
+    pandemic:['2019→2020 · κλινικές Ομίλου','Το περιβάλλον αλλάζει τη λειτουργία.',''],
+    gaia:['2021 · μεταβίβαση μαιευτικής δραστηριότητας','Μικρότερο εύρος, περισσότερος διαθέσιμος χώρος.','Εταιρική εξήγηση'],
+    roles:['Δημοσιευμένες μεταβολές ·2024–2026','Παράλληλες αλλαγές δεν αποδεικνύουν αιτιότητα.',''],
+    'role-concentration':['Θεόδωρος Τάλαρης ·2024–2025','Κοινός συντονισμός ή εξάρτηση από ένα πρόσωπο;','Ερώτημα'],
+    nps:['2024→2025 · ελληνικές μονάδες','Η συνολική εικόνα κρύβει τοπικές αποκλίσεις.',''],
+    margins:['2023–2025 · ενοποιημένος Όμιλος','Η πτώση προηγείται της παραγωγικής έναρξης SAP.',''],
+    cashflow:['Α΄ εξάμηνα2025–2026 · Όμιλος','Από την υπηρεσία στην είσπραξη: ποιος συντονίζει;','Ερώτημα'],
+    journey:['Ενδεικτική διαδρομή ασθενούς','Η ευθύνη βρίσκεται και ανάμεσα στα τμήματα.','Υπόθεση'],
+    culture:['Επτά διαστάσεις προς διερεύνηση','Οι δηλωμένες αξίες χρειάζονται έλεγχο στην πράξη.',''],
+    actions:['Προτάσεις της ομάδας','Κάθε πρόταση χρειάζεται μετρήσιμο έλεγχο.',''],
+    closing:['Συνδέσεις που γεννούν ερωτήματα','Δημόσια στοιχεία. Ελέγξιμες υποθέσεις.','']
+  };
+  function compressScene(id){
+    const scene=$('scene'),brief=sceneBrief[id];sceneDetails='';
+    const preserve=el=>{sceneDetails+=el.outerHTML;el.remove();};
+    const lead=scene.querySelector('.scene-copy>.lead');if(lead&&brief){sceneDetails+=lead.outerHTML;lead.textContent=brief[0];}
+    scene.querySelectorAll('.scene-copy>.statement,.scene-copy>.scene-note,.scene-copy>.headline,.scene-copy>.evidence-badge').forEach(preserve);
+    scene.querySelectorAll('.scene-copy>.tiny-source').forEach(el=>el.dataset.action==='sources'?el.remove():preserve(el));
+    scene.querySelectorAll('.scene-visual>.scene-note,.role-detail>.scene-note,.recovery,.complaint-note,.culture-item p,.action-card p').forEach(preserve);
+    if(brief){const takeaway=document.createElement('div');takeaway.className='one-thought';takeaway.innerHTML=(brief[2]?'<span>'+esc(brief[2])+'</span>':'')+esc(brief[1]);scene.querySelector('.scene-copy').appendChild(takeaway);}
+    if(id==='company'){scene.querySelectorAll('.scope-box p').forEach(preserve);}
+    if(id==='growth'){
+      const current=growthSteps[stepFor(slides[state.index])];scene.querySelector('.lead').textContent=current.caption;
+      scene.querySelector('.map-legend').innerHTML='Περιοχές παρουσίας<br>Natural Earth · GeoNames';
+      if(current.limit){const limit=document.createElement('p');limit.className='essential-caption';limit.textContent=stepFor(slides[state.index])===0?'Αφετηρία:1983 /1984 στις πηγές.':'Ρουμανία:1996 /1997 στις πηγές.';scene.querySelector('.scene-copy').appendChild(limit);}
+    }
+    if(id==='pandemic'){
+      scene.querySelectorAll('.context-list span').forEach(el=>{sceneDetails+='<p>'+esc(el.textContent)+'</p>';el.textContent=el.textContent.split(' · ')[0];});
+      scene.querySelectorAll('.scene-visual>p:not(.baseline-label),.scene-visual>.evidence-badge').forEach(preserve);
+    }
+    if(id==='nps')scene.querySelectorAll('.nps-card').forEach(card=>{sceneDetails+='<p>'+esc(card.querySelector('h3').textContent)+' · '+esc(card.querySelector('.nps-sample').textContent)+'</p>';card.querySelectorAll('.nps-years,.nps-sample').forEach(el=>el.remove());card.querySelector('.nps-delta').textContent=card.querySelector('.nps-delta').textContent.replace(' μονάδες NPS','');});
+    const captions={nps:'NPS: πρόθεση σύστασης, όχι κλινική ποιότητα. Διαφορετικά δείγματα.',margins:'2023=100 · περιθώριο: EBITDA / έσοδα. Η τάση δεν αποδίδεται αιτιωδώς στο SAP.',journey:'Υπόθεση διαδικασίας· όχι επίσημο οργανόγραμμα.',roles:'Διαθέσιμες καταγραφές· όχι πλήρης απογραφή.'};
+    if(captions[id]){const p=document.createElement('p');p.className='essential-caption';p.textContent=captions[id];scene.querySelector('.scene-visual').appendChild(p);}
+    if(id==='journey'){scene.querySelectorAll('.journey-bridge small').forEach(preserve);}
+    if(id==='roles'){const a=document.createElement('a');a.className='graph-link';a.href='organization.html#'+[2024,2025,2026][stepFor(slides[state.index])];a.innerHTML='Μετακινήστε πρόσωπα & ρόλους <span>↗</span>';scene.querySelector('.scene-visual').appendChild(a);}
+    if(id==='actions')scene.querySelectorAll('.action-card small').forEach(el=>el.textContent=el.textContent.replace('Έλεγχος: ',''));
+  }
   function stepFor(slide){return slide.id==='growth'?Math.min(5,Math.floor(state.elapsedMs/10000)):slide.id==='roles'?Math.min(2,Math.floor(state.elapsedMs/20000)):0;}
   function normalizeTypography(html){return html.replace(/([Α-Ωα-ωΆ-ώ])(\d)/g,'$1 $2').replace(/(\d)([Α-Ωα-ωΆ-ώ])/g,'$1 $2');}
   function renderScene(animate=true){
     const s=slides[state.index];if(!s)return;
     const step=stepFor(s);lastStep=step;
     $('scene').innerHTML=normalizeTypography(renderers[s.id](step));
+    compressScene(s.id);
     $('scene').classList.toggle('scene-enter',animate);
     document.body.dataset.scene=s.id;
     $('scene-number').textContent=String(state.index+1).padStart(2,'0')+' / '+slides.length;
@@ -222,19 +274,20 @@
     }
     if(s.id==='roles')content+='<p>Οι καταγεγραμμένοι ρόλοι και οι ημερομηνίες δεν τεκμηριώνουν αιτιώδη επίδραση SAP. Η περιφερειακή εποπτεία προηγείται της έναρξης του συστήματος. Δεν συνάγουμε το στυλ ηγεσίας από τη συγγένεια ή τον τίτλο.</p>';
     if(s.id==='journey'||s.id==='actions')content+='<p>Το σχήμα διαδικασίας και οι προτάσεις αποτελούν δική μας σύνθεση. Η έκθεση περιγράφει διοικητικές τριβές, αλλά δεν τεκμηριώνει την έλλειψη συγκεκριμένου υπευθύνου ή την αποτελεσματικότητα των προτάσεων.</p>';
+    if(sceneDetails)content+='<details><summary>Αναλυτική εξήγηση της σκηνής</summary>'+sceneDetails+'</details>';
     content+='<h3>Πρωτογενείς πηγές</h3>'+sourceMarkup(allSourceIds(s));
     if(s.id==='growth'||s.id==='roles'||s.id==='gaia')content+='<details><summary>Φωτογραφίες και χαρτογραφικό υπόβαθρο</summary>'+M.photos.filter(p=>s.id==='roles'?p.kind==='person':p.kind==='unit').map(p=>'<div class="source-entry"><a href="'+esc(p.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(p.caption||p.alt)+' ↗</a><small>'+esc(p.credit)+' '+esc(p.usageNote||'Οι φωτογραφίες δεν τεκμηριώνουν την εμφάνιση σε κάθε ιστορικό έτος.')+'</small></div>').join('')+'<p>Natural Earth v5.1.2, δημόσια χρήση· GeoNames, CC BY4.0. <a href="history.html#atlas-method">Αναλυτικά γεωγραφικά στοιχεία</a>.</p></details>';
-    if(!allSourceIds(s).length)content+='<p>Σύνθεση των προηγούμενων σκηνών. Οι πηγές βρίσκονται στις τρεις στάσεις ευρημάτων.</p>';
+    if(!allSourceIds(s).length)content+='<p>Σύνθεση των προηγούμενων σκηνών. Οι πηγές βρίσκονται στις στάσεις ευρημάτων.</p>';
     showModal(f?f.headline:s.title,content);
   }
   function showMethod(){
-    showModal('Πώς χτίστηκε η μελέτη.','<p>Συνδυάζουμε πρωτογενείς εταιρικές εκθέσεις, χρηματιστηριακές ανακοινώσεις και διασταυρώσεις από άλλους εμπλεκόμενους οργανισμούς. Κάθε εύρημα διακρίνει:</p><div class="modal-claims"><div class="modal-claim">'+badge('fact')+'<p>Αριθμοί, ημερομηνίες και δημόσια καταγεγραμμένοι ρόλοι.</p></div><div class="modal-claim">'+badge('company_claim')+'<p>Ερμηνείες ή επιδιώξεις που αποδίδονται στην ίδια την εταιρεία.</p></div><div class="modal-claim">'+badge('hypothesis')+'<p>Δικές μας προτάσεις σύνδεσης των στοιχείων, με ανάγκη περαιτέρω ελέγχου.</p></div></div><h3>Πραγματική χρήση ΤΝ</h3><p>Η ΤΝ χρησιμοποιήθηκε στην αναζήτηση και σύγκριση πηγών, στην οργάνωση δεδομένων και γράφου, στην πρώτη πλήρη συγγραφή της αρχικής μελέτης και στην κατασκευή/δοκιμή της ιστοσελίδας. Ο ουσιαστικός έλεγχος από τα μέλη της ομάδας εκκρεμεί.</p><p>Η ιστοσελίδα παρουσιάζει επιμελημένα ευρήματα. Δεν παράγει ζωντανές απαντήσεις από LLM. Η χρονολογική συνύπαρξη δεν αποδεικνύει αιτιότητα.</p><p><a href="research.html#ai-declaration">Δήλωση χρήσης ΤΝ και αρχική μελέτη ↗</a></p>','ΜΕΘΟΔΟΣ & ΔΙΑΦΑΝΕΙΑ');
+    showModal('Πώς χτίστηκε η μελέτη.','<p>Συνδυάζουμε πρωτογενείς εταιρικές εκθέσεις, χρηματιστηριακές ανακοινώσεις και διασταυρώσεις από άλλους εμπλεκόμενους οργανισμούς. Κάθε εύρημα διακρίνει:</p><div class="modal-claims"><div class="modal-claim">'+badge('fact')+'<p>Αριθμοί, ημερομηνίες και δημόσια καταγεγραμμένοι ρόλοι.</p></div><div class="modal-claim">'+badge('company_claim')+'<p>Ερμηνείες ή επιδιώξεις που αποδίδονται στην ίδια την εταιρεία.</p></div><div class="modal-claim">'+badge('hypothesis')+'<p>Δικές μας προτάσεις σύνδεσης των στοιχείων, με ανάγκη περαιτέρω ελέγχου.</p></div></div><h3>Πραγματική χρήση ΤΝ</h3><p>Η ΤΝ χρησιμοποιήθηκε στην αναζήτηση και σύγκριση πηγών, στην οργάνωση δεδομένων και γράφου, στην πρώτη πλήρη συγγραφή της αρχικής μελέτης και στην κατασκευή/δοκιμή της ιστοσελίδας. Ο ουσιαστικός έλεγχος από τα μέλη της ομάδας εκκρεμεί.</p><p>Η ιστοσελίδα παρουσιάζει επιμελημένα ευρήματα και εξαγωγή πραγματικής βάσης Neo4j. Οι κόμβοι μετακινούνται στον περιηγητή, χωρίς δημόσια σύνδεση στη βάση. Δεν παράγει ζωντανές απαντήσεις από LLM. Η χρονολογική συνύπαρξη δεν αποδεικνύει αιτιότητα.</p><p><a href="research.html#ai-declaration">Δήλωση χρήσης ΤΝ και αρχική μελέτη ↗</a></p>','ΜΕΘΟΔΟΣ & ΔΙΑΦΑΝΕΙΑ');
   }
   function showArchive(){
-    showModal('Η έρευνα πίσω από την παρουσίαση.','<div class="archive-links"><a href="history.html">Άνθρωποι & τόποι ↗<small>Ο αναλυτικός χάρτης, τα πρόσωπα και οι τεκμηριωμένοι ρόλοι.</small></a><a href="sap.html">Ο γράφος πριν / μετά το SAP ↗<small>Τεκμήρια, μεταβολές και χωριστές ερευνητικές υποθέσεις.</small></a><a href="research.html#paper">Πλήρες κείμενο & Word ↗<small>Η αρχική μελέτη3500λέξεων με βιβλιογραφία.</small></a><a href="data/presentation-evidence.json" download>Νέα ευρήματα & πηγές ↓<small>Δομημένο αρχείο τεκμηρίων της παρούσας παρουσίασης.</small></a></div><p class="modal-warning">Η παρουσίαση περιλαμβάνει νεότερα ευρήματα που δεν έχουν ακόμη ενσωματωθεί στο αρχικό Word. Τα αρχεία εργασίας παραμένουν προς έλεγχο της ομάδας.</p><p><button class="tiny-source" data-action="method">Μέθοδος και δήλωση χρήσης ΤΝ ↗</button></p>','ΤΟ ΑΝΑΛΥΤΙΚΟ ΑΡΧΕΙΟ');
+    showModal('Η έρευνα πίσω από την παρουσίαση.','<div class="archive-links"><a href="organization.html">Ετήσιο οργανόγραμμα ↗<small>Neo4j: πρόσωπα, ρόλοι, αρμοδιότητες και μετακινούμενοι κόμβοι.</small></a><a href="history.html">Άνθρωποι & τόποι ↗<small>Ο αναλυτικός χάρτης, τα πρόσωπα και οι τεκμηριωμένοι ρόλοι.</small></a><a href="sap.html">Ο γράφος πριν / μετά το SAP ↗<small>Τεκμήρια, μεταβολές και χωριστές ερευνητικές υποθέσεις.</small></a><a href="research.html#paper">Πλήρες κείμενο & Word ↗<small>Η αρχική μελέτη3500λέξεων με βιβλιογραφία.</small></a><a href="data/presentation-evidence.json" download>Νέα ευρήματα & πηγές ↓<small>Δομημένο αρχείο τεκμηρίων της παρούσας παρουσίασης.</small></a></div><p class="modal-warning">Η παρουσίαση περιλαμβάνει νεότερα ευρήματα που δεν έχουν ακόμη ενσωματωθεί στο αρχικό Word. Τα αρχεία εργασίας παραμένουν προς έλεγχο της ομάδας.</p><p><button class="tiny-source" data-action="method">Μέθοδος και δήλωση χρήσης ΤΝ ↗</button></p>','ΤΟ ΑΝΑΛΥΤΙΚΟ ΑΡΧΕΙΟ');
   }
   function showChapters(){
-    showModal('Η διαδρομή της παρουσίασης.','<p>5½ λεπτά αυτόματης ροής και τρεις στάσεις χωρίς χρονικό όριο. Μπορείτε να μεταβείτε απευθείας σε οποιαδήποτε σκηνή.</p><div class="chapter-list">'+slides.map((s,i)=>'<button data-scene-index="'+i+'"><b>'+String(i+1).padStart(2,'0')+'</b><span>'+esc(s.title)+'</span><small>'+(s.finding?'Ⅱ ΣΤΑΣΗ':s.duration/1000+'″')+'</small></button>').join('')+'</div><p><button class="secondary-button" data-action="restart">Από την αρχή ↺</button></p>','ΕΠΙΛΕΞΤΕ ΕΝΑ ΣΗΜΕΙΟ');
+    showModal('Η διαδρομή της παρουσίασης.','<p>5½ λεπτά αυτόματης ροής + πέντε στάσεις. Συνεχίζετε εσείς.</p><div class="chapter-list">'+slides.map((s,i)=>'<button data-scene-index="'+i+'"><b>'+String(i+1).padStart(2,'0')+'</b><span>'+esc(s.title)+'</span><small>'+(s.finding?'Ⅱ ΣΤΑΣΗ':s.duration/1000+'″')+'</small></button>').join('')+'</div><p><button class="secondary-button" data-action="restart">Από την αρχή ↺</button></p>','ΕΠΙΛΕΞΤΕ ΕΝΑ ΣΗΜΕΙΟ');
   }
   function showCulture(){
     showModal('Επτά διαστάσεις, με σαφή όρια.','<p>Πλαίσιο ανάγνωσης σύμφωνα με τα ζητούμενα της εργασίας. Οι δημόσιες αναφορές δεν αρκούν για απογραφή της βιωμένης κουλτούρας.</p><table class="culture-table"><thead><tr><th>Διάσταση</th><th>Τι γνωρίζουμε / τι χρειάζεται</th></tr></thead><tbody>'+culture.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[2]+'</td></tr>').join('')+'</tbody></table><h3>Δομή και ηγεσία</h3><p>Εξετάζουμε πώς η κατανομή ευθύνης, το εύρος διοίκησης και οι διαδικασίες αποφάσεων διευκολύνουν τη μάθηση. Η συμμετοχική/μετασχηματιστική ηγεσία αποτελεί προτεινόμενο θεωρητικό φακό, όχι αποδεδειγμένο χαρακτηρισμό της εταιρείας.</p>'+sourceMarkup(['A25_VALUES','A25_SAFETY','am25-nps-units'])+'<p><a href="research.html#paper">Αναλυτική συζήτηση και ακαδημαϊκή βιβλιογραφία ↗</a></p>','ΚΟΥΛΤΟΥΡΑ & ΘΕΩΡΗΤΙΚΗ ΑΝΑΓΝΩΣΗ');
@@ -272,10 +325,12 @@
   window.addEventListener('blur',()=>{pause();});
   $('progress').innerHTML=slides.map((s,i)=>'<button data-scene-index="'+i+'" class="'+(s.finding?'is-finding':'')+'" aria-label="'+esc((i+1)+'. '+s.title+(s.finding?' — στάση ευρήματος':''))+'" title="'+esc(s.title)+'"></button>').join('');
   attachImageFallbacks();
-  fetch('data/presentation-evidence.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(data=>{
+  Promise.all(['data/presentation-evidence.json','data/additional-findings.json'].map(url=>fetch(url).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}))).then(([data,extra])=>{
     evidence=data;
-    [...H.sources,...(C?.sources||[]),...extraSources,...data.sources].forEach(s=>sourceMap.set(s.id,s));
-    $('start-button').disabled=false;$('load-status').textContent='Στα ευρήματα, η οθόνη μένει σταθερή μέχρι να πατήσετε «Συνέχεια».';
+    additional=extra;
+    extra.findings.forEach(f=>{f.sourceIds=f.sources.map(s=>s.id);f.claims=[...f.documented,{type:'hypothesis',text:f.hypothesis,sourceIds:[]},f.counterevidence];f.limitations=[f.limit,...f.limitations];});
+    [...H.sources,...(C?.sources||[]),...extraSources,...data.sources,...extra.findings.flatMap(f=>f.sources)].forEach(s=>sourceMap.set(s.id,s));
+    $('start-button').disabled=false;$('load-status').textContent='Στις στάσεις συνεχίζετε εσείς.';
     if(new URLSearchParams(location.search).has('qa')){
       window.PresentationDebug={
         getState:()=>({index:state.index,id:slides[state.index]?.id||'intro',phase:state.phase,running:state.phase==='playing',frozen:state.phase==='frozen',elapsedMs:state.elapsedMs,durationMs:slides[state.index]?.duration||0,total:slides.length,sourcesOpen:state.sourcesOpen}),
