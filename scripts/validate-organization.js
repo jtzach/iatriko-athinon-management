@@ -30,6 +30,6 @@ const extra=json('data/additional-findings.json');
 for(const f of extra.findings){const sf=new Set(f.sources.map(s=>s.id));for(const m of f.metrics){for(const id of m.sourceIds)assert(sf.has(id));if(m.before&&m.after)assert.equal(m.change,m.after.value-m.before.value);}assert(f.hypothesis&&f.limit&&f.counterevidence);for(const s of f.sources)assert(s.pdfPage>0&&s.url.startsWith('https://'));}
 const cash=extra.findings.find(f=>f.id==='cashflow');
 assert(cash.metrics.find(m=>m.id==='ebitda').change>0&&cash.metrics.find(m=>m.id==='operating-cash-flow').after.value<0);
-for(const name of ['index.html','organization.html'])for(const [,url] of read(name).toString().matchAll(/(?:src|href)="([^"]+)"/g))if(!/^(https?:|#|data:)/.test(url))assert(fs.existsSync(path.join(root,decodeURIComponent(url.split('#')[0]))),url);
+for(const name of ['index.html','organization.html'])for(const [,url] of read(name).toString().matchAll(/(?:src|href)="([^"]+)"/g))if(!/^(https?:|#|data:)/.test(url))assert(fs.existsSync(path.join(root,decodeURIComponent(url.split(/[?#]/)[0]))),url);
 for(const name of ['data/organization-graph.json','data/additional-findings.json','assets/organization.js'])assert(!/ghp_[A-Za-z0-9]{20}|github_pat_|[A-Z]:\\Users\\/.test(read(name).toString()));
 console.log(`Validated ${ids.size} nodes, ${graph.observations.length} sourced observations, 43 year partitions, Neo4j round-trip hashes and two additional findings.`);

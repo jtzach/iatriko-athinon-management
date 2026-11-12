@@ -6,6 +6,11 @@
   const verbs={HOLDS_ROLE:'κατέχει ρόλο',RESPONSIBLE_FOR:'έχει αρμοδιότητα',REPORTS_TO:'αναφέρεται σε',MEMBER_OF:'συμμετέχει σε'};
   let data,byId,sources,year=2025,mode='people',person='overview',structure='main',selected=null,visibleNodes=[],visibleEdges=[],zoom=1,viewHeight=640,drag=null,topologySignature='';
   const positions=new Map();
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileView=matchMedia('(max-width:760px)');
+  let motionEnabled=!reducedMotion.matches,animationId=null,lastFrame=0,hoveredNode=null,focusedNode=null;
+  const nodeElements=new Map(),edgeElements=[];
+  const PERSON_RADIUS=56;
   const make=(tag,attrs={})=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));return n;};
   const yearData=()=>data.years.find(y=>Number(y.year)===year);
   const yearly=()=>data.observations.filter(o=>Number(o.year)===year);
@@ -66,7 +71,11 @@
         const owner=id=>groups[0].findIndex(n=>visibleEdges.some(e=>e.source===n.id&&e.target===id));
         return owner(a.id)-owner(b.id);
       });
-      const maxRow=Math.max(1,...groups.map(g=>g.length));viewHeight=Math.max(640,maxRow*90+90);
+      groups[2].sort((a,b)=>{
+        const owner=id=>groups[1].findIndex(n=>visibleEdges.some(e=>e.source===n.id&&e.target===id));
+        return owner(a.id)-owner(b.id);
+      });
+      const maxRow=Math.max(1,...groups.map(g=>g.length));viewHeight=Math.max(720,maxRow*100+100,groups[0].length*170+100);
       const xs=groups[2].length?[170,500,815]:[260,715,900];
       groups.forEach((row,col)=>row.forEach((n,i)=>{const key=posKey(n.id);if(!positions.has(key))positions.set(key,{x:xs[col],y:60+(i+.5)*(viewHeight-130)/Math.max(1,row.length)});}));
     }
@@ -75,42 +84,89 @@
   function makeNode(n){
     const g=make('g',{class:'graph-node '+n.type,'data-node':n.id,tabindex:0,role:'button','aria-label':n.label+' — '+(labels[n.type]||n.type)});
     if(isPerson(n)){
-      g.appendChild(make('circle',{r:29,class:'node-shell'}));
-      if(n.imageUrl){const clip=make('clipPath',{id:'clip-'+n.id});clip.appendChild(make('circle',{r:26}));g.appendChild(clip);const img=make('image',{href:n.imageUrl,x:-26,y:-26,width:52,height:52,preserveAspectRatio:'xMidYMin slice','clip-path':'url(#clip-'+n.id+')'});img.addEventListener('error',()=>img.remove());g.appendChild(img);}
+      g.appendChild(make('circle',{r:PERSON_RADIUS,class:'node-shell'}));
+      if(n.imageUrl){const clip=make('clipPath',{id:'clip-'+n.id});clip.appendChild(make('circle',{r:52}));g.appendChild(clip);const img=make('image',{href:n.imageUrl,x:-52,y:-52,width:104,height:104,preserveAspectRatio:'xMidYMin slice','clip-path':'url(#clip-'+n.id+')'});img.addEventListener('error',()=>img.remove());g.appendChild(img);}
       const initials=make('text',{class:'initials',y:7,'aria-hidden':true});initials.textContent=n.label.split(/\s+/).slice(0,2).map(w=>w[0]).join('');g.insertBefore(initials,g.children[1]||null);
     }else g.appendChild(make('rect',{x:-100,y:-40,width:200,height:80,rx:n.type==='role'?12:22,class:'node-shell'}));
     const text=make('text',{class:'node-label','aria-hidden':true});
-    const ls=linesFor(n.label,isPerson(n)?24:23),start=isPerson(n)?51:-(ls.length-1)*9+5;
+    const ls=linesFor(n.label,isPerson(n)?24:23),start=isPerson(n)?79:-(ls.length-1)*9+5;
     ls.forEach((line,i)=>{const span=make('tspan',{x:0,y:start+i*18});span.textContent=line;text.appendChild(span);});g.appendChild(text);
     const title=make('title');title.textContent=n.label;g.appendChild(title);
     g.addEventListener('pointerdown',e=>startDrag(e,n.id));
+    g.addEventListener('pointerenter',()=>{hoveredNode=n.id;syncMotion();});
+    g.addEventListener('pointerleave',()=>{if(hoveredNode===n.id)hoveredNode=null;syncMotion();});
+    g.addEventListener('focus',()=>{focusedNode=n.id;syncMotion();});
+    g.addEventListener('blur',()=>{if(focusedNode===n.id)focusedNode=null;syncMotion();});
     g.addEventListener('click',e=>{if(drag?.moved)return;selectNode(n.id);});
-    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectNode(n.id);}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const p=positions.get(posKey(n.id)),step=e.shiftKey?30:10;p.x=Math.max(105,Math.min(895,p.x+(e.key==='ArrowLeft'?-step:e.key==='ArrowRight'?step:0)));p.y=Math.max(40,Math.min(viewHeight-80,p.y+(e.key==='ArrowUp'?-step:e.key==='ArrowDown'?step:0)));drawPositions();}});
+    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectNode(n.id);}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const p=positions.get(posKey(n.id)),step=e.shiftKey?30:10;p.x+=e.key==='ArrowLeft'?-step:e.key==='ArrowRight'?step:0;p.y+=e.key==='ArrowUp'?-step:e.key==='ArrowDown'?step:0;constrain(n,p);p.homeX=p.x;p.homeY=p.y;p.vx=p.vy=0;drawPositions();}});
     return g;
   }
   function renderGraph(){
+    stopMotion();hoveredNode=null;focusedNode=null;
     selectView();const signature=[year,mode,structure,visibleNodes.map(n=>n.id).sort().join(',')].join('|'),topologyChanged=signature!==topologySignature;
     if(topologyChanged){for(const k of positions.keys())if(k.startsWith(year+':'+mode+':'))positions.delete(k);topologySignature=signature;}
-    computePositions();updateViewBox();
+    computePositions();visibleNodes.forEach((n,i)=>{const p=positions.get(posKey(n.id));if(p.homeX===undefined)Object.assign(p,{homeX:p.x,homeY:p.y,vx:0,vy:0,phase:i*2.399});constrain(n,p);});updateViewBox();
     $('graph-nodes').replaceChildren();$('graph-edges').replaceChildren();
-    for(const e of visibleEdges){const g=make('g',{class:'graph-edge','data-edge':e.id,'data-type':e.type,'data-reporting':e.reportingMode||''});g.appendChild(make('line'));const t=make('text');t.textContent=e.evidenceStatus==='role_scope'?'Πεδίο ρόλου':e.type==='REPORTS_TO'?(e.reportingMode==='functional'?'Λειτουργική αναφορά':e.reportingMode==='organizational_chart'?'Οργανωτική αναφορά':e.label):e.label||verbs[e.type]||e.type;g.appendChild(t);$('graph-edges').appendChild(g);}
-    visibleNodes.forEach(n=>$('graph-nodes').appendChild(makeNode(n)));drawPositions();highlight();
+    nodeElements.clear();edgeElements.length=0;
+    for(const e of visibleEdges){const g=make('g',{class:'graph-edge','data-edge':e.id,'data-type':e.type,'data-reporting':e.reportingMode||''});const line=make('line');g.appendChild(line);const t=make('text');t.textContent=e.evidenceStatus==='role_scope'?'Πεδίο ρόλου':e.type==='REPORTS_TO'?(e.reportingMode==='functional'?'Λειτουργική αναφορά':e.reportingMode==='organizational_chart'?'Οργανωτική αναφορά':e.label):e.label||verbs[e.type]||e.type;g.appendChild(t);$('graph-edges').appendChild(g);edgeElements.push({edge:e,line,text:t});}
+    visibleNodes.forEach(n=>{const g=makeNode(n);nodeElements.set(n.id,g);$('graph-nodes').appendChild(g);});drawPositions();highlight();
     const noData=!visibleNodes.length;$('empty-state').hidden=!noData;
     if(noData)$('empty-state').querySelector('b').textContent=mode==='structure'?'Δεν έχουμε τεκμηριωμένες γραμμές αναφοράς γι’ αυτό το έτος.':'Δεν έχουμε τεκμηρίωση γι’ αυτό το έτος.';
     $('graph-list').innerHTML='<ul>'+visibleNodes.map(n=>'<li><button data-select="'+esc(n.id)+'">'+esc(n.label)+'</button><small>'+esc(labels[n.type]||n.type)+'</small></li>').join('')+'</ul>';
     $('graph-description').textContent=year+'. '+visibleNodes.length+' κόμβοι, '+visibleEdges.length+' τεκμηριωμένες σχέσεις. Η θέση στον καμβά δεν δηλώνει ιεραρχία.';
     document.querySelector('.graph-legend').innerHTML=mode==='people'?'<span class="person-key">Πρόσωπο</span><span class="role-key">Ρόλος</span><span class="unit-key">Μονάδα / πεδίο</span>':'<span class="line-key">Διοικητική / οργανωτική</span><span class="dashed-key">Λειτουργική</span>';
-    if(topologyChanged&&matchMedia('(max-width:760px)').matches)requestAnimationFrame(()=>{$('org-stage').scrollLeft=mode==='structure'?($('org-svg').clientWidth-$('org-stage').clientWidth)/2:0;});
+    if(topologyChanged&&mobileView.matches)requestAnimationFrame(focusMobileCanvas);
+    syncMotion();
   }
   function updateViewBox(){const w=1000/zoom,h=viewHeight/zoom;$('org-svg').setAttribute('viewBox',`${(1000-w)/2} ${(viewHeight-h)/2} ${w} ${h}`);$('zoom-reset').textContent=Math.round(zoom*100)+'%';}
+  function focusMobileCanvas(){
+    if(!mobileView.matches||!data)return;
+    const stage=$('org-stage'),svg=$('org-svg');
+    if(mode==='structure'){stage.scrollLeft=(svg.clientWidth-stage.clientWidth)/2;return;}
+    const people=visibleNodes.filter(isPerson);if(!people.length){stage.scrollLeft=0;return;}
+    const left=Math.min(...people.map(n=>positions.get(posKey(n.id)).x)),scale=Math.min(svg.clientWidth/1000,svg.clientHeight/viewHeight);
+    stage.scrollLeft=Math.max(0,left*scale-stage.clientWidth*.38);
+  }
   function drawPositions(){
-    for(const n of visibleNodes){const p=positions.get(posKey(n.id));const el=Array.from($('graph-nodes').children).find(g=>g.dataset.node===n.id);if(el)el.setAttribute('transform',`translate(${p.x},${p.y})`);}
-    for(const g of $('graph-edges').children){const e=visibleEdges.find(e=>e.id===g.dataset.edge),a=positions.get(posKey(e.source)),b=positions.get(posKey(e.target));if(!a||!b)continue;const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;const border=id=>isPerson(byId.get(id))?32:Math.min(102/(Math.abs(dx)/len||.00001),42/(Math.abs(dy)/len||.00001));const start=border(e.source),end=border(e.target)+3;const l=g.querySelector('line');Object.entries({x1:a.x+dx/len*start,y1:a.y+dy/len*start,x2:b.x-dx/len*end,y2:b.y-dy/len*end}).forEach(([k,v])=>l.setAttribute(k,v));const t=g.querySelector('text');t.setAttribute('x',(a.x+b.x)/2);t.setAttribute('y',(a.y+b.y)/2-8);}
+    for(const n of visibleNodes){const p=positions.get(posKey(n.id));nodeElements.get(n.id)?.setAttribute('transform',`translate(${p.x.toFixed(2)},${p.y.toFixed(2)})`);}
+    for(const {edge:e,line:l,text:t} of edgeElements){const a=positions.get(posKey(e.source)),b=positions.get(posKey(e.target));if(!a||!b)continue;const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;const border=id=>isPerson(byId.get(id))?PERSON_RADIUS+3:Math.min(102/(Math.abs(dx)/len||.00001),42/(Math.abs(dy)/len||.00001));const start=Math.min(len/2,border(e.source)),end=Math.min(len/2,border(e.target)+3);Object.entries({x1:a.x+dx/len*start,y1:a.y+dy/len*start,x2:b.x-dx/len*end,y2:b.y-dy/len*end}).forEach(([k,v])=>l.setAttribute(k,v.toFixed(2)));t.setAttribute('x',((a.x+b.x)/2).toFixed(2));t.setAttribute('y',((a.y+b.y)/2-8).toFixed(2));}
+  }
+  function constrain(n,p){p.x=Math.max(110,Math.min(890,p.x));p.y=Math.max(isPerson(n)?65:45,Math.min(viewHeight-(isPerson(n)?120:80),p.y));}
+  function canMove(){return !!data&&motionEnabled&&!reducedMotion.matches&&mode==='people'&&visibleNodes.length>0&&!document.hidden&&!$('org-dialog').open&&(!hoveredNode||!!drag)&&(!focusedNode||!!drag);}
+  function stopMotion(){if(animationId!==null)cancelAnimationFrame(animationId);animationId=null;lastFrame=0;}
+  function syncMotion(){
+    const button=$('motion-toggle');if(!button)return;
+    button.disabled=mode!=='people'||reducedMotion.matches||!visibleNodes.length;
+    button.textContent=mode!=='people'?'Σταθερή δομή':reducedMotion.matches?'Μειωμένη κίνηση':motionEnabled?'Ⅱ Παύση κίνησης':'▶ Κίνηση';
+    button.setAttribute('aria-pressed',String(motionEnabled&&!button.disabled));
+    document.body.classList.toggle('motion-active',canMove());
+    if(canMove()){if(animationId===null)animationId=requestAnimationFrame(animate);}else stopMotion();
+  }
+  function animate(time){
+    animationId=null;if(!canMove()){lastFrame=0;return;}
+    if(lastFrame&&time-lastFrame<30){animationId=requestAnimationFrame(animate);return;}
+    const dt=lastFrame?Math.min(1.5,(time-lastFrame)/33.33):1;lastFrame=time;
+    const nodes=visibleNodes.map(n=>({n,p:positions.get(posKey(n.id))}));
+    for(const {n,p} of nodes){
+      p.vx+=(p.homeX-p.x)*.003*dt;p.vy+=(p.homeY-p.y)*.003*dt;
+      if(isPerson(n)){p.vx+=Math.sin(time/2300+p.phase)*.085*dt;p.vy+=Math.cos(time/3100+p.phase)*.07*dt;}
+    }
+    // Gentle springs react to dragging. They express visual proximity, never additional authority.
+    for(const e of visibleEdges){const a=positions.get(posKey(e.source)),b=positions.get(posKey(e.target)),dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,target=isPerson(byId.get(e.source))?265:235,f=Math.max(-1.4,Math.min(1.4,(d-target)*.005))*dt;
+      a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f;}
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i],b=nodes[j],dx=b.p.x-a.p.x,dy=b.p.y-a.p.y,d2=Math.max(900,dx*dx+dy*dy),repel=650/d2*dt,dist=Math.sqrt(d2);
+      a.p.vx-=dx/dist*repel;a.p.vy-=dy/dist*repel;b.p.vx+=dx/dist*repel;b.p.vy+=dy/dist*repel;
+      const ay=a.p.y+(isPerson(a.n)?24:0),by=b.p.y+(isPerson(b.n)?24:0),overX=224-Math.abs(dx),overY=(isPerson(a.n)?94:51)+(isPerson(b.n)?94:51)+12-Math.abs(by-ay);
+      if(overX>0&&overY>0){const horizontal=overX<overY,sign=horizontal?(dx>=0?1:-1):(by>=ay?1:-1),force=Math.min(8,(horizontal?overX:overY)*.12)*dt;if(horizontal){a.p.vx-=sign*force;b.p.vx+=sign*force;}else{a.p.vy-=sign*force;b.p.vy+=sign*force;}}
+    }
+    for(const {n,p} of nodes){if(drag?.id===n.id){p.vx=p.vy=0;continue;}p.vx=Math.max(-4,Math.min(4,p.vx*.72));p.vy=Math.max(-4,Math.min(4,p.vy*.72));p.x+=p.vx*dt;p.y+=p.vy*dt;constrain(n,p);}
+    drawPositions();animationId=requestAnimationFrame(animate);
   }
   function point(e){const p=new DOMPoint(e.clientX,e.clientY);return p.matrixTransform($('org-svg').getScreenCTM().inverse());}
-  function startDrag(e,id){if(e.button!==0)return;const p=point(e),n=positions.get(posKey(id));drag={id,pointer:e.pointerId,x:p.x,y:p.y,ox:n.x,oy:n.y,moved:false,element:e.currentTarget};e.currentTarget.setPointerCapture(e.pointerId);e.currentTarget.classList.add('dragging');}
-  $('org-svg').addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.pointer)return;const p=point(e),dx=p.x-drag.x,dy=p.y-drag.y;if(Math.hypot(dx,dy)>4)drag.moved=true;const pos=positions.get(posKey(drag.id));pos.x=Math.max(105,Math.min(895,drag.ox+dx));pos.y=Math.max(40,Math.min(viewHeight-80,drag.oy+dy));drawPositions();});
-  function endDrag(){if(!drag)return;drag.element.classList.remove('dragging');if(drag.moved){const name=byId.get(drag.id).label;$('org-status').textContent='Μετακινήθηκε: '+name;}setTimeout(()=>drag=null,0);}
+  function startDrag(e,id){if(e.button!==0)return;const p=point(e),n=positions.get(posKey(id));drag={id,pointer:e.pointerId,x:p.x,y:p.y,ox:n.x,oy:n.y,moved:false,element:e.currentTarget};n.vx=n.vy=0;e.currentTarget.setPointerCapture(e.pointerId);e.currentTarget.classList.add('dragging');syncMotion();}
+  $('org-svg').addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.pointer)return;const p=point(e),dx=p.x-drag.x,dy=p.y-drag.y;if(Math.hypot(dx,dy)>4)drag.moved=true;const pos=positions.get(posKey(drag.id));pos.x=drag.ox+dx;pos.y=drag.oy+dy;constrain(byId.get(drag.id),pos);drawPositions();});
+  function endDrag(){if(!drag)return;drag.element.classList.remove('dragging');if(drag.moved){const name=byId.get(drag.id).label,p=positions.get(posKey(drag.id));p.homeX=p.x;p.homeY=p.y;$('org-status').textContent='Μετακινήθηκε: '+name;}setTimeout(()=>{drag=null;syncMotion();},0);}
   $('org-svg').addEventListener('pointerup',endDrag);$('org-svg').addEventListener('pointercancel',endDrag);
   function highlight(){
     const ids=new Set(selected?[selected]:[]);const connected=new Set();
@@ -150,7 +206,7 @@
     updateFilters();renderGraph();renderInspector();
     history.replaceState(null,'','#'+year);$('org-status').textContent=year+' — '+$('coverage-label').textContent;
   }
-  function openDialog(title,html){$('dialog-title').textContent=title;$('dialog-content').innerHTML=html;$('org-dialog').showModal();$('close-dialog').focus();}
+  function openDialog(title,html){$('dialog-title').textContent=title;$('dialog-content').innerHTML=html;$('org-dialog').showModal();$('close-dialog').focus();syncMotion();}
   function showMethod(){
     const d=yearData();openDialog('Τι δείχνει το οργανόγραμμα;','<p>Δημόσια τεκμηριωμένες καταγραφές προσώπων, ρόλων και αρμοδιοτήτων. Τα έτη χωρίς πηγές παραμένουν κενά. Δεν προεκτείνουμε άγνωστες θητείες.</p><ul><li><b>Πρόσωπα & ρόλοι:</b> ποιος κατέχει τι, με ελεύθερη μετακίνηση κόμβων. Η θέση στον καμβά δεν δηλώνει ιεραρχία.</li><li><b>Δομή διοίκησης:</b> μόνο ρητές γραμμές αναφοράς από οργανόγραμμα ή κείμενο. Η απουσία ακμής σημαίνει έλλειψη τεκμηρίωσης.</li><li><b>Αρμοδιότητες:</b> δημοσιευμένη ευθύνη ή σαφώς σημειωμένο πεδίο του τίτλου, χωρίς εικασίες για εξουσίες.</li></ul><p>Οι καταγραφές του ίδιου έτους μπορεί να αφορούν διαφορετικές ημερομηνίες και διαδοχικούς κατόχους. Πατήστε πρόσωπο για την ακριβή περίοδο.</p>'+(d?.limitations?.length?'<p>'+esc(Array.isArray(d.limitations)?d.limitations.join(' '):d.limitations)+'</p>':'')+'<h3>Πηγές για το '+year+'</h3>'+[...new Set(yearly().flatMap(e=>e.sourceIds||[]))].map(id=>{const s=sources.get(id);return s?'<div class="source-detail"><a href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">'+esc(s.title)+' ↗</a><small>'+esc(s.locator||s.published||'')+'</small>'+sourceLinks([id])+'</div>':'';}).join('')+'<p>Οι φωτογραφίες προέρχονται από το υπάρχον <a href="data/media-catalog.json">αρχείο επίσημων πηγών</a>. Δεν αποδίδουν κατ’ ανάγκη την εμφάνιση σε κάθε ιστορικό έτος.</p>');
   }
@@ -163,10 +219,15 @@
   $('zoom-in').onclick=()=>{zoom=Math.min(2.4,zoom+.2);updateViewBox();};$('zoom-out').onclick=()=>{zoom=Math.max(.6,zoom-.2);updateViewBox();};$('zoom-reset').onclick=()=>{zoom=1;updateViewBox();};
   $('nearest-year').onclick=()=>{const candidates=data.years.filter(y=>y.observationIds?.length&&(mode!=='structure'||data.observations.some(e=>Number(e.year)===Number(y.year)&&e.type==='REPORTS_TO')));if(candidates.length)setYear(candidates.sort((a,b)=>Math.abs(a.year-year)-Math.abs(b.year-year))[0].year);};
   $('method-button').onclick=showMethod;$('graph-data').onclick=showGraphData;$('close-dialog').onclick=()=>$('org-dialog').close();
+  $('motion-toggle').onclick=()=>{motionEnabled=!motionEnabled;syncMotion();};
+  $('org-dialog').addEventListener('close',syncMotion);
+  document.addEventListener('visibilitychange',syncMotion);
+  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)motionEnabled=false;syncMotion();});
+  mobileView.addEventListener('change',()=>requestAnimationFrame(focusMobileCanvas));
   document.addEventListener('click',e=>{const y=e.target.closest('[data-year]');if(y){setYear(y.dataset.year);return;}const n=e.target.closest('[data-select]');if(n){selectNode(n.dataset.select);return;}const m=e.target.closest('[data-mode]');if(m){mode=m.dataset.mode;selected=null;document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===m)));updateFilters();renderGraph();renderInspector();}if(e.target.closest('#clear-selection')){selected=null;renderGraph();renderInspector();}});
   fetch('data/organization-graph.json').then(r=>{if(!r.ok)throw Error('Dataset unavailable');return r.json();}).then(d=>{
     data=d;byId=new Map(d.nodes.map(n=>[n.id,n]));sources=new Map(d.sources.map(s=>[s.id,s]));
     const hash=Number(location.hash.slice(1));setYear(hash>=1984&&hash<=2026?hash:2025);
-    if(new URLSearchParams(location.search).has('qa'))window.OrganizationDebug={getState:()=>({year,mode,person,selected,nodes:visibleNodes.map(n=>n.id),edges:visibleEdges.map(e=>e.id),positions:Object.fromEntries(visibleNodes.map(n=>[n.id,positions.get(posKey(n.id))]))}),setYear,selectNode,data};
+    if(new URLSearchParams(location.search).has('qa'))window.OrganizationDebug={getState:()=>({year,mode,person,selected,motionEnabled,motionRunning:animationId!==null,reducedMotion:reducedMotion.matches,hoveredNode,focusedNode,viewHeight,nodes:visibleNodes.map(n=>n.id),edges:visibleEdges.map(e=>e.id),positions:Object.fromEntries(visibleNodes.map(n=>[n.id,{...positions.get(posKey(n.id))}]))}),setYear,selectNode,data};
   }).catch(()=>{$('coverage-label').textContent='Δεν φορτώθηκαν τα δεδομένα';$('empty-state').hidden=false;$('empty-state').innerHTML='<b>Τα δεδομένα δεν είναι διαθέσιμα.</b><p>Δοκιμάστε επαναφόρτωση ή ανοίξτε το αρχείο τεκμηρίωσης.</p><a href="data/organization-timeline.json">Αρχείο πηγών ↗</a>';$('org-status').textContent='Η φόρτωση του γράφου απέτυχε.';});
 })();
