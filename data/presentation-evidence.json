@@ -1,0 +1,821 @@
+{
+  "version": "1.0",
+  "preparedDate": "2026-11-12",
+  "language": "el",
+  "title": "Τρεις διοικητικές στάσεις: επιλογή δραστηριοτήτων, τοπική εμπειρία, οικονομικό αποτέλεσμα",
+  "classificationLabels": {
+    "fact": "Τεκμηριωμένο γεγονός ή δημοσιευμένο αριθμητικό στοιχείο",
+    "company_claim": "Εταιρικός ισχυρισμός ή εξήγηση",
+    "hypothesis": "Δική μας υπόθεση προς έλεγχο"
+  },
+  "classificationNote": "Η μεταγραφή ενός δημοσιευμένου αριθμού δεν συνιστά ανεξάρτητη επαλήθευση της μέτρησης. Οι εξηγήσεις των εταιρειών και οι δικές μας υποθέσεις σημειώνονται χωριστά.",
+  "sources": [
+    {
+      "id": "am20-covid",
+      "title": "Έκθεση 2020 — περιορισμοί χειρουργείων",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2020.pdf#page=5",
+      "pdfPage": 5,
+      "printedPage": 5,
+      "locator": null
+    },
+    {
+      "id": "am20-patients",
+      "title": "Έκθεση 2020 — εσωτερικοί ασθενείς",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2020.pdf#page=7",
+      "pdfPage": 7,
+      "printedPage": 7,
+      "locator": null
+    },
+    {
+      "id": "am21-gaia-rationale",
+      "title": "Έκθεση 2021 — αιτιολόγηση μεταβίβασης ΓΑΙΑ",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2021.pdf#page=6",
+      "pdfPage": 6,
+      "printedPage": 6,
+      "locator": null
+    },
+    {
+      "id": "am21-gaia-transaction",
+      "title": "Έκθεση 2021 — μεταβίβαση δραστηριότητας ΓΑΙΑ",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2021.pdf#page=150",
+      "pdfPage": 150,
+      "printedPage": 150,
+      "locator": "Σημείωση 7"
+    },
+    {
+      "id": "am21-gaia-result",
+      "title": "Έκθεση 2021 — κερδοφορία ΓΑΙΑ και κέρδος πώλησης",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2021.pdf#page=151",
+      "pdfPage": 151,
+      "printedPage": 151,
+      "locator": "Σημείωση 7"
+    },
+    {
+      "id": "am21-group-result",
+      "title": "Έκθεση 2021 — αποτελέσματα Ομίλου",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2021.pdf#page=7",
+      "pdfPage": 7,
+      "printedPage": 7,
+      "locator": null
+    },
+    {
+      "id": "iaso21-gaia",
+      "title": "ΙΑΣΩ 2021 — απόκτηση ΓΑΙΑ και εργαζόμενοι",
+      "url": "https://iaso.blob.core.windows.net/userfiles/docs/default-source/oikonomikes-katastaseis/2021/etisia-oikonomiki-ekthesi-2021.pdf?sfvrsn=3d4f3e5f_3#page=82",
+      "pdfPage": 82,
+      "printedPage": 82,
+      "locator": "Σημείωση 10"
+    },
+    {
+      "id": "am21-exchange-announcement",
+      "title": "Ανακοίνωση Ιατρικού προς ΧΑ, 17/12/2021",
+      "url": "https://athens.euronext.com/el/documents/10180/6511763/%CE%97%CE%94%CE%A4-2021-240%20%2817%20%CE%94%CE%B5%CE%BA%29/a1fa4f4b-cfce-494d-9587-d4cd07f9375f",
+      "pdfPage": null,
+      "printedPage": null,
+      "locator": "Ανακοίνωση ΙΑΤΡΙΚΟ ΑΘΗΝΩΝ Ε.Α.Ε., ώρα 10:21· παράγραφος «Με την μεταφορά»",
+      "publishedDate": "2021-12-17",
+      "pageNote": "Δεν επαληθεύτηκε αριθμός σελίδας του συγκεντρωτικού δελτίου. Η θέση προσδιορίζεται με εκδότη, ημερομηνία και ώρα."
+    },
+    {
+      "id": "am24-nps-method",
+      "title": "Έκθεση 2024 — συνολικός NPS και μέθοδος",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=224",
+      "pdfPage": 224,
+      "printedPage": 224,
+      "locator": null
+    },
+    {
+      "id": "am24-nps-units",
+      "title": "Έκθεση 2024 — NPS ανά μονάδα",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=225",
+      "pdfPage": 225,
+      "printedPage": 225,
+      "locator": null
+    },
+    {
+      "id": "am25-nps-method",
+      "title": "Έκθεση 2025 — εμπειρία ασθενών και SAP",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=129",
+      "pdfPage": 129,
+      "printedPage": 131,
+      "locator": "Εμπειρία ασθενών και υποσημείωση 8: εγκαταστάσεις στην Ελλάδα"
+    },
+    {
+      "id": "am25-nps-units",
+      "title": "Έκθεση 2025 — NPS ανά μονάδα",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=130",
+      "pdfPage": 130,
+      "printedPage": 132,
+      "locator": null
+    },
+    {
+      "id": "am24-sap",
+      "title": "Έκθεση 2024 — έναρξη ERP SAP την 01/01/2025",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=8",
+      "pdfPage": 8,
+      "printedPage": 8,
+      "locator": null
+    },
+    {
+      "id": "am24-finance",
+      "title": "Έκθεση 2024 — συγκριτικά οικονομικά στοιχεία 2023–2024",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=10",
+      "pdfPage": 10,
+      "printedPage": 10,
+      "locator": null
+    },
+    {
+      "id": "am25-finance",
+      "title": "Έκθεση 2025 — οικονομικά στοιχεία Ομίλου",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=9",
+      "pdfPage": 9,
+      "printedPage": 9,
+      "locator": null
+    },
+    {
+      "id": "am25-ebitda",
+      "title": "Έκθεση 2025 — υπολογισμός EBITDA",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=10",
+      "pdfPage": 10,
+      "printedPage": 10,
+      "locator": null
+    },
+    {
+      "id": "am25-income",
+      "title": "Έκθεση 2025 — κατάσταση αποτελεσμάτων",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=176",
+      "pdfPage": 176,
+      "printedPage": 178,
+      "locator": null
+    },
+    {
+      "id": "am26h1-ebitda",
+      "title": "Εξάμηνο 2026 — πίνακας EBITDA",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/10/ΕΞΑΜΗΝΙΑΙΑ-ΟΙΚΟΝΟΜΙΚΗ-ΕΚΘΕΣΗ_30.06.2026.pdf#page=7",
+      "pdfPage": 7,
+      "printedPage": 6,
+      "locator": null
+    },
+    {
+      "id": "am26h1-income",
+      "title": "Εξάμηνο 2026 — κατάσταση αποτελεσμάτων",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/10/ΕΞΑΜΗΝΙΑΙΑ-ΟΙΚΟΝΟΜΙΚΗ-ΕΚΘΕΣΗ_30.06.2026.pdf#page=23",
+      "pdfPage": 23,
+      "printedPage": 22,
+      "locator": null
+    },
+    {
+      "id": "am26h1-cash",
+      "title": "Εξάμηνο 2026 — κατάσταση ταμειακών ροών",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/10/ΕΞΑΜΗΝΙΑΙΑ-ΟΙΚΟΝΟΜΙΚΗ-ΕΚΘΕΣΗ_30.06.2026.pdf#page=26",
+      "pdfPage": 26,
+      "printedPage": 25,
+      "locator": null
+    },
+    {
+      "id": "history-official",
+      "title": "Ιατρικό Αθηνών — επίσημη ιστορική αναδρομή",
+      "url": "https://www.iatriko.gr/istoriki_anadromi/",
+      "pdfPage": null,
+      "printedPage": null,
+      "locator": "Σταθμοί 1984, 1991, 1997, 2000"
+    },
+    {
+      "id": "history-origin-2007",
+      "title": "Έκθεση 2007 — ίδρυση και αρχική λειτουργία",
+      "url": "https://athens.euronext.com/en/documents/10180/2341645/ATHENS%20MEDICAL%20C.S.A.%202007/52c8e8a1-2908-41a7-9e37-a8309c0c5c38#page=7",
+      "pdfPage": 7,
+      "printedPage": 7,
+      "locator": "General information, και PDF / έντυπη σελίδα 8: Brief history"
+    },
+    {
+      "id": "medsana-history",
+      "title": "Medsana România — ιστορία κέντρων",
+      "url": "https://medsana.ro/ro/medsana-romania",
+      "pdfPage": null,
+      "printedPage": null,
+      "locator": "Cotroceni, Primăverii και Ploiești"
+    }
+  ],
+  "historyFacts": [
+    {
+      "id": "athens-1984",
+      "year": 1984,
+      "headline": "Η αφετηρία στο Μαρούσι",
+      "explanation": "Η σημερινή εταιρική ιστορία τοποθετεί το ξεκίνημα στο 1984.",
+      "type": "company_claim",
+      "scope": "Ιατρικό Αθηνών · Μαρούσι",
+      "sourceIds": [
+        "history-official",
+        "history-origin-2007"
+      ],
+      "limitations": [
+        "Η έκθεση 2007 αναφέρει το 1983 τόσο για τη νομική ίδρυση όσο και για την αρχική λειτουργία. Δεν συμφιλιώνουμε αυθαίρετα τη διαφορά ως «1983 ίδρυση / 1984 λειτουργία»."
+      ],
+      "locationIds": [
+        "marousi"
+      ]
+    },
+    {
+      "id": "faliro-1991",
+      "year": 1991,
+      "headline": "Παρουσία στο Παλαιό Φάληρο",
+      "explanation": "Η επίσημη ιστορία καταγράφει ίδρυση του Ιατρικού Παλαιού Φαλήρου.",
+      "type": "company_claim",
+      "scope": "Κλινική Παλαιού Φαλήρου",
+      "sourceIds": [
+        "history-official"
+      ],
+      "limitations": [],
+      "locationIds": [
+        "faliro"
+      ]
+    },
+    {
+      "id": "psychiko-1997",
+      "year": 1997,
+      "headline": "Εξαγορά και εγκαίνια στο Ψυχικό",
+      "explanation": "Η εταιρική ιστορία αναφέρει εξαγορά του Απολλωνίου και εγκαίνια του Ιατρικού Ψυχικού.",
+      "type": "company_claim",
+      "scope": "Κλινική Ψυχικού",
+      "sourceIds": [
+        "history-official"
+      ],
+      "limitations": [
+        "Η κλινική δεν ταυτίζεται αυτομάτως με ξεχωριστή νομική εταιρεία."
+      ],
+      "locationIds": [
+        "psychiko"
+      ]
+    },
+    {
+      "id": "romania-1997",
+      "year": 1997,
+      "headline": "Παρουσία στη Ρουμανία",
+      "explanation": "Η ιστορία της μητρικής τοποθετεί τη Medsana στο 1997· η Medsana αναφέρει το Cotroceni από το 1996.",
+      "type": "company_claim",
+      "scope": "Medsana · Βουκουρέστι",
+      "sourceIds": [
+        "history-official",
+        "medsana-history"
+      ],
+      "limitations": [
+        "Ο σταθμός 1997 ακολουθεί την αφήγηση της μητρικής. Δεν είναι συμφωνημένη ημερομηνία πρώτου ανοίγματος."
+      ],
+      "locationIds": [
+        "bucharest"
+      ],
+      "alternativeYear": 1996
+    },
+    {
+      "id": "thessaloniki-2000",
+      "year": 2000,
+      "headline": "Εγκαίνια του Διαβαλκανικού",
+      "explanation": "Η εταιρική ιστορία τοποθετεί τα εγκαίνια στο 2000 και τη θεμελίωση στο 1996.",
+      "type": "company_claim",
+      "scope": "Ιατρικό Διαβαλκανικό Θεσσαλονίκης",
+      "sourceIds": [
+        "history-official"
+      ],
+      "limitations": [],
+      "locationIds": [
+        "thessaloniki"
+      ]
+    },
+    {
+      "id": "primaverii-2005",
+      "year": 2005,
+      "headline": "Δεύτερο κέντρο στο Βουκουρέστι",
+      "explanation": "Η Medsana χρονολογεί το άνοιγμα του δεύτερου κέντρου της, Primăverii, στο 2005.",
+      "type": "company_claim",
+      "scope": "Medsana · Βουκουρέστι",
+      "sourceIds": [
+        "medsana-history"
+      ],
+      "limitations": [
+        "Δύο ονομαστικές καταγραφές στην ίδια πόλη δεν σημαίνουν δύο γεωγραφικούς κόμβους."
+      ],
+      "locationIds": [
+        "bucharest"
+      ]
+    },
+    {
+      "id": "ploiesti-2008",
+      "year": 2008,
+      "headline": "Επέκταση στο Πλοϊέστι",
+      "explanation": "Η Medsana αναφέρει επέκταση τρία χρόνια μετά το Primăverii του 2005: 2005 + 3 = 2008.",
+      "type": "company_claim",
+      "scope": "Medsana · Πλοϊέστι",
+      "sourceIds": [
+        "medsana-history"
+      ],
+      "limitations": [
+        "Το έτος προκύπτει από τη χρονική σχέση της πηγής. Δεν διαθέτουμε ακριβή ημέρα ή μήνα εγκαινίων."
+      ],
+      "locationIds": [
+        "ploiesti"
+      ],
+      "yearCalculation": "2005 + 3"
+    },
+    {
+      "id": "covid-2020",
+      "year": 2020,
+      "headline": "Η κρίση υγείας περιορίζει την προγραμματισμένη περίθαλψη",
+      "explanation": "Η έκθεση περιγράφει αναστολή τακτικών χειρουργείων για περίπου δύο μήνες στο πρώτο κύμα και δισταγμό ασθενών να επισκεφθούν κλινικές.",
+      "type": "company_claim",
+      "scope": "Περιγραφή κλαδικών περιορισμών· χωριστά, στοιχεία κλινικών Ομίλου",
+      "sourceIds": [
+        "am20-covid",
+        "am20-patients"
+      ],
+      "limitations": [
+        "Πηγή είναι η εταιρική περιγραφή, χωρίς ανεξάρτητη ποσοτικοποίηση της αιτιότητας.",
+        "Οι εσωτερικοί ασθενείς δεν ισοδυναμούν με αριθμό εκλεκτικών χειρουργείων.",
+        "Η έκθεση 2020 δημοσιεύθηκε το 2021 και αναφέρεται επίσης σε τρίτο κύμα. Αυτές οι μεταγενέστερες αναφορές δεν μεταφέρονται στον σταθμό 2020."
+      ],
+      "period": "2020",
+      "claims": [
+        {
+          "type": "company_claim",
+          "text": "Περίπου δύο μήνες αναστολής τακτικών χειρουργείων στο πρώτο κύμα.",
+          "sourceIds": [
+            "am20-covid"
+          ]
+        },
+        {
+          "type": "fact",
+          "text": "Οι δημοσιευμένοι εσωτερικοί ασθενείς των κλινικών του Ομίλου μειώνονται από 90.516 το 2019 σε 83.373 το 2020.",
+          "sourceIds": [
+            "am20-patients"
+          ]
+        },
+        {
+          "type": "company_claim",
+          "text": "Η εταιρεία αποδίδει κυρίως την πτώση εσωτερικών ασθενών στον περιορισμό χειρουργείων.",
+          "sourceIds": [
+            "am20-patients"
+          ]
+        }
+      ],
+      "metrics": {
+        "inpatients": {
+          "unit": "reported_patients",
+          "scope": "Κλινικές του Ομίλου, όπως παρουσιάζονται μαζί στην έκθεση 2020",
+          "values": [
+            {
+              "year": 2019,
+              "value": 90516
+            },
+            {
+              "year": 2020,
+              "value": 83373
+            }
+          ],
+          "changePercent": -7.89,
+          "sourceIds": [
+            "am20-patients"
+          ]
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "gaia",
+      "year": 2021,
+      "headline": "Γιατί πωλείται μια κερδοφόρα δραστηριότητα;",
+      "explanation": "Η ΓΑΙΑ είχε κέρδη, αλλά μεταβιβάστηκε στο ΙΑΣΩ. Η εταιρεία επικαλέστηκε έλλειψη χώρου και δυνατότητα ανάπτυξης άλλων υπηρεσιών στο Μαρούσι.",
+      "type": "fact",
+      "scope": "Μαιευτική–γυναικολογική επιχειρηματική δραστηριότητα ΓΑΙΑ της κλινικής Μαρουσίου. Τα συνολικά κέρδη αναφέρονται χωριστά στον ενοποιημένο Όμιλο.",
+      "sourceIds": [
+        "am21-gaia-rationale",
+        "am21-gaia-transaction",
+        "am21-gaia-result",
+        "am21-group-result",
+        "iaso21-gaia",
+        "am21-exchange-announcement"
+      ],
+      "claims": [
+        {
+          "type": "fact",
+          "text": "Η σύμβαση υπογράφηκε στις 23/11/2021. Το ΙΑΣΩ προσδιορίζει την απόκτηση της δραστηριότητας στις 16/12/2021.",
+          "sourceIds": [
+            "am21-gaia-transaction",
+            "iaso21-gaia"
+          ]
+        },
+        {
+          "type": "fact",
+          "text": "Η ΓΑΙΑ εμφάνισε κέρδη μετά φόρων €930 χιλ. μέχρι τη μεταβίβαση, πριν από το ξεχωριστό κέρδος πώλησης.",
+          "sourceIds": [
+            "am21-gaia-result"
+          ]
+        },
+        {
+          "type": "company_claim",
+          "text": "Η διοίκηση ανέφερε λειτουργία της ΓΑΙΑ και της γενικής κλινικής στο 100% της δυναμικότητας και χωροταξικούς περιορισμούς.",
+          "sourceIds": [
+            "am21-gaia-rationale"
+          ]
+        },
+        {
+          "type": "company_claim",
+          "text": "Η ανακοίνωση της 17/12/2021 ανέφερε ότι απελευθερώνονται 100 κλίνες γενικής κλινικής και 4 χειρουργικές αίθουσες στο Μαρούσι.",
+          "sourceIds": [
+            "am21-exchange-announcement"
+          ]
+        },
+        {
+          "type": "hypothesis",
+          "text": "Η πώληση μπορεί να ήταν επιλογή ανάπτυξης μέσω διαφορετικής χρήσης του περιορισμένου χώρου, όχι απλώς έξοδος από μια ανεπιτυχή δραστηριότητα.",
+          "sourceIds": [
+            "am21-gaia-rationale",
+            "am21-gaia-result",
+            "am21-exchange-announcement"
+          ]
+        }
+      ],
+      "metrics": {
+        "activityProfitAfterTax": {
+          "value": 930,
+          "unit": "EUR_thousand",
+          "period": "2021 έως τη μεταβίβαση",
+          "scope": "ΓΑΙΑ, χωρίς το κέρδος πώλησης",
+          "type": "fact",
+          "sourceIds": [
+            "am21-gaia-result"
+          ]
+        },
+        "disposalGainAfterTax": {
+          "value": 2165,
+          "unit": "EUR_thousand",
+          "period": "2021",
+          "scope": "Κέρδος πώλησης δραστηριότητας ΓΑΙΑ",
+          "type": "fact",
+          "sourceIds": [
+            "am21-gaia-result"
+          ]
+        },
+        "consolidatedProfitAfterTax": {
+          "value": 15135,
+          "unit": "EUR_thousand",
+          "period": "2021",
+          "scope": "Ενοποιημένος Όμιλος, συνολικές δραστηριότητες",
+          "type": "fact",
+          "sourceIds": [
+            "am21-group-result"
+          ]
+        },
+        "disposalGainShare": {
+          "value": 14.3,
+          "unit": "percent",
+          "formula": "2165 / 15135 * 100",
+          "scope": "Συνεισφορά κέρδους πώλησης στα συνολικά κέρδη 2021· όχι απόδοση επένδυσης",
+          "type": "fact",
+          "sourceIds": [
+            "am21-gaia-result",
+            "am21-group-result"
+          ]
+        },
+        "announcedCapacity": {
+          "beds": 100,
+          "operatingRooms": 4,
+          "scope": "Γενική κλινική Μαρουσίου",
+          "type": "company_claim",
+          "sourceIds": [
+            "am21-exchange-announcement"
+          ],
+          "limitation": "Δηλωμένη απελευθέρωση δυναμικότητας, χωρίς ανεξάρτητη επαλήθευση μεταγενέστερης χρήσης."
+        }
+      },
+      "limitations": [
+        "Μεταβίβαση δραστηριότητας, όχι τεκμηριωμένη πώληση της ομώνυμης νομικής εταιρείας ή ολόκληρου του κτιρίου.",
+        "Δεν αποδεικνύεται ότι η νέα χρήση χώρου απέδωσε περισσότερο ή ότι η πανδημία προκάλεσε τη συναλλαγή.",
+        "Το 100% αφορά εταιρική περιγραφή δυναμικότητας· δεν διαθέτουμε ημερήσιες μετρήσεις πληρότητας.",
+        "Εναλλακτικές εξηγήσεις είναι η ρευστότητα, το τίμημα και η αλλαγή μίγματος υπηρεσιών."
+      ],
+      "question": "Πότε η έξοδος από μια κερδοφόρα δραστηριότητα δημιουργεί περισσότερο χώρο για ανάπτυξη;"
+    },
+    {
+      "id": "nps",
+      "year": 2025,
+      "period": "2024–2025",
+      "headline": "Ο συνολικός δείκτης ανεβαίνει. Οι μονάδες κινούνται διαφορετικά.",
+      "explanation": "Ο NPS των ελληνικών μονάδων ανεβαίνει από 47 σε 48. Στο Παλαιό Φάληρο πέφτει κατά 13 μονάδες, ενώ στο Περιστέρι ανεβαίνει κατά 4.",
+      "type": "fact",
+      "scope": "Δημοσιευμένες μετρήσεις έξι μονάδων στην Ελλάδα. Δεν περιλαμβάνεται η Ρουμανία και δεν πρόκειται για έξι ανεξάρτητες εταιρείες.",
+      "sourceIds": [
+        "am24-nps-method",
+        "am24-nps-units",
+        "am25-nps-method",
+        "am25-nps-units",
+        "am24-sap"
+      ],
+      "claims": [
+        {
+          "type": "fact",
+          "text": "Η μικρή άνοδος του συνολικού NPS συνυπάρχει με διαφορετικές μεταβολές ανά μονάδα.",
+          "sourceIds": [
+            "am24-nps-units",
+            "am25-nps-units"
+          ]
+        },
+        {
+          "type": "company_claim",
+          "text": "Η εταιρεία αποδίδει καθυστερήσεις στην έναρξη και σταθεροποίηση του SAP.",
+          "sourceIds": [
+            "am25-nps-method"
+          ]
+        },
+        {
+          "type": "fact",
+          "text": "Η έκθεση χρήσης 2024 τοποθετεί την παραγωγική έναρξη του ERP SAP την 01/01/2025.",
+          "sourceIds": [
+            "am24-sap"
+          ]
+        },
+        {
+          "type": "hypothesis",
+          "text": "Η τοπική ετοιμότητα, η υποστήριξη προσωπικού και ο συντονισμός διαδικασιών μπορεί να εξηγούν μέρος των διαφορών. Απαιτούνται μηνιαία στοιχεία για να ελεγχθεί.",
+          "sourceIds": [
+            "am24-nps-units",
+            "am25-nps-method",
+            "am25-nps-units"
+          ]
+        }
+      ],
+      "metrics": {
+        "definition": "Ο NPS εκφράζει τη διαφορά μεταξύ του ποσοστού υποστηρικτών και επικριτών σε ερώτηση σύστασης. Εύρος −100 έως +100· οι μεταβολές δίνονται σε μονάδες NPS.",
+        "unit": "nps_points",
+        "total": {
+          "nps2024": 47,
+          "nps2025": 48,
+          "changePoints": 1,
+          "responses2024": 84052,
+          "responses2025": 80156,
+          "sourceIds": [
+            "am24-nps-method",
+            "am24-nps-units",
+            "am25-nps-method",
+            "am25-nps-units"
+          ]
+        },
+        "clinics": [
+          {
+            "id": "thessaloniki",
+            "label": "Διαβαλκανικό",
+            "locationId": "thessaloniki",
+            "nps2024": 44,
+            "nps2025": 41,
+            "changePoints": -3,
+            "responses2024": null,
+            "responses2025": 26012,
+            "sourceIds": [
+              "am24-nps-units",
+              "am25-nps-units"
+            ]
+          },
+          {
+            "id": "marousi",
+            "label": "Μαρούσι",
+            "locationId": "marousi",
+            "nps2024": 42,
+            "nps2025": 47,
+            "changePoints": 5,
+            "responses2024": null,
+            "responses2025": 23424,
+            "sourceIds": [
+              "am24-nps-units",
+              "am25-nps-units"
+            ]
+          },
+          {
+            "id": "peristeri",
+            "label": "Περιστέρι",
+            "locationId": "peristeri",
+            "nps2024": 60,
+            "nps2025": 64,
+            "changePoints": 4,
+            "responses2024": null,
+            "responses2025": 9507,
+            "sourceIds": [
+              "am24-nps-units",
+              "am25-nps-units"
+            ]
+          },
+          {
+            "id": "faliro",
+            "label": "Παλαιό Φάληρο",
+            "locationId": "faliro",
+            "nps2024": 62,
+            "nps2025": 49,
+            "changePoints": -13,
+            "responses2024": null,
+            "responses2025": 3353,
+            "sourceIds": [
+              "am24-nps-units",
+              "am25-nps-units"
+            ]
+          },
+          {
+            "id": "psychiko",
+            "label": "Ψυχικό",
+            "locationId": "psychiko",
+            "nps2024": 42,
+            "nps2025": 49,
+            "changePoints": 7,
+            "responses2024": null,
+            "responses2025": 8471,
+            "sourceIds": [
+              "am24-nps-units",
+              "am25-nps-units"
+            ]
+          },
+          {
+            "id": "pediatric",
+            "label": "Παιδιατρική",
+            "locationId": "marousi",
+            "nps2024": 53,
+            "nps2025": 55,
+            "changePoints": 2,
+            "responses2024": null,
+            "responses2025": 9389,
+            "sourceIds": [
+              "am24-nps-units",
+              "am25-nps-units"
+            ]
+          }
+        ]
+      },
+      "limitations": [
+        "Η μεταβολή δεν αποδεικνύει επίδραση SAP ή επίδοση συγκεκριμένου στελέχους.",
+        "Δύο ετήσιες παρατηρήσεις δεν αποκαλύπτουν πότε μέσα στο έτος συνέβη η αλλαγή.",
+        "Δεν υπάρχουν εδώ πλήθη αξιολογήσεων ανά μονάδα για το 2024, σταθερά βάρη, ποσοστά ανταπόκρισης ή επιβεβαίωση αμετάβλητης μεθόδου.",
+        "Ο συνολικός NPS δεν υπολογίζεται ως απλός μέσος των έξι τιμών.",
+        "Οι αξιολογήσεις δεν ισοδυναμούν με μοναδικούς ασθενείς. Ο NPS δεν μετρά κλινική ποιότητα ούτε υιοθέτηση SAP.",
+        "Η Παιδιατρική είναι ξεχωριστή σειρά αξιολόγησης, αλλά συνδέεται γεωγραφικά με το Μαρούσι· δεν προστίθεται έβδομο σημείο στον χάρτη."
+      ],
+      "question": "Τι χάνεται όταν η διοίκηση παρακολουθεί μόνο τον συνολικό δείκτη;"
+    },
+    {
+      "id": "margins",
+      "year": 2025,
+      "period": "2023–2025, με αντίβαρο το α΄ εξάμηνο 2026",
+      "headline": "Περισσότερα έσοδα, μικρότερο λειτουργικό περιθώριο.",
+      "explanation": "Από το 2023 έως το 2025 τα έσοδα του Ομίλου αυξάνονται, αλλά το περιθώριο EBITDA πέφτει από 14,74% σε 9,98%. Το α΄ εξάμηνο 2026 δείχνει λειτουργική ανάκαμψη.",
+      "type": "fact",
+      "scope": "Ενοποιημένος Όμιλος. Ετήσιες χρήσεις μεταξύ τους· ξεχωριστά, α΄ εξάμηνο 2026 έναντι α΄ εξαμήνου 2025.",
+      "sourceIds": [
+        "am24-finance",
+        "am25-finance",
+        "am25-ebitda",
+        "am25-income",
+        "am26h1-ebitda",
+        "am26h1-income",
+        "am26h1-cash",
+        "am24-sap"
+      ],
+      "claims": [
+        {
+          "type": "fact",
+          "text": "Η αύξηση εσόδων δεν συνοδεύεται από αύξηση EBITDA το 2024 και το 2025. Το καθαρό αποτέλεσμα γίνεται ζημία το 2025.",
+          "sourceIds": [
+            "am24-finance",
+            "am25-finance",
+            "am25-ebitda",
+            "am25-income"
+          ]
+        },
+        {
+          "type": "fact",
+          "text": "Η πίεση στο περιθώριο είχε εμφανιστεί το 2024, πριν από την παραγωγική έναρξη SAP το 2025.",
+          "sourceIds": [
+            "am24-finance",
+            "am24-sap"
+          ]
+        },
+        {
+          "type": "hypothesis",
+          "text": "Χρειάζεται να εξεταστεί αν ο συντονισμός κόστους, επενδύσεων και αποζημιώσεων μετατρέπει την ανάπτυξη εσόδων σε λειτουργικό πλεόνασμα.",
+          "sourceIds": [
+            "am24-finance",
+            "am25-income"
+          ]
+        }
+      ],
+      "metrics": {
+        "unit": "EUR_thousand",
+        "scope": "Ενοποιημένος Όμιλος όπως παρουσιάζεται στις δημοσιευμένες συγκριτικές εκθέσεις.",
+        "definition": "Περιθώριο EBITDA = EBITDA / έσοδα × 100. Δείχνει το λειτουργικό αποτέλεσμα πριν από τόκους, φόρους και αποσβέσεις ανά €100 εσόδων· δεν είναι καθαρό κέρδος ούτε διαθέσιμα μετρητά.",
+        "annual": [
+          {
+            "year": 2023,
+            "revenue": 258363,
+            "ebitda": 38074,
+            "netProfit": 8159,
+            "sourceIds": [
+              "am24-finance"
+            ],
+            "ebitdaMarginPercent": 14.7366
+          },
+          {
+            "year": 2024,
+            "revenue": 269845,
+            "ebitda": 32011,
+            "netProfit": 1884,
+            "sourceIds": [
+              "am24-finance",
+              "am25-finance"
+            ],
+            "ebitdaMarginPercent": 11.8627
+          },
+          {
+            "year": 2025,
+            "revenue": 275752,
+            "ebitda": 27533,
+            "netProfit": -4618,
+            "sourceIds": [
+              "am25-finance",
+              "am25-ebitda",
+              "am25-income"
+            ],
+            "ebitdaMarginPercent": 9.9847
+          }
+        ],
+        "annualCalculations": {
+          "revenueChange2023To2025Percent": 6.7305,
+          "ebitdaChange2023To2025Percent": -27.6856,
+          "marginChange2023To2025Points": -4.7519,
+          "formulas": {
+            "revenue": "(275752 / 258363 - 1) * 100",
+            "ebitda": "(27533 / 38074 - 1) * 100",
+            "margin": "(27533 / 275752 - 38074 / 258363) * 100"
+          }
+        },
+        "halfYear": [
+          {
+            "period": "H1 2025",
+            "year": 2025,
+            "revenue": 142803,
+            "ebitda": 17105,
+            "netProfit": 1212,
+            "operatingCashFlow": 717,
+            "ebitdaMarginPercent": 11.978,
+            "sourceIds": [
+              "am26h1-ebitda",
+              "am26h1-income",
+              "am26h1-cash"
+            ]
+          },
+          {
+            "period": "H1 2026",
+            "year": 2026,
+            "revenue": 148255,
+            "ebitda": 20038,
+            "netProfit": 521,
+            "operatingCashFlow": -7557,
+            "ebitdaMarginPercent": 13.5159,
+            "sourceIds": [
+              "am26h1-ebitda",
+              "am26h1-income",
+              "am26h1-cash"
+            ]
+          }
+        ]
+      },
+      "counterEvidence": {
+        "id": "h1-2026-recovery",
+        "year": 2026,
+        "type": "fact",
+        "headline": "Το α΄ εξάμηνο 2026 το EBITDA ανακάμπτει.",
+        "explanation": "Σε σύγκριση με το ίδιο εξάμηνο του 2025, τα έσοδα αυξάνονται περίπου 3,8% και το EBITDA περίπου 17,1%. Άρα δεν τεκμηριώνεται αδιάκοπη επιδείνωση.",
+        "sourceIds": [
+          "am26h1-ebitda",
+          "am26h1-income",
+          "am26h1-cash"
+        ],
+        "metrics": {
+          "revenueChangePercent": 3.8178,
+          "ebitdaChangePercent": 17.147,
+          "ebitdaMargin2025Percent": 11.978,
+          "ebitdaMargin2026Percent": 13.5159
+        },
+        "qualification": "Η ανάκαμψη αφορά λειτουργική κερδοφορία: τα καθαρά κέρδη μειώνονται από €1,212 εκατ. σε €0,521 εκατ. και οι λειτουργικές ταμειακές ροές γίνονται αρνητικές. Δεν εξισώνουμε EBITDA, καθαρό κέρδος και εισπράξεις."
+      },
+      "limitations": [
+        "Τα ποσά αφορούν τον Όμιλο, όχι μόνο τη μητρική ή τις έξι ελληνικές σειρές NPS.",
+        "Η δημοσιευμένη σειρά δεν είναι ανάλυση οργανικής ανάπτυξης με απολύτως σταθερό δίκτυο και μίγμα υπηρεσιών.",
+        "Δεν αποδίδεται η μεταβολή στο SAP, σε συγκεκριμένο πρόσωπο ή αποκλειστικά σε μία αιτία.",
+        "Πιθανές εξηγήσεις περιλαμβάνουν μίγμα υπηρεσιών, λειτουργικό κόστος νέων επενδύσεων και εκτιμήσεις clawback· απαιτείται ανάλυση ανά μονάδα/πληρωτή.",
+        "Δεν συγκρίνουμε εξάμηνο με πλήρες έτος και δεν προεκτείνουμε μηχανικά την επίδοση σε όλο το 2026.",
+        "Στο εξάμηνο 2026 ο πίνακας δίνει EBITDA €20.038 χιλ., ενώ η αφήγηση €20.037 χιλ. και διαφορετική αναφερόμενη μεταβολή. Χρησιμοποιείται ο πίνακας και στρογγυλή διατύπωση περίπου 17,1%."
+      ],
+      "question": "Πώς μετατρέπεται η αύξηση εργασιών σε λειτουργικό πλεόνασμα και τελικά σε εισπράξεις;"
+    }
+  ],
+  "limitations": [
+    "Τα ιστορικά ορόσημα είναι επιλεγμένες τεκμηριωμένες παρουσίες, όχι συνεχής απογραφή ενεργών μονάδων.",
+    "Το ερευνητικό ενδιαφέρον προκύπτει από συνδυασμό δημόσιων στοιχείων. Δεν ισχυριζόμαστε ότι η σύνθεση είναι αδημοσίευτη παγκοσμίως.",
+    "Δεν τεκμηριώνονται αιτιώδης επίδραση SAP, πλήρες οργανόγραμμα ή προσωπική αξιολόγηση στελεχών."
+  ]
+}
