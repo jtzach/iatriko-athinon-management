@@ -4,12 +4,12 @@
   const NS='http://www.w3.org/2000/svg';
   const labels={person:'Πρόσωπο',role:'Ρόλος',unit:'Μονάδα',function:'Πεδίο ευθύνης',body:'Όργανο διοίκησης'};
   const verbs={HOLDS_ROLE:'κατέχει ρόλο',RESPONSIBLE_FOR:'έχει αρμοδιότητα',REPORTS_TO:'αναφέρεται σε',MEMBER_OF:'συμμετέχει σε'};
-  let data,byId,sources,year=2025,mode='people',person='overview',structure='main',selected=null,visibleNodes=[],visibleEdges=[],zoom=1,viewHeight=640,drag=null,topologySignature='';
+  let data,byId,sources,year=2025,mode='people',person='overview',structure='main',selected=null,visibleNodes=[],visibleEdges=[],zoom=1,viewWidth=1000,viewHeight=640,drag=null,topologySignature='';
   const positions=new Map();
   const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
   const mobileView=matchMedia('(max-width:760px)');
   let motionEnabled=!reducedMotion.matches,animationId=null,lastFrame=0,hoveredNode=null,focusedNode=null;
-  const nodeElements=new Map(),edgeElements=[];
+  const nodeElements=new Map(),nodeBounds=new Map(),edgeElements=[];
   const PERSON_RADIUS=56;
   const make=(tag,attrs={})=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));return n;};
   const yearData=()=>data.years.find(y=>Number(y.year)===year);
@@ -56,28 +56,50 @@
     const nodeIds=new Set(visibleEdges.flatMap(e=>[e.source,e.target]));
     visibleNodes=data.nodes.filter(n=>nodeIds.has(n.id));
   }
+  // Bounds include the complete rendered label, portrait/card and a clear gutter.
+  function measureNodes(){
+    nodeBounds.clear();
+    for(const n of visibleNodes){
+      const g=nodeElements.get(n.id),label=g.querySelector('.node-label'),t=label.getBBox();
+      if(isPerson(n)){
+        const back=make('rect',{class:'person-label-backdrop',x:t.x-7,y:t.y-5,width:t.width+14,height:t.height+10,rx:6});
+        g.insertBefore(back,label);
+      }else{
+        const rect=g.querySelector('.node-shell'),left=Math.min(-100,t.x-16),top=Math.min(-40,t.y-14);
+        rect.setAttribute('x',left);rect.setAttribute('y',top);
+        rect.setAttribute('width',Math.max(100,t.x+t.width+16)-left);
+        rect.setAttribute('height',Math.max(40,t.y+t.height+14)-top);
+      }
+      const b=g.getBBox(),pad=12;
+      nodeBounds.set(n.id,{x:b.x-pad,y:b.y-pad,width:b.width+pad*2,height:b.height+pad*2});
+    }
+  }
   function computePositions(){
+    const bounds=n=>nodeBounds.get(n.id),gap=30,margin=40;
     let groups;
+    viewWidth=1000;
     if(mode==='structure'){
       const level=new Map(visibleNodes.map(n=>[n.id,0]));
       for(let i=0;i<6;i++){let changed=false;for(const e of visibleEdges.filter(e=>e.type==='REPORTS_TO')){const next=Math.min(6,(level.get(e.target)||0)+1);if((level.get(e.source)||0)<next){level.set(e.source,next);changed=true;}}if(!changed)break;}
       groups=Array.from({length:Math.max(0,...level.values())+1},(_,i)=>visibleNodes.filter(n=>level.get(n.id)===i));
-      const rows=groups.flatMap(g=>Array.from({length:Math.ceil(g.length/4)},(_,i)=>g.slice(i*4,i*4+4)));viewHeight=Math.max(640,rows.length*125+100);
-      rows.forEach((row,r)=>row.forEach((n,i)=>{const key=posKey(n.id);if(!positions.has(key))positions.set(key,{x:30+(i+.5)*940/Math.max(1,row.length),y:70+r*(viewHeight-160)/Math.max(1,rows.length-1)});}));
+      const rows=[];
+      for(const group of groups){let row=[],width=0;for(const n of group){const w=bounds(n).width;if(row.length&&width+gap+w>viewWidth-margin*2){rows.push(row);row=[];width=0;}row.push(n);width+=(row.length>1?gap:0)+w;}if(row.length)rows.push(row);}
+      viewWidth=Math.max(viewWidth,...visibleNodes.map(n=>bounds(n).width+margin*2));
+      viewHeight=Math.max(640,margin*2+rows.reduce((sum,row)=>sum+Math.max(...row.map(n=>bounds(n).height))+gap,0));
+      let y=margin;
+      for(const row of rows){const height=Math.max(...row.map(n=>bounds(n).height)),width=row.reduce((sum,n)=>sum+bounds(n).width,0)+gap*(row.length-1);let x=(viewWidth-width)/2;
+        for(const n of row){const b=bounds(n),key=posKey(n.id);if(!positions.has(key))positions.set(key,{x:x-b.x,y:y-b.y+(height-b.height)/2});x+=b.width+gap;}y+=height+gap;}
     }else{
       groups=[visibleNodes.filter(isPerson),visibleNodes.filter(n=>n.type==='role'||n.type==='body'),visibleNodes.filter(n=>!['person','role','body'].includes(n.type))];
-      // Place roles next to their person when possible, retaining the source order for ties.
-      groups[1].sort((a,b)=>{
-        const owner=id=>groups[0].findIndex(n=>visibleEdges.some(e=>e.source===n.id&&e.target===id));
-        return owner(a.id)-owner(b.id);
-      });
-      groups[2].sort((a,b)=>{
-        const owner=id=>groups[1].findIndex(n=>visibleEdges.some(e=>e.source===n.id&&e.target===id));
-        return owner(a.id)-owner(b.id);
-      });
-      const maxRow=Math.max(1,...groups.map(g=>g.length));viewHeight=Math.max(720,maxRow*100+100,groups[0].length*170+100);
-      const xs=groups[2].length?[170,500,815]:[260,715,900];
-      groups.forEach((row,col)=>row.forEach((n,i)=>{const key=posKey(n.id);if(!positions.has(key))positions.set(key,{x:xs[col],y:60+(i+.5)*(viewHeight-130)/Math.max(1,row.length)});}));
+      groups[1].sort((a,b)=>{const owner=id=>groups[0].findIndex(n=>visibleEdges.some(e=>e.source===n.id&&e.target===id));return owner(a.id)-owner(b.id);});
+      groups[2].sort((a,b)=>{const owner=id=>groups[1].findIndex(n=>visibleEdges.some(e=>e.source===n.id&&e.target===id));return owner(a.id)-owner(b.id);});
+      groups=groups.filter(g=>g.length);
+      const widths=groups.map(g=>Math.max(...g.map(n=>bounds(n).width))),heights=groups.map(g=>g.reduce((sum,n)=>sum+bounds(n).height,0)+gap*(g.length-1));
+      viewWidth=Math.max(1000,widths.reduce((a,b)=>a+b,0)+80*(groups.length+1));
+      viewHeight=Math.max(720,...heights.map(h=>h+margin*2));
+      const gutter=(viewWidth-widths.reduce((a,b)=>a+b,0))/(groups.length+1||1);let x=gutter;
+      groups.forEach((group,i)=>{const extra=(viewHeight-margin*2-heights[i])/Math.max(1,group.length-1);let y=group.length===1?(viewHeight-bounds(group[0]).height)/2:margin;
+        for(const n of group){const b=bounds(n),key=posKey(n.id);if(!positions.has(key))positions.set(key,{x:x+(widths[i]-b.width)/2-b.x,y:y-b.y});y+=b.height+gap+extra;}x+=widths[i]+gutter;});
     }
   }
   function linesFor(text,max=24){const words=String(text).split(/\s+/),lines=[''];for(const word of words){if((lines.at(-1)+' '+word).trim().length>max&&lines.at(-1))lines.push(word);else lines[lines.length-1]=(lines.at(-1)+' '+word).trim();}return lines.length>3?[...lines.slice(0,2),lines[2].slice(0,max-1)+'…']:lines;}
@@ -98,40 +120,68 @@
     g.addEventListener('focus',()=>{focusedNode=n.id;syncMotion();});
     g.addEventListener('blur',()=>{if(focusedNode===n.id)focusedNode=null;syncMotion();});
     g.addEventListener('click',e=>{if(drag?.moved)return;selectNode(n.id);});
-    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectNode(n.id);}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const p=positions.get(posKey(n.id)),step=e.shiftKey?30:10;p.x+=e.key==='ArrowLeft'?-step:e.key==='ArrowRight'?step:0;p.y+=e.key==='ArrowUp'?-step:e.key==='ArrowDown'?step:0;constrain(n,p);p.homeX=p.x;p.homeY=p.y;p.vx=p.vy=0;drawPositions();}});
+    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectNode(n.id);}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const p=positions.get(posKey(n.id)),step=e.shiftKey?30:10;const x=p.x+(e.key==='ArrowLeft'?-step:e.key==='ArrowRight'?step:0),y=p.y+(e.key==='ArrowUp'?-step:e.key==='ArrowDown'?step:0);moveNode(n,x,y);p.homeX=p.x;p.homeY=p.y;p.vx=p.vy=0;drawPositions();}});
     return g;
   }
   function renderGraph(){
     stopMotion();hoveredNode=null;focusedNode=null;
     selectView();const signature=[year,mode,structure,visibleNodes.map(n=>n.id).sort().join(',')].join('|'),topologyChanged=signature!==topologySignature;
     if(topologyChanged){for(const k of positions.keys())if(k.startsWith(year+':'+mode+':'))positions.delete(k);topologySignature=signature;}
-    computePositions();visibleNodes.forEach((n,i)=>{const p=positions.get(posKey(n.id));if(p.homeX===undefined)Object.assign(p,{homeX:p.x,homeY:p.y,vx:0,vy:0,phase:i*2.399});constrain(n,p);});updateViewBox();
     $('graph-nodes').replaceChildren();$('graph-edges').replaceChildren();
     nodeElements.clear();edgeElements.length=0;
-    for(const e of visibleEdges){const g=make('g',{class:'graph-edge','data-edge':e.id,'data-type':e.type,'data-reporting':e.reportingMode||''});const line=make('line');g.appendChild(line);const t=make('text');t.textContent=e.evidenceStatus==='role_scope'?'Πεδίο ρόλου':e.type==='REPORTS_TO'?(e.reportingMode==='functional'?'Λειτουργική αναφορά':e.reportingMode==='organizational_chart'?'Οργανωτική αναφορά':e.label):e.label||verbs[e.type]||e.type;g.appendChild(t);$('graph-edges').appendChild(g);edgeElements.push({edge:e,line,text:t});}
-    visibleNodes.forEach(n=>{const g=makeNode(n);nodeElements.set(n.id,g);$('graph-nodes').appendChild(g);});drawPositions();highlight();
+    for(const e of visibleEdges){const g=make('g',{class:'graph-edge','data-edge':e.id,'data-type':e.type,'data-reporting':e.reportingMode||''});const line=make('line');g.appendChild(line);const t=make('text');t.textContent=e.evidenceStatus==='role_scope'?'Πεδίο ρόλου':e.type==='REPORTS_TO'?(e.reportingMode==='functional'?'Λειτουργική αναφορά':e.reportingMode==='organizational_chart'?'Οργανωτική αναφορά':e.label):e.label||verbs[e.type]||e.type;const title=make('title');title.textContent=t.textContent;g.appendChild(title);$('graph-edges').appendChild(g);edgeElements.push({edge:e,line});}
+    visibleNodes.forEach(n=>{const g=makeNode(n);nodeElements.set(n.id,g);$('graph-nodes').appendChild(g);});
+    measureNodes();computePositions();visibleNodes.forEach((n,i)=>{const p=positions.get(posKey(n.id));if(p.homeX===undefined)Object.assign(p,{homeX:p.x,homeY:p.y,vx:0,vy:0,phase:i*2.399});constrain(n,p);});updateViewBox();drawPositions();highlight();
+    if(topologyChanged){$('org-stage').scrollTop=0;$('org-stage').scrollLeft=0;}
     const noData=!visibleNodes.length;$('empty-state').hidden=!noData;
     if(noData)$('empty-state').querySelector('b').textContent=mode==='structure'?'Δεν έχουμε τεκμηριωμένες γραμμές αναφοράς γι’ αυτό το έτος.':'Δεν έχουμε τεκμηρίωση γι’ αυτό το έτος.';
     $('graph-list').innerHTML='<ul>'+visibleNodes.map(n=>'<li><button data-select="'+esc(n.id)+'">'+esc(n.label)+'</button><small>'+esc(labels[n.type]||n.type)+'</small></li>').join('')+'</ul>';
     $('graph-description').textContent=year+'. '+visibleNodes.length+' κόμβοι, '+visibleEdges.length+' τεκμηριωμένες σχέσεις. Η θέση στον καμβά δεν δηλώνει ιεραρχία.';
     document.querySelector('.graph-legend').innerHTML=mode==='people'?'<span class="person-key">Πρόσωπο</span><span class="role-key">Ρόλος</span><span class="unit-key">Μονάδα / πεδίο</span>':'<span class="line-key">Διοικητική / οργανωτική</span><span class="dashed-key">Λειτουργική</span>';
-    if(topologyChanged&&mobileView.matches)requestAnimationFrame(focusMobileCanvas);
+    if(topologyChanged)requestAnimationFrame(()=>{if(selected&&nodeElements.has(selected))focusSelectedNode();else if(mobileView.matches)focusMobileCanvas();});
     syncMotion();
   }
-  function updateViewBox(){const w=1000/zoom,h=viewHeight/zoom;$('org-svg').setAttribute('viewBox',`${(1000-w)/2} ${(viewHeight-h)/2} ${w} ${h}`);$('zoom-reset').textContent=Math.round(zoom*100)+'%';}
+  function updateViewBox(keepCenter=false){
+    const stage=$('org-stage'),svg=$('org-svg'),oldWidth=svg.clientWidth,oldHeight=svg.clientHeight;
+    const cx=(stage.scrollLeft+stage.clientWidth/2)/(oldWidth||1),cy=(stage.scrollTop+stage.clientHeight/2)/(oldHeight||1);
+    const scale=Math.max(900,stage.clientWidth)/1000*zoom;
+    svg.setAttribute('viewBox',`0 0 ${viewWidth} ${viewHeight}`);
+    svg.style.width=(viewWidth*scale)+'px';svg.style.height=(viewHeight*scale)+'px';
+    $('zoom-reset').textContent=Math.round(zoom*100)+'%';
+    if(keepCenter){stage.scrollLeft=cx*svg.clientWidth-stage.clientWidth/2;stage.scrollTop=cy*svg.clientHeight-stage.clientHeight/2;}
+  }
+  function focusSelectedNode(){
+    if(!selected||!nodeElements.has(selected))return;
+    const stage=$('org-stage'),p=positions.get(posKey(selected)),b=nodeBounds.get(selected),scale=$('org-svg').clientWidth/viewWidth;
+    stage.scrollLeft=Math.max(0,(p.x+b.x+b.width/2)*scale-stage.clientWidth*.38);
+    stage.scrollTop=Math.max(0,(p.y+b.y+b.height/2)*scale-stage.clientHeight/2);
+  }
   function focusMobileCanvas(){
     if(!mobileView.matches||!data)return;
     const stage=$('org-stage'),svg=$('org-svg');
     if(mode==='structure'){stage.scrollLeft=(svg.clientWidth-stage.clientWidth)/2;return;}
     const people=visibleNodes.filter(isPerson);if(!people.length){stage.scrollLeft=0;return;}
-    const left=Math.min(...people.map(n=>positions.get(posKey(n.id)).x)),scale=Math.min(svg.clientWidth/1000,svg.clientHeight/viewHeight);
+    const left=Math.min(...people.map(n=>positions.get(posKey(n.id)).x)),scale=Math.min(svg.clientWidth/viewWidth,svg.clientHeight/viewHeight);
     stage.scrollLeft=Math.max(0,left*scale-stage.clientWidth*.38);
   }
   function drawPositions(){
     for(const n of visibleNodes){const p=positions.get(posKey(n.id));nodeElements.get(n.id)?.setAttribute('transform',`translate(${p.x.toFixed(2)},${p.y.toFixed(2)})`);}
-    for(const {edge:e,line:l,text:t} of edgeElements){const a=positions.get(posKey(e.source)),b=positions.get(posKey(e.target));if(!a||!b)continue;const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;const border=id=>isPerson(byId.get(id))?PERSON_RADIUS+3:Math.min(102/(Math.abs(dx)/len||.00001),42/(Math.abs(dy)/len||.00001));const start=Math.min(len/2,border(e.source)),end=Math.min(len/2,border(e.target)+3);Object.entries({x1:a.x+dx/len*start,y1:a.y+dy/len*start,x2:b.x-dx/len*end,y2:b.y-dy/len*end}).forEach(([k,v])=>l.setAttribute(k,v.toFixed(2)));t.setAttribute('x',((a.x+b.x)/2).toFixed(2));t.setAttribute('y',((a.y+b.y)/2-8).toFixed(2));}
+    for(const {edge:e,line:l} of edgeElements){const a=positions.get(posKey(e.source)),b=positions.get(posKey(e.target));if(!a||!b)continue;const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;const border=(id,direction)=>{if(isPerson(byId.get(id)))return PERSON_RADIUS+3;const box=nodeBounds.get(id),ux=dx/len*direction,uy=dy/len*direction;return Math.min((ux>=0?box.x+box.width-12:-box.x-12)/(Math.abs(ux)||.00001),(uy>=0?box.y+box.height-12:-box.y-12)/(Math.abs(uy)||.00001))+3;};const start=Math.min(len/2,border(e.source,1)),end=Math.min(len/2,border(e.target,-1)+3);Object.entries({x1:a.x+dx/len*start,y1:a.y+dy/len*start,x2:b.x-dx/len*end,y2:b.y-dy/len*end}).forEach(([k,v])=>l.setAttribute(k,v.toFixed(2)));}
   }
-  function constrain(n,p){p.x=Math.max(110,Math.min(890,p.x));p.y=Math.max(isPerson(n)?65:45,Math.min(viewHeight-(isPerson(n)?120:80),p.y));}
+  function constrain(n,p){const b=nodeBounds.get(n.id);if(!b)return;p.x=Math.max(16-b.x,Math.min(viewWidth-16-b.x-b.width,p.x));p.y=Math.max(16-b.y,Math.min(viewHeight-16-b.y-b.height,p.y));}
+  // Swept rectangles stop movement at the first collision, even during fast dragging,
+  // paused animation or keyboard movement. Previously valid positions never overlap.
+  function moveNode(n,x,y){
+    const p=positions.get(posKey(n.id)),a=nodeBounds.get(n.id),target={x,y};constrain(n,target);
+    const dx=target.x-p.x,dy=target.y-p.y;let fraction=1;
+    for(const other of visibleNodes){if(other.id===n.id)continue;const q=positions.get(posKey(other.id)),b=nodeBounds.get(other.id);
+      const limits=[[p.x,dx,q.x+b.x-a.x-a.width,q.x+b.x+b.width-a.x],[p.y,dy,q.y+b.y-a.y-a.height,q.y+b.y+b.height-a.y]];
+      let enter=-Infinity,leave=Infinity,hit=true;
+      for(const [origin,delta,low,high] of limits){if(Math.abs(delta)<1e-9){if(origin<=low||origin>=high){hit=false;break;}}else{const t1=(low-origin)/delta,t2=(high-origin)/delta;enter=Math.max(enter,Math.min(t1,t2));leave=Math.min(leave,Math.max(t1,t2));}}
+      if(hit&&enter<=leave&&leave>0&&enter>=-1e-7&&enter<fraction)fraction=Math.max(0,enter-.002);
+    }
+    p.x+=dx*fraction;p.y+=dy*fraction;if(fraction<1)p.vx=p.vy=0;
+  }
   function canMove(){return !!data&&motionEnabled&&!reducedMotion.matches&&mode==='people'&&visibleNodes.length>0&&!document.hidden&&!$('org-dialog').open&&(!hoveredNode||!!drag)&&(!focusedNode||!!drag);}
   function stopMotion(){if(animationId!==null)cancelAnimationFrame(animationId);animationId=null;lastFrame=0;}
   function syncMotion(){
@@ -157,15 +207,13 @@
     for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
       const a=nodes[i],b=nodes[j],dx=b.p.x-a.p.x,dy=b.p.y-a.p.y,d2=Math.max(900,dx*dx+dy*dy),repel=650/d2*dt,dist=Math.sqrt(d2);
       a.p.vx-=dx/dist*repel;a.p.vy-=dy/dist*repel;b.p.vx+=dx/dist*repel;b.p.vy+=dy/dist*repel;
-      const ay=a.p.y+(isPerson(a.n)?24:0),by=b.p.y+(isPerson(b.n)?24:0),overX=224-Math.abs(dx),overY=(isPerson(a.n)?94:51)+(isPerson(b.n)?94:51)+12-Math.abs(by-ay);
-      if(overX>0&&overY>0){const horizontal=overX<overY,sign=horizontal?(dx>=0?1:-1):(by>=ay?1:-1),force=Math.min(8,(horizontal?overX:overY)*.12)*dt;if(horizontal){a.p.vx-=sign*force;b.p.vx+=sign*force;}else{a.p.vy-=sign*force;b.p.vy+=sign*force;}}
     }
-    for(const {n,p} of nodes){if(drag?.id===n.id){p.vx=p.vy=0;continue;}p.vx=Math.max(-4,Math.min(4,p.vx*.72));p.vy=Math.max(-4,Math.min(4,p.vy*.72));p.x+=p.vx*dt;p.y+=p.vy*dt;constrain(n,p);}
+    for(const {n,p} of nodes){if(drag?.id===n.id){p.vx=p.vy=0;continue;}p.vx=Math.max(-4,Math.min(4,p.vx*.72));p.vy=Math.max(-4,Math.min(4,p.vy*.72));moveNode(n,p.x+p.vx*dt,p.y+p.vy*dt);}
     drawPositions();animationId=requestAnimationFrame(animate);
   }
   function point(e){const p=new DOMPoint(e.clientX,e.clientY);return p.matrixTransform($('org-svg').getScreenCTM().inverse());}
   function startDrag(e,id){if(e.button!==0)return;const p=point(e),n=positions.get(posKey(id));drag={id,pointer:e.pointerId,x:p.x,y:p.y,ox:n.x,oy:n.y,moved:false,element:e.currentTarget};n.vx=n.vy=0;e.currentTarget.setPointerCapture(e.pointerId);e.currentTarget.classList.add('dragging');syncMotion();}
-  $('org-svg').addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.pointer)return;const p=point(e),dx=p.x-drag.x,dy=p.y-drag.y;if(Math.hypot(dx,dy)>4)drag.moved=true;const pos=positions.get(posKey(drag.id));pos.x=drag.ox+dx;pos.y=drag.oy+dy;constrain(byId.get(drag.id),pos);drawPositions();});
+  $('org-svg').addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.pointer)return;const p=point(e),dx=p.x-drag.x,dy=p.y-drag.y;if(Math.hypot(dx,dy)>4)drag.moved=true;moveNode(byId.get(drag.id),drag.ox+dx,drag.oy+dy);drawPositions();});
   function endDrag(){if(!drag)return;drag.element.classList.remove('dragging');if(drag.moved){const name=byId.get(drag.id).label,p=positions.get(posKey(drag.id));p.homeX=p.x;p.homeY=p.y;$('org-status').textContent='Μετακινήθηκε: '+name;}setTimeout(()=>{drag=null;syncMotion();},0);}
   $('org-svg').addEventListener('pointerup',endDrag);$('org-svg').addEventListener('pointercancel',endDrag);
   function highlight(){
@@ -216,7 +264,7 @@
   $('year-range').addEventListener('input',e=>setYear(e.target.value));$('year-prev').onclick=()=>setYear(year-1);$('year-next').onclick=()=>setYear(year+1);
   $('person-filter').onchange=e=>{if(mode==='structure'){structure=e.target.value;selected=null;for(const k of positions.keys())if(k.startsWith(year+':structure:'))positions.delete(k);}else{person=e.target.value;selected=person&&person!=='overview'?person:null;}renderGraph();renderInspector();};
   $('reset-layout').onclick=()=>{for(const k of positions.keys())if(k.startsWith(year+':'+mode+':'))positions.delete(k);zoom=1;renderGraph();};
-  $('zoom-in').onclick=()=>{zoom=Math.min(2.4,zoom+.2);updateViewBox();};$('zoom-out').onclick=()=>{zoom=Math.max(.6,zoom-.2);updateViewBox();};$('zoom-reset').onclick=()=>{zoom=1;updateViewBox();};
+  $('zoom-in').onclick=()=>{zoom=Math.min(2.4,zoom+.2);updateViewBox(true);};$('zoom-out').onclick=()=>{zoom=Math.max(.6,zoom-.2);updateViewBox(true);};$('zoom-reset').onclick=()=>{zoom=1;updateViewBox(true);};
   $('nearest-year').onclick=()=>{const candidates=data.years.filter(y=>y.observationIds?.length&&(mode!=='structure'||data.observations.some(e=>Number(e.year)===Number(y.year)&&e.type==='REPORTS_TO')));if(candidates.length)setYear(candidates.sort((a,b)=>Math.abs(a.year-year)-Math.abs(b.year-year))[0].year);};
   $('method-button').onclick=showMethod;$('graph-data').onclick=showGraphData;$('close-dialog').onclick=()=>$('org-dialog').close();
   $('motion-toggle').onclick=()=>{motionEnabled=!motionEnabled;syncMotion();};
@@ -224,10 +272,11 @@
   document.addEventListener('visibilitychange',syncMotion);
   reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)motionEnabled=false;syncMotion();});
   mobileView.addEventListener('change',()=>requestAnimationFrame(focusMobileCanvas));
+  let observedWidth=0;new ResizeObserver(()=>{const width=$('org-stage').clientWidth;if(data&&width!==observedWidth){observedWidth=width;updateViewBox(true);if(mobileView.matches){if(selected)focusSelectedNode();else focusMobileCanvas();}}}).observe($('org-stage'));
   document.addEventListener('click',e=>{const y=e.target.closest('[data-year]');if(y){setYear(y.dataset.year);return;}const n=e.target.closest('[data-select]');if(n){selectNode(n.dataset.select);return;}const m=e.target.closest('[data-mode]');if(m){mode=m.dataset.mode;selected=null;document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===m)));updateFilters();renderGraph();renderInspector();}if(e.target.closest('#clear-selection')){selected=null;renderGraph();renderInspector();}});
   fetch('data/organization-graph.json').then(r=>{if(!r.ok)throw Error('Dataset unavailable');return r.json();}).then(d=>{
     data=d;byId=new Map(d.nodes.map(n=>[n.id,n]));sources=new Map(d.sources.map(s=>[s.id,s]));
     const hash=Number(location.hash.slice(1));setYear(hash>=1984&&hash<=2026?hash:2025);
-    if(new URLSearchParams(location.search).has('qa'))window.OrganizationDebug={getState:()=>({year,mode,person,selected,motionEnabled,motionRunning:animationId!==null,reducedMotion:reducedMotion.matches,hoveredNode,focusedNode,viewHeight,nodes:visibleNodes.map(n=>n.id),edges:visibleEdges.map(e=>e.id),positions:Object.fromEntries(visibleNodes.map(n=>[n.id,{...positions.get(posKey(n.id))}]))}),setYear,selectNode,data};
+    if(new URLSearchParams(location.search).has('qa'))window.OrganizationDebug={getState:()=>({year,mode,person,selected,motionEnabled,motionRunning:animationId!==null,reducedMotion:reducedMotion.matches,hoveredNode,focusedNode,viewWidth,viewHeight,nodes:visibleNodes.map(n=>n.id),edges:visibleEdges.map(e=>e.id),positions:Object.fromEntries(visibleNodes.map(n=>[n.id,{...positions.get(posKey(n.id))}]))}),setYear,selectNode,data};
   }).catch(()=>{$('coverage-label').textContent='Δεν φορτώθηκαν τα δεδομένα';$('empty-state').hidden=false;$('empty-state').innerHTML='<b>Τα δεδομένα δεν είναι διαθέσιμα.</b><p>Δοκιμάστε επαναφόρτωση ή ανοίξτε το αρχείο τεκμηρίωσης.</p><a href="data/organization-timeline.json">Αρχείο πηγών ↗</a>';$('org-status').textContent='Η φόρτωση του γράφου απέτυχε.';});
 })();
