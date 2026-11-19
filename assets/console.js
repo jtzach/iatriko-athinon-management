@@ -7,10 +7,10 @@
   const labels = {fact:'Δημοσιευμένο στοιχείο',claim:'Εταιρική δήλωση / πρόβλεψη',interpretation:'Δική μας ερμηνεία',proposal:'Δική μας πρόταση',unknown:'Δεν γνωρίζουμε'};
   const badge = (type, label) => `<span class="type-label ${esc(type)}">${esc(label || labels[type])}</span>`;
   const routes = {
-    findings: ['01 / ΑΝΑΚΑΛΥΨΕ','Τα 3 ευρήματα','Τρεις παρατηρήσεις. Τρία ερωτήματα για τη διοίκηση.','#64e4ff'],
-    company: ['02 / ΚΑΤΑΛΑΒΕ','Η εταιρεία','Πρώτα το πλαίσιο. Μετά οι ερμηνείες.','#c6aeff'],
-    assignment: ['03 / ΜΕΛΕΤΗΣΕ','Η εργασία','3 θέματα · 6 ερωτήματα · κάθε απάντηση στη θέση της.','#c6ff75'],
-    ask: ['04 / ΡΩΤΗΣΕ','Βρες την εξήγηση.','Γράψε μια ερώτηση. Δες τι γνωρίζουμε και από πού.','#ffc86b']
+    findings: ['01 / ΑΝΑΚΑΛΥΨΕ','Τα 3 ευρήματα','Τρεις παρατηρήσεις. Τρία ερωτήματα για τη διοίκηση.','var(--cyan)'],
+    company: ['02 / ΚΑΤΑΛΑΒΕ','Η εταιρεία','Πρώτα το πλαίσιο. Μετά οι ερμηνείες.','var(--violet)'],
+    assignment: ['03 / ΜΕΛΕΤΗΣΕ','Η εργασία','3 θέματα · 6 ερωτήματα · κάθε απάντηση στη θέση της.','var(--lime)'],
+    ask: ['04 / ΡΩΤΗΣΕ','Βρες την εξήγηση.','Γράψε μια ερώτηση. Δες τι γνωρίζουμε και από πού.','var(--amber)']
   };
   let data, knowledge, index, paper, sourceMap = new Map(), activeFinding = 'nps', selectedScope = 'company';
   let lastQuery = '', results = [], selectedResult = '', ready = false;
@@ -171,7 +171,7 @@
     }
     if (!ready) return;
     if (name === 'method') {
-      openDialog('Πώς διαβάζεται αυτή η μελέτη;', `<div class="prose"><p>${esc(data.classificationNote)}</p><p>${esc(knowledge.scopeNote)}</p><div class="legend-list">${Object.keys(labels).map(type => badge(type)).join(' ')}</div><h3>Χρήση ΤΝ</h3><p>${esc(data.aiDeclaration)}</p><p>Στην έκδοση αυτή η ΤΝ υποστήριξε επίσης την αρχειοθέτηση, τον ανασχεδιασμό και τον προγραμματισμό της ιστοσελίδας, τη σύνθεση των 25 καρτών και τους ελέγχους λειτουργίας. Η αναζήτηση ανακτά έτοιμες κάρτες· δεν εκτελεί LLM ή ζωντανό GraphRAG.</p><p>Η ενημέρωση της 20ής Νοεμβρίου 2026 πρόσθεσε επιλογή θέματος, επεξηγήσεις ακρωνυμίων, επίσημες φωτογραφίες και καθοδηγούμενη περιήγηση με συνδρομή ΤΝ. Στιγμιότυπο περιεχομένου μελέτης: 19 Νοεμβρίου 2026. Οι πηγές έχουν τις δικές τους ημερομηνίες· δεν πρόκειται για ζωντανή ενημέρωση.</p><button class="secondary" data-action="deliverables">Δήλωση ΤΝ & αρχεία</button><button class="secondary" data-action="bibliography">Βιβλιογραφία</button></div>`, 'ΜΕΘΟΔΟΣ / ΔΙΑΦΑΝΕΙΑ');
+      openDialog('Πώς διαβάζεται αυτή η μελέτη;', `<div class="prose"><p>${esc(data.classificationNote)}</p><p>${esc(knowledge.scopeNote)}</p><div class="legend-list">${Object.keys(labels).map(type => badge(type)).join(' ')}</div><h3>Χρήση ΤΝ</h3><p>${esc(data.aiDeclaration)}</p><p>Στην έκδοση αυτή η ΤΝ υποστήριξε επίσης την αρχειοθέτηση, τον ανασχεδιασμό και τον προγραμματισμό της ιστοσελίδας, τη σύνθεση των 25 καρτών και τους ελέγχους λειτουργίας. Η αναζήτηση ανακτά έτοιμες κάρτες· δεν εκτελεί LLM ή ζωντανό GraphRAG.</p><p>Η ενημέρωση της 20ής Νοεμβρίου 2026 πρόσθεσε επιλογή θέματος, επεξηγήσεις ακρωνυμίων, επίσημες φωτογραφίες και καθοδηγούμενη περιήγηση με συνδρομή ΤΝ. Η έκδοση 2.2 πρόσθεσε σύντομη αυτόματη περιήγηση δύο λεπτών και παλέτα βασισμένη στο πρόγραμμα του ΕΚΠΑ. Η αλλαγή χρωμάτων αφορά μόνο την ιστοσελίδα. Στιγμιότυπο περιεχομένου μελέτης: 19 Νοεμβρίου 2026. Οι πηγές έχουν τις δικές τους ημερομηνίες· δεν πρόκειται για ζωντανή ενημέρωση.</p><button class="secondary" data-action="deliverables">Δήλωση ΤΝ & αρχεία</button><button class="secondary" data-action="bibliography">Βιβλιογραφία</button></div>`, 'ΜΕΘΟΔΟΣ / ΔΙΑΦΑΝΕΙΑ');
     }
     if (name === 'deliverables') deliverables();
     if (name === 'trace') { const el = $('#finding-trace'); el.hidden = !el.hidden; trigger.setAttribute('aria-expanded', String(!el.hidden)); if (!el.hidden) el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'nearest'}); }

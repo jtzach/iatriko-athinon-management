@@ -10,7 +10,7 @@
     current = value;
     document.documentElement.dataset.theme = value;
     document.querySelectorAll('[data-theme-value]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeValue === value)));
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', value === 'light' ? '#f4f7fb' : '#0a101b');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', value === 'light' ? '#fbf8f2' : '#101923');
     if (persist) { try { localStorage.setItem(key,value); } catch { /* Choice still works for this visit. */ } }
     document.dispatchEvent(new CustomEvent('console:themechange', {detail:{theme:value}}));
   }
