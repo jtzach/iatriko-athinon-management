@@ -7,21 +7,27 @@
   <meta name="description" content="Μία εταιρεία, τρία διοικητικά ευρήματα. Διαδραστική μελέτη με απλές εξηγήσεις, πηγές και απαντήσεις στην εργασία Μάνατζμεντ MBA-4.">
   <meta name="theme-color" content="#0a101b">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="assets/console-theme.js?v=2.1"></script>
   <link rel="stylesheet" href="assets/console.css?v=2.0">
+  <link rel="stylesheet" href="assets/console-themes.css?v=2.1">
+  <link rel="stylesheet" href="assets/console-tour.css?v=2.1">
   <script defer src="assets/console-retrieval.js?v=2.0"></script>
-  <script defer src="assets/console.js?v=2.0"></script>
+  <script defer src="assets/console-terms.js?v=2.1"></script>
+  <script defer src="assets/console.js?v=2.1"></script>
+  <script defer src="assets/console-tour.js?v=2.1"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
   <header class="topbar">
     <a class="brand" href="#home" aria-label="Ιατρικό Αθηνών — αρχική"><span aria-hidden="true">[ ia / ]</span> <span>ΔΙΟΙΚΗΣΗ ΣΤΗΝ ΠΡΑΞΗ</span></a>
-    <div class="header-actions"><a class="home-button" href="#home">⌂ Αρχική</a><button data-action="help" aria-label="Πώς χρησιμοποιώ τη μελέτη;">?</button></div>
+    <div class="header-actions"><div class="theme-controls" role="group" aria-label="Θέμα εμφάνισης"><button class="theme-button" data-theme-value="dark" aria-pressed="true">☾ Dark</button><button class="theme-button" data-theme-value="light" aria-pressed="false">☀ Light</button></div><button class="tour-button" data-start-tour>Περιήγηση</button><a class="home-button" href="#home">⌂ Αρχική</a><button data-action="help" aria-label="Πώς χρησιμοποιώ τη μελέτη;">?</button></div>
   </header>
   <main id="main">
     <section id="home" class="home-view" aria-labelledby="home-title">
-      <p class="eyebrow">ΜΕΛΕΤΗ ΠΕΡΙΠΤΩΣΗΣ / MBA-4 / 2026</p>
+      <p class="eyebrow">ΜΕΛΕΤΗ ΠΕΡΙΠΤΩΣΗΣ / ΤΜΗΜΑ 4 / 2026</p>
       <h1 id="home-title">Δες τη <span>μεγάλη εικόνα.</span></h1>
       <p class="lead">Μία εταιρεία. Τρία ευρήματα. Εσύ επιλέγεις τη διαδρομή.</p>
+      <button class="tour-launch" data-start-tour><span aria-hidden="true">✧</span> Διαδραστική περιήγηση στην ιστοσελίδα</button>
       <nav class="mindmap" aria-label="Χάρτης της μελέτης">
         <svg class="map-lines" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true"><path d="M500 150 C400 150 400 70 260 70 M500 150 C600 150 600 70 740 70 M500 150 C400 150 400 230 260 230 M500 150 C600 150 600 230 740 230"/></svg>
         <a class="map-card cyan" href="#findings" data-route="findings"><span class="card-index">01 / ΑΝΑΚΑΛΥΨΕ</span><strong>Τα 3 ευρήματα <span aria-hidden="true">↗</span></strong><span>Τι αξίζει να προσέξει η διοίκηση;</span></a>
@@ -30,6 +36,7 @@
         <a class="map-card lime" href="#assignment" data-route="assignment"><span class="card-index">03 / ΜΕΛΕΤΗΣΕ</span><strong>Η εργασία <span aria-hidden="true">↗</span></strong><span>Κάθε ζητούμενο, η απάντησή μας.</span></a>
         <a class="map-card amber" href="#ask" data-route="ask"><span class="card-index">04 / ΡΩΤΗΣΕ</span><strong>Τα τεκμήρια <span aria-hidden="true">↗</span></strong><span>Βρες μια εξήγηση και την πηγή της.</span></a>
       </nav>
+      <div id="home-photos" class="home-photo-strip" aria-label="Οι πραγματικές μονάδες της μελέτης"></div>
       <div class="home-downloads" aria-label="Κατέβασε τα αρχεία"><span>ΠΑΡΕ ΜΑΖΙ ΣΟΥ <span aria-hidden="true">↓</span></span><a download href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx"><strong>Εργασία</strong><span>Word · 3.500 λέξεις ↧</span></a><a download href="writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pptx"><strong>Παρουσίαση</strong><span>PowerPoint · 15 διαφάνειες ↧</span></a><a download href="downloads/Εκφώνηση-Μάνατζμεντ-2026-2027.pdf"><strong>Εκφώνηση</strong><span>Επίσημο PDF ↧</span></a></div>
     </section>
     <section id="workspace" class="workspace" hidden aria-labelledby="view-title">

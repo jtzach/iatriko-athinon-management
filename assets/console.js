@@ -14,12 +14,20 @@
   };
   let data, knowledge, index, paper, sourceMap = new Map(), activeFinding = 'nps', selectedScope = 'company';
   let lastQuery = '', results = [], selectedResult = '', ready = false;
-  let dialogTrigger;
+  let dialogTrigger, dialogRevision = 0;
+  let media = [];
   const view = $('#view-content');
   const dialog = $('#detail-dialog');
   const card = id => knowledge.cards.find(item => item.id === id);
   const finding = () => data.findings.find(item => item.id === activeFinding);
   const allSourceIds = f => [...new Set([...(f.publishedFacts || []), ...(f.companyClaims || []), f.hypothesis].flatMap(x => x?.sourceIds || []))];
+  function termNotes(text) {
+    const terms = window.ConsoleTerms?.explanationsFor(text) || [];
+    return terms.length ? `<aside class="term-notes" data-terms-skip><strong>Με απλά λόγια</strong>${terms.map(t => `<p>${esc(t.term)} (${esc(t.explanation)}).${t.note ? ` <small>${esc(t.note)}</small>` : ''}</p>`).join('')}</aside>` : '';
+  }
+  function renderPhotos() {
+    $('#home-photos').innerHTML = media.map(p => `<figure class="photo-card"><img src="${esc(p.src)}" alt="${esc(p.alt)}" width="112" height="78" loading="lazy" style="object-position:center 20%"><figcaption><strong>${esc(p.caption || p.title)}</strong><a href="${href(p.sourceUrl)}" target="_blank" rel="noopener">Πραγματική μονάδα · πηγή</a></figcaption></figure>`).join('');
+  }
   const sourceList = ids => [...new Set(ids)].map(id => {
     const s = sourceMap.get(id);
     if (!s) return '';
@@ -27,15 +35,18 @@
     return `<article class="source-card"><a href="${href(s.url)}" target="_blank" rel="noopener">${esc(s.title)} ↗</a><p>${esc(locator)}${s.printedPage && s.printedPage !== s.pdfPage ? ` · Έντυπη σ. ${esc(s.printedPage)}` : ''}</p>${s.note ? `<small>${esc(s.note)}</small>` : ''}</article>`;
   }).join('');
   function openDialog(title, html, eyebrow = 'ΜΙΑ ΠΙΟ ΚΟΝΤΙΝΗ ΜΑΤΙΑ') {
+    dialogRevision++;
     dialogTrigger = document.activeElement;
     $('#dialog-title').textContent = title;
     $('#dialog-eyebrow').textContent = eyebrow;
     $('#dialog-body').innerHTML = html;
+    window.ConsoleTerms?.annotate(dialog);
     if (!dialog.open) dialog.showModal();
     dialog.scrollTop = 0;
     $('#close-dialog').focus();
   }
   function closeDialog() {
+    dialogRevision++;
     dialog.close();
     if (dialogTrigger?.isConnected) dialogTrigger.focus();
   }
@@ -108,7 +119,7 @@
   function openRequirement(id) {
     const q = data.requirements.find(r => r.id === id);
     if (!q) return;
-    openDialog(q.label, `<blockquote class="question-quote"><small>ΕΠΙΣΗΜΗ ΕΚΦΩΝΗΣΗ · ΣΕΛΙΔΑ ${q.page}</small><p>${esc(q.prompt)}</p></blockquote><div class="modal-answer"><h3>Η απάντησή μας, συνοπτικά</h3><p>${esc(q.answer)}</p></div><div class="limits">${badge('unknown','Όριο της τεκμηρίωσης')}<p>${esc(q.limit)}</p></div><button class="primary" data-full-answer="${id}">Διάβασε την πλήρη απάντηση ↓</button><div id="full-answer"></div>${id === 'q2a' ? '<div class="modal-links"><a href="versions/2026-11-19/organization.html">Αναλυτικός γράφος · έκδοση 19/11 ↗</a></div>' : ''}<div class="modal-links"><a href="downloads/Εκφώνηση-Μάνατζμεντ-2026-2027.pdf#page=${q.page}" target="_blank" rel="noopener">Επίσημο PDF ↗</a><a download href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Πλήρες Word ↧</a></div>`, 'ΕΡΓΑΣΙΑ / ΕΚΦΩΝΗΣΗ → ΑΠΑΝΤΗΣΗ');
+    openDialog(q.label, `<blockquote class="question-quote" data-terms-skip><small>ΕΠΙΣΗΜΗ ΕΚΦΩΝΗΣΗ · ΣΕΛΙΔΑ ${q.page}</small><p>${esc(q.prompt)}</p></blockquote>${termNotes(q.prompt)}<div class="modal-answer"><h3>Η απάντησή μας, συνοπτικά</h3><p>${esc(q.answer)}</p></div><div class="limits">${badge('unknown','Όριο της τεκμηρίωσης')}<p>${esc(q.limit)}</p></div><button class="primary" data-full-answer="${id}">Διάβασε την πλήρη απάντηση ↓</button><div id="full-answer"></div>${id === 'q2a' ? '<div class="modal-links"><a href="versions/2026-11-19/organization.html">Αναλυτικός γράφος · έκδοση 19/11 ↗</a></div>' : ''}<div class="modal-links"><a href="downloads/Εκφώνηση-Μάνατζμεντ-2026-2027.pdf#page=${q.page}" target="_blank" rel="noopener">Επίσημο PDF ↗</a><a download href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Πλήρες Word ↧</a></div>`, 'ΕΡΓΑΣΙΑ / ΕΚΦΩΝΗΣΗ → ΑΠΑΝΤΗΣΗ');
   }
   function renderAsk() {
     view.innerHTML = `<form class="ask-form" id="ask-form"><label class="sr-only" for="query">Η ερώτησή σου</label><span aria-hidden="true">&gt;_</span><input id="query" name="query" type="search" maxlength="300" placeholder="π.χ. Τι σημαίνει EBITDA;" value="${esc(lastQuery)}" autocomplete="off"><button class="primary" type="submit">Αναζήτηση ↵</button></form><div class="query-examples">${['NPS στο Παλαιό Φάληρο','Τι προβλέπεται για το Ελληνικό;','Τι σημαίνει EBITDA;'].map(x => `<button class="secondary" data-query="${esc(x)}">${esc(x)}</button>`).join('')}</div><p class="retrieval-note">25 σύντομες εξηγήσεις με πηγές. Επιμελημένη αναζήτηση, χωρίς παραγωγή νέων απαντήσεων.</p><div id="search-results"></div>`;
@@ -138,16 +149,17 @@
     return paper;
   }
   async function fullAnswer(id, button) {
+    const expectedRevision = dialogRevision;
+    const target = $('#full-answer');
     button.disabled = true; button.textContent = 'Ανοίγει η πλήρης απάντηση…';
     try {
       const p = await loadPaper();
       const q = data.requirements.find(r => r.id === id);
       const s = p.sections.find(s => s.id === q.sectionId);
-      const target = $('#full-answer');
-      if (!target || !dialog.open) return;
+      if (expectedRevision !== dialogRevision || !target?.isConnected || !dialog.open) return;
       target.innerHTML = `<section class="prose"><h3>${esc(s.title)}</h3>${s.paragraphs.map(x => `<p>${esc(x)}</p>`).join('')}<button class="link-button" data-action="bibliography">Βιβλιογραφία & παραπομπές ↗</button></section>`;
       button.hidden = true;
-    } catch { button.disabled = false; button.textContent = 'Δεν άνοιξε — δοκίμασε ξανά'; }
+    } catch { if (expectedRevision === dialogRevision && button.isConnected) { button.disabled = false; button.textContent = 'Δεν άνοιξε — δοκίμασε ξανά'; } }
   }
   function deliverables() {
     openDialog('Η πλήρης εργασία, μαζί σου.', `<div class="modal-links"><a download href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Εργασία · Word</a><a download href="writing/Μελέτη-με-εκφωνήσεις-Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Έκδοση μελέτης · γκρι εκφωνήσεις</a><a download href="writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pptx">Παρουσίαση · 15 διαφάνειες</a><a download href="writing/ΥΔ_Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Δήλωση χρήσης ΤΝ · Word</a><a download href="downloads/Εκφώνηση-Μάνατζμεντ-2026-2027.pdf">Επίσημη εκφώνηση · PDF</a><a download href="writing/Πίνακας-συνεισφοράς-Τζαχρήστας_Χρήστου_Σταματόπουλος.xlsx">Πίνακας συνεισφοράς · προς συμπλήρωση</a></div><p class="limits">Τα αρχεία είναι υλικό της ομάδας προς τελικό έλεγχο. Αριθμοί μητρώου, υπεύθυνος επικοινωνίας και υπογραφές παραμένουν για συμπλήρωση.</p>`, 'ΑΡΧΕΙΑ / ΛΗΨΗ');
@@ -159,7 +171,7 @@
     }
     if (!ready) return;
     if (name === 'method') {
-      openDialog('Πώς διαβάζεται αυτή η μελέτη;', `<div class="prose"><p>${esc(data.classificationNote)}</p><p>${esc(knowledge.scopeNote)}</p><div class="legend-list">${Object.keys(labels).map(type => badge(type)).join(' ')}</div><h3>Χρήση ΤΝ</h3><p>${esc(data.aiDeclaration)}</p><p>Στην έκδοση αυτή η ΤΝ υποστήριξε επίσης την αρχειοθέτηση, τον ανασχεδιασμό και τον προγραμματισμό της ιστοσελίδας, τη σύνθεση των 25 καρτών και τους ελέγχους λειτουργίας. Η αναζήτηση ανακτά έτοιμες κάρτες· δεν εκτελεί LLM ή ζωντανό GraphRAG.</p><p>Στιγμιότυπο μελέτης: 19 Νοεμβρίου 2026. Οι πηγές έχουν τις δικές τους ημερομηνίες· δεν πρόκειται για ζωντανή ενημέρωση.</p><button class="secondary" data-action="deliverables">Δήλωση ΤΝ & αρχεία</button><button class="secondary" data-action="bibliography">Βιβλιογραφία</button></div>`, 'ΜΕΘΟΔΟΣ / ΔΙΑΦΑΝΕΙΑ');
+      openDialog('Πώς διαβάζεται αυτή η μελέτη;', `<div class="prose"><p>${esc(data.classificationNote)}</p><p>${esc(knowledge.scopeNote)}</p><div class="legend-list">${Object.keys(labels).map(type => badge(type)).join(' ')}</div><h3>Χρήση ΤΝ</h3><p>${esc(data.aiDeclaration)}</p><p>Στην έκδοση αυτή η ΤΝ υποστήριξε επίσης την αρχειοθέτηση, τον ανασχεδιασμό και τον προγραμματισμό της ιστοσελίδας, τη σύνθεση των 25 καρτών και τους ελέγχους λειτουργίας. Η αναζήτηση ανακτά έτοιμες κάρτες· δεν εκτελεί LLM ή ζωντανό GraphRAG.</p><p>Η ενημέρωση της 20ής Νοεμβρίου 2026 πρόσθεσε επιλογή θέματος, επεξηγήσεις ακρωνυμίων, επίσημες φωτογραφίες και καθοδηγούμενη περιήγηση με συνδρομή ΤΝ. Στιγμιότυπο περιεχομένου μελέτης: 19 Νοεμβρίου 2026. Οι πηγές έχουν τις δικές τους ημερομηνίες· δεν πρόκειται για ζωντανή ενημέρωση.</p><button class="secondary" data-action="deliverables">Δήλωση ΤΝ & αρχεία</button><button class="secondary" data-action="bibliography">Βιβλιογραφία</button></div>`, 'ΜΕΘΟΔΟΣ / ΔΙΑΦΑΝΕΙΑ');
     }
     if (name === 'deliverables') deliverables();
     if (name === 'trace') { const el = $('#finding-trace'); el.hidden = !el.hidden; trigger.setAttribute('aria-expanded', String(!el.hidden)); if (!el.hidden) el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',block:'nearest'}); }
@@ -176,11 +188,12 @@
     }
     if (name === 'bibliography') {
       openDialog('Βιβλιογραφία της εργασίας', '<p role="status">Ανοίγουμε τη βιβλιογραφία…</p>', 'ΕΡΓΑΣΙΑ / ΑΝΑΦΟΡΕΣ');
+      const expectedRevision = dialogRevision;
       try {
         const p = await loadPaper();
-        if (!dialog.open) return;
-        $('#dialog-body').innerHTML = `<div class="prose">${p.bibliography.map(x => `<p>${esc(typeof x === 'string' ? x : x.harvard)}${x.url ? ` <a href="${href(x.url)}" target="_blank" rel="noopener">Πηγή ↗</a>` : ''}</p>`).join('')}</div>`;
-      } catch { $('#dialog-body').innerHTML = '<p>Δεν άνοιξε το αρχείο. Η βιβλιογραφία περιλαμβάνεται στο Word της αρχικής.</p>'; }
+        if (!dialog.open || dialogRevision !== expectedRevision) return;
+        $('#dialog-body').innerHTML = `<div class="prose" data-terms-skip>${p.bibliography.map(x => `<p>${esc(typeof x === 'string' ? x : x.harvard)}${x.url ? ` <a href="${href(x.url)}" target="_blank" rel="noopener">Πηγή ↗</a>` : ''}</p>`).join('')}</div>${termNotes(p.bibliography.map(x => x.harvard || x).join(' '))}`;
+      } catch { if (dialogRevision === expectedRevision) $('#dialog-body').innerHTML = '<p>Δεν άνοιξε το αρχείο. Η βιβλιογραφία περιλαμβάνεται στο Word της αρχικής.</p>'; }
     }
   }
   document.addEventListener('click', event => {
@@ -189,14 +202,14 @@
     if (button.id === 'close-dialog') return closeDialog();
     if (button.dataset.action) { action(button.dataset.action, button); return; }
     if (!ready) return;
-    if (button.dataset.finding) { activeFinding = button.dataset.finding; history.replaceState(null,'',`#findings/${activeFinding}`); renderFinding(); }
-    if (button.dataset.scope) { selectedScope = button.dataset.scope; renderCompany(); }
+    if (button.dataset.finding) { activeFinding = button.dataset.finding; history.replaceState(null,'',`#findings/${activeFinding}`); renderFinding(); $(`[data-finding="${activeFinding}"]`).focus({preventScroll:true}); }
+    if (button.dataset.scope) { selectedScope = button.dataset.scope; renderCompany(); $(`[data-scope="${selectedScope}"]`).focus({preventScroll:true}); }
     if (button.dataset.sources) openDialog('Έλεγξε το στοιχείο στην πηγή.', sourceList(button.dataset.sources.split(',')), 'ΠΗΓΕΣ / ΑΚΡΙΒΕΙΣ ΠΑΡΑΠΟΜΠΕΣ');
     if (button.dataset.card) openCard(button.dataset.card);
     if (button.dataset.requirement) openRequirement(button.dataset.requirement);
     if (button.dataset.fullAnswer) fullAnswer(button.dataset.fullAnswer, button);
     if (button.dataset.query) { $('#query').value = button.dataset.query; search(button.dataset.query); }
-    if (button.dataset.result) { selectedResult = button.dataset.result; renderResults(); }
+    if (button.dataset.result) { selectedResult = button.dataset.result; renderResults(); $(`[data-result="${selectedResult}"]`).focus({preventScroll:true}); }
     if (button.dataset.clinic) {
       const c = finding().metrics.clinics.find(x => x.id === button.dataset.clinic);
       $('#clinic-detail').innerHTML = `<strong>${esc(c.label)}: ${c.nps2024} → ${c.nps2025}</strong><span>${c.changePoints > 0 ? '+' : '−'}${Math.abs(c.changePoints)} μονάδες NPS · ${c.responses2025.toLocaleString('el-GR')} απαντήσεις το 2025.</span>`;
@@ -220,6 +233,40 @@
     }
   }
   $('#retry').addEventListener('click', load);
+  // The guide reuses the very same controls and content as ordinary navigation.
+  window.ConsoleApp = Object.freeze({
+    isReady: () => ready,
+    async prepareTour(mode) {
+      const route = r => { history.replaceState(null,'',`#${r}`); renderRoute(); };
+      if (['home','map','theme','photos','downloads','archive','end'].includes(mode)) route('home');
+      if (['findings','nps','value','limits','trace','sources'].includes(mode)) { activeFinding = 'nps'; route('findings/nps'); }
+      if (mode === 'value') await action('finding-value');
+      if (mode === 'limits') await action('finding-limits');
+      if (mode === 'trace') { $('#finding-trace').hidden = false; $('[data-action="trace"]').setAttribute('aria-expanded','true'); }
+      if (mode === 'sources') openDialog('Έλεγξε το στοιχείο στην πηγή.', sourceList(allSourceIds(finding())), 'ΠΗΓΕΣ / ΑΚΡΙΒΕΙΣ ΠΑΡΑΠΟΜΠΕΣ');
+      if (['elliniko','gaia'].includes(mode)) { activeFinding = mode; route(`findings/${mode}`); }
+      if (['company','company-metrics','structure','competition','pestel'].includes(mode)) { selectedScope = 'company'; route('company'); }
+      if (['structure','competition'].includes(mode)) await action(mode);
+      if (mode === 'pestel') openRequirement('q1b');
+      if (['assignment','prompt','full-answer','files'].includes(mode)) route('assignment');
+      if (mode === 'prompt' || mode === 'full-answer') openRequirement('q2a');
+      if (mode === 'full-answer') await fullAnswer('q2a',$('[data-full-answer="q2a"]'));
+      if (mode === 'files') deliverables();
+      if (['ask','retrieval'].includes(mode)) { route('ask'); if (mode === 'retrieval') { $('#query').value = 'Γιατί 2028 και 2031 στο Ελληνικό;'; search($('#query').value); } }
+      if (mode === 'method') { route('home'); await action('method'); }
+      window.ConsoleTerms?.annotate(document.body);
+    }
+  });
+  // Expand fresh content after route changes and modal/search rendering, without
+  // changing source records, user input, URLs or official quotations.
+  if (window.ConsoleTerms) {
+    const annotate = () => window.ConsoleTerms.annotate(document.body);
+    annotate();
+    new MutationObserver(records => {
+      if (records.some(record => record.addedNodes.length)) annotate();
+    }).observe(document.body,{childList:true,subtree:true});
+  }
+  fetch('data/console-media.json?v=2.1').then(r => { if (!r.ok) throw new Error('media'); return r.json(); }).then(value => { media = value.photos; renderPhotos(); }).catch(() => { $('#home-photos').hidden = true; });
   renderRoute();
   load();
 })();
