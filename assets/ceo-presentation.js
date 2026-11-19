@@ -3,10 +3,14 @@
   const $ = id => document.getElementById(id);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const signed = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n);
-  const labels = {published_fact:'Δημοσιευμένο στοιχείο',company_claim:'Εταιρική ανακοίνωση',proposal:'Δική μας πρόταση προς έλεγχο',hypothesis:'Δική μας υπόθεση',context:'Ανεξάρτητη διοικητική μελέτη'};
+  const labels = {published_fact:'Δημοσιευμένο στοιχείο',company_claim:'Εταιρική ανακοίνωση',proposal:'Δική μας πρόταση προς έλεγχο',hypothesis:'Δική μας υπόθεση',context:'Ανεξάρτητη διοικητική μελέτη',analysis:'Δική μας διοικητική αξιολόγηση'};
   const badge = type => '<span class="type-badge '+esc(type)+'">'+esc(labels[type])+'</span>';
   let data, player, sources = new Map(), findingMap = new Map(), modalOpen = false, lastFrame = null, renderedIndex = -1, lastPhase = '', lastTime = '', loadAttempt = 0, opener = null;
   const limits = {
+    'company-profile':'Ίδια περίοδος και ίδια περίμετρος πριν από κάθε σύγκριση. Δεν υπολογίζουμε μερίδιο αγοράς χωρίς κοινό παρονομαστή.',
+    'pestel-analysis':'Οι εξωτερικές πιέσεις στηρίζουν την αξιολόγησή μας. Δεν αποδεικνύουν από μόνες τους συγκεκριμένη εταιρική απόφαση.',
+    'structure-analysis':'Οι επίσημοι ρόλοι τεκμηριώνονται. Ο χαρακτηρισμός της δομής και οι κίνδυνοι συντονισμού αποτελούν δική μας αξιολόγηση.',
+    'culture-leadership':'Αξιολόγηση δημόσιων ενδείξεων. Δεν διαθέτουμε έρευνα εργαζομένων ούτε πλήρη στοιχεία για το εύρος διοίκησης.',
     cover:'Ακαδημαϊκή μελέτη με υποστήριξη ΤΝ. Ο ουσιαστικός έλεγχος της ομάδας εκκρεμεί.',
     decisions:'Οι προτεινόμενοι έλεγχοι δεν προϋποθέτουν ότι απουσιάζουν ήδη από την εταιρεία.',
     'nps-total':'Έξι ελληνικές μονάδες. Διαφορετικά δείγματα ανά έτος. Ο NPS δεν μετρά κλινική ποιότητα.',
@@ -22,7 +26,7 @@
   };
 
   function validate(payload) {
-    if (!payload || payload.scenes?.length !== 12 || payload.findings?.length !== 3) throw Error('Invalid presentation');
+    if (!payload || payload.scenes?.length !== 15 || payload.findings?.length !== 3 || payload.requirements?.length !== 6) throw Error('Invalid presentation');
     const ids = new Set(payload.sources.map(s => s.id));
     if (ids.size !== payload.sources.length) throw Error('Duplicate source');
     for (const s of payload.sources) if (new URL(s.url).protocol !== 'https:') throw Error('Invalid source URL');
@@ -32,13 +36,16 @@
       for (const child of Object.values(value)) if (typeof child === 'object') walk(child);
     };
     walk(payload);
-    if (new Set(payload.scenes.map(s => s.id)).size !== 12) throw Error('Duplicate scene');
+    if (new Set(payload.scenes.map(s => s.id)).size !== payload.scenes.length) throw Error('Duplicate scene');
     for (const [i,s] of payload.scenes.entries()) {
       if (s.slide !== i + 1 || !(s.seconds > 0) || !limits[s.visual] || !Array.isArray(s.limitations)) throw Error('Invalid scene');
       if (!labels[s.classification] && s.classification !== 'mixed') throw Error('Invalid classification');
     }
-    if (JSON.stringify(payload.scenes.filter(s => s.pauseAtFinding).map(s => s.slide)) !== '[4,6,9]') throw Error('Invalid stops');
-    if (payload.scenes.reduce((n,s)=>n+s.seconds,0) !== 420 || payload.scenes.filter(s=>!s.pauseAtFinding).reduce((n,s)=>n+s.seconds,0) !== 300) throw Error('Invalid timing');
+    if (JSON.stringify(payload.scenes.filter(s => s.pauseAtFinding).map(s => s.slide)) !== '[5,7,11]') throw Error('Invalid stops');
+    if (payload.scenes.reduce((n,s)=>n+s.seconds,0) !== payload.durationSeconds || payload.scenes.filter(s=>!s.pauseAtFinding).reduce((n,s)=>n+s.seconds,0) !== payload.autoplaySeconds) throw Error('Invalid timing');
+    const required = new Set(payload.requirements.map(r=>r.id));
+    for (const s of payload.scenes) for (const id of s.requirementIds || []) if (!required.has(id)) throw Error('Invalid requirement');
+    for (const r of payload.requirements) if (!r.answer || !r.prompt || !payload.scenes.some(s=>s.requirementIds?.includes(r.id))) throw Error('Uncovered requirement');
     return payload;
   }
 
@@ -50,6 +57,13 @@
   function visual(scene) {
     const n = findingMap.get('nps').metrics, e = findingMap.get('elliniko').metrics, g = findingMap.get('gaia').metrics;
     switch (scene.visual) {
+      case 'company-profile': {
+        const c=scene.content;
+        return '<p class="subline">'+esc(c.scope)+' · '+esc(c.services)+'</p><div class="company-layout"><table class="company-metrics"><thead><tr>'+c.metricHeaders.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+c.metrics.map(row=>'<tr>'+row.map((v,i)=>'<'+(i?'td':'th')+'>'+esc(v)+'</'+(i?'td':'th')+'>').join('')+'</tr>').join('')+'</tbody></table><div class="earnings"><p><span>'+esc(c.profit[0])+'</span><strong>'+esc(c.profit[1])+'</strong></p><p><span>'+esc(c.net[0])+'</span><strong class="negative-text">'+esc(c.net[1])+'</strong></p></div></div><div class="competitor-line"><span>'+esc(c.comparison.label)+'</span>'+c.comparison.values.map(row=>'<strong>'+esc(row[0])+' '+esc(row[1])+'</strong>').join('')+'</div><p class="micro-hint">'+esc(c.comparison.limit)+'</p>';
+      }
+      case 'pestel-analysis': return '<div class="pestel-list" role="list">'+scene.content.rows.map(row=>'<div class="pestel-row" role="listitem"><b>'+esc(row[0])+'</b><span>'+esc(row[1])+'</span><strong>'+esc(row[2])+'</strong><span>'+esc(row[3])+'</span></div>').join('')+'</div><p class="micro-hint">Αριστερά η πίεση του περιβάλλοντος. Δεξιά η διοικητική απόκριση που προτείνουμε.</p>';
+      case 'structure-analysis': return '<div class="structure-layout"><ol class="structure-levels">'+scene.content.levels.map(row=>'<li><strong>'+esc(row[0])+'</strong><span>'+esc(row[1])+'</span></li>').join('')+'</ol><div class="structure-balance"><h3>Δυνητικά οφέλη</h3><p>'+scene.content.advantages.map(esc).join('<br>')+'</p><h3 class="negative-text">Κίνδυνοι προς έλεγχο</h3><p>'+scene.content.risks.map(esc).join('<br>')+'</p></div></div><p class="micro-hint">Συνοπτική ομαδοποίηση του δημοσιευμένου οργανογράμματος Ομίλου. Θεωρία: Mintzberg.</p>';
+      case 'culture-leadership': return '<div class="culture-dimensions">'+scene.content.dimensions.map((row,i)=>'<div><b>'+String(i+1).padStart(2,'0')+'</b><strong>'+esc(row[0])+'</strong><span>'+esc(row[1])+'</span></div>').join('')+'</div><div class="leadership-interpretation">'+scene.content.leadership.map(row=>'<div><strong>'+esc(row[0])+'</strong><span>'+esc(row[1])+'</span></div>').join('')+'</div><p class="micro-hint">Οι επτά διαστάσεις συνδέονται με δημόσιες ενδείξεις. Η ερμηνεία ηγεσίας παραμένει προς έλεγχο.</p>';
       case 'cover': return '<div class="opening-visual"><p>Δημόσια στοιχεία.<br>Τρία ερωτήματα<br>με διοικητική αξία.</p><img src="assets/media/marousi.png" width="312" height="246" alt="Ιατρικό Κέντρο Αθηνών στο Μαρούσι"></div>';
       case 'decisions': return '<div class="decision-rows">'+[['Εμπειρία ασθενών','Πού χρειάζεται διερεύνηση;'],['Ετοιμότητα επένδυσης','Με ποιο κοινό ορόσημο;'],['Αξία χώρου','Ποια χρήση αξίζει περισσότερο;']].map(r=>'<div class="decision-row"><strong>'+r[0]+'</strong><span>'+r[1]+'</span></div>').join('')+'</div>';
       case 'nps-total': return '<p class="subline">NPS: πρόθεση σύστασης ασθενών</p><div class="number-pair"><div class="number-block old"><strong>'+n.total.nps2024+'</strong><span>2024</span></div><div class="pair-line" aria-hidden="true"></div><div class="number-block"><strong>'+n.total.nps2025+'</strong><span>2025</span></div></div><p class="delta-callout">'+signed(n.total.changePoints)+' μονάδα NPS στο σύνολο</p>';
@@ -74,8 +88,8 @@
     if (state.index < 0) { controls(); return; }
     const scene = data.scenes[state.index];
     document.body.dataset.scene = scene.id;
-    $('scene-number').textContent = String(state.index+1).padStart(2,'0')+' / 12';
-    $('scene-chapter').textContent = state.index<2?'Η διοικητική αξία':state.index<5?'Εμπειρία ασθενών':state.index<8?'Ελληνικό':state.index<11?'ΓΑΙΑ':'Η επόμενη απόφαση';
+    $('scene-number').textContent = String(state.index+1).padStart(2,'0')+' / '+data.scenes.length;
+    $('scene-chapter').textContent = scene.chapter || '';
     const badges = scene.classification === 'mixed' ? badge('published_fact')+badge('company_claim') : badge(scene.classification);
     $('scene').innerHTML = '<div class="badge-row">'+badges+'</div><h2 id="scene-title" tabindex="-1">'+esc(scene.title)+'</h2><div class="visual">'+visual(scene)+'</div><p class="scene-limit">'+esc(limits[scene.visual])+'</p>';
     const stop = data.scenes.filter(s=>s.pauseAtFinding).findIndex(s=>s.id===scene.id);
@@ -88,7 +102,7 @@
       b.style.removeProperty('--fill');
     }
     history.replaceState(null,'','#'+scene.id);
-    $('announcement').textContent = 'Σκηνή '+(state.index+1)+' από 12. '+scene.title+(scene.pauseAtFinding?'. Παύση ευρήματος. Συνεχίζετε εσείς.':'');
+    $('announcement').textContent = 'Σκηνή '+(state.index+1)+' από '+data.scenes.length+'. '+scene.title+(scene.pauseAtFinding?'. Παύση ευρήματος. Συνεχίζετε εσείς.':'');
     imageFallbacks(); controls();
   }
 
@@ -99,7 +113,7 @@
     $('pause-button').hidden=frozen||ended;
     $('pause-button').textContent=s.phase==='playing'?'Παύση':'Συνέχιση ροής';
     $('next-button').hidden=ended;
-    $('next-button').textContent=frozen?'Συνέχεια':s.index===11?'Ολοκλήρωση':'Επόμενο';
+    $('next-button').textContent=frozen?'Συνέχεια':s.index===data.scenes.length-1?'Ολοκλήρωση':'Επόμενο';
     $('restart-button').hidden=!ended;
     if (s.phase!==lastPhase) {
       $('player-status').textContent=({intro:'Έτοιμο',playing:'Αυτόματη εναλλαγή',paused:'Σε παύση',frozen:'Συνεχίζετε εσείς',ended:'Η παρουσίαση ολοκληρώθηκε'})[s.phase];
@@ -162,7 +176,8 @@
     if(f)allRefs(f,ids);
     let html=f?findingMarkup(f):'<p>'+esc(scene.summary)+'</p>';
     html+='<h3>Όρια ερμηνείας</h3><ul>'+scene.limitations.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
-    if(ids.size)html+='<h3>Πρωτογενείς πηγές και σελίδες</h3>'+sourceMarkup(ids);
+    if(scene.content?.answer)html+='<h3>Η διοικητική αξιολόγηση</h3><p>'+esc(scene.content.answer)+'</p>';
+    if(ids.size)html+='<h3>Πηγές και σελίδες</h3>'+sourceMarkup(ids);
     else html+='<p>Σύνθεση των τριών ευρημάτων. Οι επιμέρους πηγές βρίσκονται στις αντίστοιχες σκηνές.</p>';
     if(scene.classification==='proposal')html+='<p>Οι πηγές τεκμηριώνουν την αφετηρία της πρότασης, όχι την αποτελεσματικότητά της.</p>';
     openDialog(scene.title,html);
@@ -171,14 +186,21 @@
     const scene=data.scenes[player.getState().index];if(!scene)return;
     openDialog('Τι λέμε σε αυτή τη στάση','<p class="notes-spoken">'+esc(scene.spoken)+'</p>'+(scene.pauseQuestion?'<p class="notes-pause"><strong>Παύση και ερώτημα:</strong> '+esc(scene.pauseQuestion)+'</p>':'')+'<p>Ενδεικτικός χρόνος ομιλίας: '+scene.seconds+'″. Η αυτόματη ροή παραμένει σε παύση όσο διαβάζετε.</p>','ΣΥΝΤΟΜΕΣ ΣΗΜΕΙΩΣΕΙΣ ΟΜΙΛΗΤΗ');
   }
+  function showRequirements(all=false) {
+    if (!data) return;
+    const scene=player && data.scenes[player.getState().index];
+    const selected=all || !scene || !scene.requirementIds?.length ? data.requirements : data.requirements.filter(r=>scene.requirementIds.includes(r.id));
+    const html='<p>Κάθε θέμα έχει δύο υποερωτήματα. Τα τρία ευρήματα λειτουργούν ως εφαρμογές της διοικητικής ανάλυσης.</p>'+selected.map(r=>'<section class="requirement-answer"><p class="requirement-label">'+esc(r.label)+'</p><aside class="official-prompt"><strong>Επίσημο ζητούμενο · σ. '+r.page+'</strong><p>'+esc(r.prompt)+'</p></aside><h3>Η απάντησή μας</h3><p>'+esc(r.answer)+'</p><p><strong>Τι παραμένει άγνωστο:</strong> '+esc(r.limit)+'</p><div class="requirement-slides">'+data.scenes.filter(s=>s.requirementIds?.includes(r.id)).map(s=>'<button class="secondary" data-scene-index="'+(s.slide-1)+'">Στάση '+s.slide+'</button>').join('')+'</div><p><a href="research.html#paper-'+esc(r.sectionId)+'">Διαβάστε την πλήρη απάντηση '+esc(r.shortLabel)+' στο report</a></p></section>').join('')+'<p><a href="writing/Μελέτη-με-εκφωνήσεις-Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Word με εκφωνήσεις</a> · <a href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Καθαρό Word απαντήσεων</a></p>';
+    openDialog(all?'Πώς απαντάμε στα θέματα 1–2–3':'Η σύνδεση με την εκφώνηση',html,'ΕΚΦΩΝΗΣΗ ΚΑΙ ΑΠΑΝΤΗΣΗ');
+  }
   function showChapters() {
-    openDialog('Η διαδρομή των 12 σκηνών','<p>5 λεπτά αυτόματης ροής και τρεις στάσεις χωρίς χρονικό όριο. Περίπου 7 λεπτά με τα προτεινόμενα σχόλια.</p><div class="chapter-list">'+data.scenes.map((s,i)=>'<button data-scene-index="'+i+'"><b>'+String(i+1).padStart(2,'0')+'</b><span>'+esc(s.title)+'</span><small>'+(s.pauseAtFinding?'ΣΤΑΣΗ':s.seconds+'″')+'</small></button>').join('')+'</div><p><button class="secondary" data-action="restart">Από την αρχή</button></p>','ΕΠΙΛΟΓΗ ΣΚΗΝΗΣ');
+    openDialog('Η διαδρομή των 15 σκηνών','<p>6 λεπτά αυτόματης ροής και τρεις στάσεις χωρίς χρονικό όριο. Περίπου 8 λεπτά με τα προτεινόμενα σχόλια.</p><div class="chapter-list">'+data.scenes.map((s,i)=>'<button data-scene-index="'+i+'"><b>'+String(i+1).padStart(2,'0')+'</b><span>'+esc(s.title)+'</span><small>'+(s.pauseAtFinding?'ΣΤΑΣΗ':s.seconds+'″')+'</small></button>').join('')+'</div><p><button class="secondary" data-action="restart">Από την αρχή</button></p>','ΕΠΙΛΟΓΗ ΣΚΗΝΗΣ');
   }
   function showMethod() {
     openDialog('Τι γνωρίζουμε και τι υποθέτουμε','<div class="method-legend"><section>'+badge('published_fact')+'<p>Αριθμοί και ημερομηνίες που εντοπίζουμε στις πηγές. Η μεταγραφή τους δεν αποτελεί ανεξάρτητη επαλήθευση εταιρικής μέτρησης.</p></section><section>'+badge('company_claim')+'<p>Εξηγήσεις, επιδιώξεις και προβλέψεις που αποδίδουμε ρητά στην εταιρεία που τις δημοσίευσε.</p></section><section>'+badge('hypothesis')+'<p>Δικές μας πιθανές εξηγήσεις. Συνοδεύονται από προτεινόμενο έλεγχο και στοιχείο που θα μπορούσε να τις αντικρούσει.</p></section></div><h3>Πραγματική χρήση ΤΝ</h3><p>Η ΤΝ υποστήριξε ουσιωδώς την έρευνα, τη διασταύρωση πηγών, την πλήρη συγγραφή, το PowerPoint και την κατασκευή και δοκιμή της ιστοσελίδας. Ο ουσιαστικός έλεγχος της ομάδας εκκρεμεί. Δεν δηλώνεται εταιρική έγκριση των συμπερασμάτων.</p><p>Η παρουσίαση χρησιμοποιεί επιμελημένα δημόσια τεκμήρια. Δεν παράγει ζωντανές απαντήσεις LLM και δεν έχει δημόσια σύνδεση στη βάση Neo4j.</p><p><a href="research.html#ai-declaration">Δήλωση χρήσης ΤΝ και πλήρης μελέτη</a></p>','ΜΕΘΟΔΟΣ & ΔΙΑΦΑΝΕΙΑ');
   }
   function showArchive() {
-    const links=[['writing/CEO-Ιατρικό-Αθηνών-3-Ευρήματα.pptx','PowerPoint προς CEO','Οι ίδιες 12 διαφάνειες με σημειώσεις ομιλητή.'],['research.html#paper','Εργασία και παραδοτέα','Το πλήρες κείμενο, Word και η χωριστή ακαδημαϊκή παρουσίαση.'],['strategy.html','Ανταγωνισμός και στρατηγική','Οι αναλυτικές συγκρίσεις και οι ερευνητικές υποθέσεις.'],['organization.html','Ετήσιο οργανόγραμμα','Πρόσωπα, ρόλοι, πηγές και μετακινούμενοι κόμβοι.'],['history.html','Ιστορικός χάρτης','Ελλάδα, Ρουμανία και τεκμηριωμένες μεταβολές στον χρόνο.'],['sap.html','Πριν και μετά το SAP','Σχέσεις, τεκμήρια και όρια αιτιότητας.'],['historical-presentation.html','Προηγούμενη ιστορική παρουσίαση','Η ευρύτερη διαδρομή 15 σκηνών και επτά ευρημάτων.'],['data/ceo-presentation.json','Δεδομένα των 12 σκηνών','Δημοσιευμένα στοιχεία, υποθέσεις και πρωτογενείς πηγές.']];
+    const links=[['writing/CEO-Ιατρικό-Αθηνών-3-Ευρήματα.pptx','PowerPoint προς CEO','Οι ίδιες 15 διαφάνειες με σημειώσεις ομιλητή.'],['research.html#paper','Εργασία και παραδοτέα','Οι απαντήσεις στα έξι υποερωτήματα, σε Word με εκφωνήσεις και σε καθαρή έκδοση.'],['strategy.html','Ανταγωνισμός και στρατηγική','Οι αναλυτικές συγκρίσεις και οι ερευνητικές υποθέσεις.'],['organization.html','Ετήσιο οργανόγραμμα','Πρόσωπα, ρόλοι, πηγές και μετακινούμενοι κόμβοι.'],['history.html','Ιστορικός χάρτης','Ελλάδα, Ρουμανία και τεκμηριωμένες μεταβολές στον χρόνο.'],['sap.html','Πριν και μετά το SAP','Σχέσεις, τεκμήρια και όρια αιτιότητας.'],['historical-presentation.html','Προηγούμενη ιστορική παρουσίαση','Η ευρύτερη διαδρομή 15 σκηνών και επτά ευρημάτων.'],['data/ceo-presentation.json','Δεδομένα των 15 σκηνών','Δημοσιευμένα στοιχεία, υποθέσεις και πρωτογενείς πηγές.']];
     openDialog('Η έρευνα πίσω από την παρουσίαση','<div class="archive-links">'+links.map(r=>'<a href="'+esc(r[0])+'">'+esc(r[1])+'<small>'+esc(r[2])+'</small></a>').join('')+'</div>','ΑΝΑΛΥΤΙΚΟ ΑΡΧΕΙΟ');
   }
   function showPilot(id) {
@@ -190,11 +212,13 @@
     if(action==='retry'){load();return;}
     if(action==='archive'){showArchive();return;}
     if(action==='method'){showMethod();return;}
+    if(action==='requirements'){showRequirements(true);return;}
     if(action==='close'){closeDialog();return;}
     if(!player)return;
     if(['start','next','previous','restart'].includes(action)){navigate(action);return;}
     if(action==='pause'){player.togglePause();lastFrame=null;controls();}
     if(action==='notes')showNotes();
+    if(action==='alignment')showRequirements();
     if(action==='sources')showSources();
     if(action==='chapters')showChapters();
     if(action==='fullscreen'){
@@ -227,9 +251,9 @@
   });
   async function load() {
     const attempt=++loadAttempt,controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),10000);
-    $('retry-button').hidden=true;$('start-button').disabled=true;$('load-status').textContent='Προετοιμασία των 12 σκηνών…';
+    $('retry-button').hidden=true;$('start-button').disabled=true;$('load-status').textContent='Προετοιμασία των 15 σκηνών…';
     try{
-      const response=await fetch('data/ceo-presentation.json?v=1.1.0',{signal:controller.signal,cache:'no-cache'});
+      const response=await fetch('data/ceo-presentation.json?v=1.2.0',{signal:controller.signal,cache:'no-cache'});
       if(!response.ok)throw Error('HTTP '+response.status);
       const payload=validate(await response.json());if(attempt!==loadAttempt)return;
       data=payload;sources=new Map(data.sources.map(s=>[s.id,s]));findingMap=new Map(data.findings.map(f=>[f.id,f]));player=window.CeoPlayerCore.createPlayer(data.scenes);

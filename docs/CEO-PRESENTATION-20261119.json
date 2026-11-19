@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-19",
+  "canonicalFile": "writing/CEO-Ιατρικό-Αθηνών-3-Ευρήματα.pptx",
+  "submissionAlias": "writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pptx",
+  "sha256": "4d27c0362efbe61bce5bda7dca2d99b490a9c0b4905098ace5333e8f39da2e19",
+  "bytes": 321404,
+  "slideCount": 15,
+  "sourceSlideCount": 12,
+  "sourceRevision": "1feaa6e",
+  "sourceSha256": "3900b6dbc09423ab3a00b899ac280f886823035f5f7dc831d755ed0b0c871551",
+  "requirementsCovered": {
+    "q1a": [
+      2,
+      4,
+      5,
+      11
+    ],
+    "q1b": [
+      3,
+      7
+    ],
+    "q2a": [
+      9
+    ],
+    "q2b": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15
+    ],
+    "q3a": [
+      14
+    ],
+    "q3b": [
+      14,
+      15
+    ]
+  },
+  "timesSeconds": [
+    20,
+    35,
+    35,
+    20,
+    40,
+    25,
+    40,
+    25,
+    40,
+    30,
+    40,
+    25,
+    25,
+    45,
+    35
+  ],
+  "manualPauseSlides": [
+    5,
+    7,
+    11
+  ],
+  "autoRunningSeconds": 360,
+  "suggestedLiveCommentarySeconds": 120,
+  "nativeTableSlides": [
+    2,
+    3
+  ],
+  "nativeChartSlides": [
+    5
+  ],
+  "retainedEditableDiagramSlides": [
+    4,
+    6,
+    7,
+    8,
+    10,
+    13
+  ],
+  "speakerNotes": "All 15 slides include Greek notes and explicit explanation of their connection to the assignment.",
+  "finalizerReceipt": "writing/ceo15-alignment-build/validation-v2.json",
+  "packageIntegrityPassed": true,
+  "layoutChecksPassed": true,
+  "artifactToolReimportPassed": true,
+  "visualReview": {
+    "inspectedSlides": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "renderer": "Artifact Tool PNG 1280x720",
+    "result": "All final slides inspected individually. Culture evidence wrapping repaired before final delivery. No visible unintended overlap or clipping."
+  },
+  "nativePowerPointOpened": false,
+  "limitations": [
+    "Public evidence does not measure actual employee culture or individual leadership style.",
+    "Actual managerial span of control and comparable market share remain unknown.",
+    "The NPS chart is native editable PowerPoint chart data with six literal numerical values; no retained Excel workbook formulas are claimed."
+  ],
+  "aiAssistance": "Codex restructured and authored the four explicit assignment synthesis slides, their Greek notes and requirement mapping, edited the existing deck and generated the build and validation code. Substantive student review remains pending.",
+  "revision": "15 slides aligned with six assignment requirements",
+  "slides": 15,
+  "spokenDurationSeconds": 480,
+  "humanAcademicReview": "pending"
+}

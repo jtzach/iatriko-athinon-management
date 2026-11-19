@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Τρία ευρήματα για τη διοίκηση · Ιατρικό Αθηνών</title>
-  <meta name="description" content="12 οπτικές σκηνές για τη διοίκηση: εμπειρία ασθενών, Ελληνικό και ΓΑΙΑ. Αυτόματη παρουσίαση με τρεις στάσεις, πηγές και σαφή διάκριση στοιχείων και υποθέσεων.">
+  <meta name="description" content="15 οπτικές σκηνές για τη διοίκηση: εμπειρία ασθενών, Ελληνικό και ΓΑΙΑ. Αυτόματη παρουσίαση με τρεις στάσεις, πηγές και σαφή διάκριση στοιχείων και υποθέσεων.">
   <meta name="theme-color" content="#102b35">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/ceo-presentation.css?v=1.1.0">
-  <script defer src="assets/ceo-player-core.js?v=1.1.0"></script>
-  <script defer src="assets/ceo-presentation.js?v=1.1.0"></script>
+  <link rel="stylesheet" href="assets/ceo-presentation.css?v=1.2.0">
+  <script defer src="assets/ceo-player-core.js?v=1.2.0"></script>
+  <script defer src="assets/ceo-presentation.js?v=1.2.0"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Μετάβαση στην παρουσίαση</a>
   <header class="site-header">
     <a class="brand" href="index.html"><span aria-hidden="true">ι.</span><span>Ιατρικό Αθηνών<small>Ανεξάρτητη διοικητική μελέτη</small></span></a>
-    <nav aria-label="Κύρια πλοήγηση"><button data-action="chapters" id="chapters-button" disabled>Οι 12 στάσεις</button><button data-action="archive">Η έρευνα</button></nav>
+    <nav aria-label="Κύρια πλοήγηση"><button data-action="chapters" id="chapters-button" disabled>Οι 15 στάσεις</button><button data-action="requirements">Η εκφώνηση</button><button data-action="archive">Η έρευνα</button></nav>
   </header>
   <main id="main">
     <section id="intro" class="intro" aria-labelledby="intro-title">
@@ -23,15 +23,15 @@
         <p class="eyebrow">ΠΑΡΟΥΣΙΑΣΗ ΠΡΟΣ ΤΗ ΔΙΟΙΚΗΣΗ</p>
         <h1 id="intro-title">Τρία ευρήματα.<br>Συγκεκριμένες<br><em>αποφάσεις.</em></h1>
         <p class="intro-topics">Εμπειρία ασθενών · Ελληνικό · ΓΑΙΑ</p>
-        <div class="start-row"><button id="start-button" class="primary" data-action="start" disabled><span aria-hidden="true">▶</span> Start</button><p>5 λεπτά αυτόματης ροής + 3 στάσεις<br><strong>Περίπου 7 λεπτά με σχόλια</strong></p></div>
-        <p id="load-status" class="load-status" role="status">Προετοιμασία των 12 σκηνών…</p>
+        <div class="start-row"><button id="start-button" class="primary" data-action="start" disabled><span aria-hidden="true">▶</span> Start</button><p>6 λεπτά αυτόματης ροής + 3 στάσεις<br><strong>Περίπου 8 λεπτά με σχόλια</strong></p></div>
+        <p id="load-status" class="load-status" role="status">Προετοιμασία των 15 σκηνών…</p>
         <button id="retry-button" data-action="retry" class="text-button" hidden>Νέα προσπάθεια φόρτωσης</button>
       </div>
       <figure class="intro-photo"><img src="assets/media/marousi.png" width="312" height="246" alt="Ιατρικό Κέντρο Αθηνών στο Μαρούσι, από την επίσημη ιστορική αναδρομή"><figcaption>Μαρούσι <a href="https://www.iatriko.gr/istoriki_anadromi/" target="_blank" rel="noopener noreferrer">Πηγή φωτογραφίας</a></figcaption></figure>
       <div class="intro-footer"><p>Τζαχρήστας Ιωάννης · Χρήστου Αθανάσιος · Σταματόπουλος Κωνσταντίνος</p><button data-action="method">Μέθοδος & χρήση ΤΝ</button></div>
     </section>
-    <section id="presentation" class="presentation" hidden aria-label="Παρουσίαση 12 σκηνών">
-      <div class="scene-top"><span id="scene-number">01 / 12</span><span id="scene-chapter"></span><button data-action="fullscreen" id="fullscreen-button">Πλήρης οθόνη</button></div>
+    <section id="presentation" class="presentation" hidden aria-label="Παρουσίαση 15 σκηνών">
+      <div class="scene-top"><span id="scene-number">01 / 15</span><span id="scene-chapter"></span><button data-action="fullscreen" id="fullscreen-button">Πλήρης οθόνη</button></div>
       <article id="scene" class="scene" aria-labelledby="scene-title"></article>
       <div id="freeze-banner" class="freeze-banner" hidden><strong id="freeze-label"></strong><span id="freeze-question"></span><small>Η εικόνα μένει εδώ μέχρι να πατήσετε «Συνέχεια».</small></div>
       <div class="player" aria-label="Χειριστήρια παρουσίασης">
@@ -39,13 +39,13 @@
         <div class="player-row">
           <div class="playback-status"><strong id="player-status" role="status">Έτοιμο</strong><span id="time-remaining"></span></div>
           <div class="playback-buttons"><button id="previous-button" data-action="previous" class="secondary">Πίσω</button><button id="pause-button" data-action="pause" class="secondary">Παύση</button><button id="next-button" data-action="next" class="primary">Επόμενο</button><button id="restart-button" data-action="restart" class="primary" hidden>Από την αρχή</button></div>
-          <div class="detail-buttons"><button data-action="notes">Τι λέμε</button><button data-action="sources">Στοιχεία & πηγές</button></div>
+          <div class="detail-buttons"><button data-action="alignment">Πώς απαντάμε</button><button data-action="notes">Τι λέμε</button><button data-action="sources">Στοιχεία & πηγές</button></div>
         </div>
       </div>
     </section>
   </main>
   <dialog id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><span id="dialog-kind" class="eyebrow"></span><button id="close-dialog" data-action="close" aria-label="Κλείσιμο">Κλείσιμο</button></div><h2 id="dialog-title"></h2><div id="dialog-content"></div></dialog>
   <div id="announcement" class="sr-only" aria-live="polite"></div>
-  <noscript><p class="no-script">Η αυτόματη παρουσίαση χρειάζεται JavaScript. <a href="writing/CEO-Ιατρικό-Αθηνών-3-Ευρήματα.pptx">Κατεβάστε τις 12 διαφάνειες</a> ή <a href="research.html#paper">διαβάστε την εργασία</a>.</p></noscript>
+  <noscript><p class="no-script">Η αυτόματη παρουσίαση χρειάζεται JavaScript. <a href="writing/CEO-Ιατρικό-Αθηνών-3-Ευρήματα.pptx">Κατεβάστε τις 15 διαφάνειες</a> ή <a href="research.html#paper">διαβάστε την εργασία</a>.</p></noscript>
 </body>
 </html>

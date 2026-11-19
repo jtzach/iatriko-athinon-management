@@ -7,8 +7,9 @@ const { createPlayer } = require('../assets/ceo-player-core.js');
 const dataPath = path.join(__dirname, '../data/ceo-presentation.json');
 const fixture = [20, 25, 30, 45, 40, 40, 35, 40, 35, 35, 40, 35]
   .map((seconds, i) => ({ seconds, pauseAtFinding: [3, 5, 8].includes(i) }));
-const scenes = fs.existsSync(dataPath) ? JSON.parse(fs.readFileSync(dataPath, 'utf8')).scenes : fixture;
-const player = () => createPlayer(scenes);
+// Keep the original timing fixture stable so production content changes do not
+// silently redefine the state-machine unit tests.
+const player = () => createPlayer(fixture);
 let checks = 0;
 function check(name, run) {
   run(); checks += 1; console.log('PASS ' + name);
@@ -106,4 +107,46 @@ check('Browser UMD export works without CommonJS or external dependencies', () =
   const p = context.CeoPlayerCore.createPlayer(fixture);
   p.start(); p.advanceBy(75000); assert.equal(p.getState().phase, 'frozen');
 });
-console.log('CEO player: ' + checks + ' checks passed. Source: ' + (fs.existsSync(dataPath) ? 'data/ceo-presentation.json' : 'fallback fixture'));
+check('Published fifteen-scene flow has six automatic minutes and three manual stops', () => {
+  const actual = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  const p = createPlayer(actual.scenes);
+  assert.deepEqual(p.metadata, { totalScenes: 15, plannedDurationMs: 480000,
+    autoplayDurationMs: 360000, manualStops: 3, pauseSlides: [5, 7, 11] });
+  assert.deepEqual(actual.pauseSlides, p.metadata.pauseSlides);
+  p.start();
+  const stops = [];
+  let automaticMs = 0;
+  while (p.getState().phase !== 'ended') {
+    const state = p.getState();
+    if (state.phase === 'frozen') {
+      stops.push(state.index + 1);
+      const before = p.getState();
+      p.advanceBy(1e12); p.togglePause(); p.pause();
+      assert.deepEqual(p.getState(), before, 'A published finding requires explicit continuation');
+      p.next();
+      assert.equal(p.getState().elapsedMs, 0, 'No timing debt after a manual stop');
+    } else {
+      assert.equal(state.phase, 'playing');
+      automaticMs += state.remainingMs;
+      p.advanceBy(state.remainingMs);
+    }
+  }
+  assert.deepEqual(stops, [5, 7, 11]);
+  assert.equal(automaticMs, 360000);
+  assert.equal(p.getState().index, 14);
+  const ended = p.getState(); p.advanceBy(1e12); p.next();
+  assert.deepEqual(p.getState(), ended, 'The published presentation remains ended');
+});
+check('Large clock advances cannot skip any of the three published findings', () => {
+  const actual = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  const p = createPlayer(actual.scenes); p.start();
+  for (const slide of [5, 7, 11]) {
+    p.advanceBy(1e12);
+    assert.equal(p.getState().index, slide - 1);
+    assert.equal(p.getState().phase, 'frozen');
+    p.next();
+  }
+  p.advanceBy(1e12);
+  assert.equal(p.getState().index, 14); assert.equal(p.getState().phase, 'ended');
+});
+console.log('CEO player: ' + checks + ' checks passed. Stable twelve-scene unit fixture and actual fifteen-scene integration.');
