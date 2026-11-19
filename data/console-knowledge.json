@@ -1,0 +1,845 @@
+{
+  "version": "2026-11-19-console-1",
+  "preparedDate": "2026-11-19",
+  "language": "el",
+  "title": "Ρώτησε τη μελέτη",
+  "retrievalMode": "curated-source-retrieval",
+  "methodNote": "Αναζήτηση σε επιμελημένες κάρτες με παραπομπές. Δεν παράγονται νέες απαντήσεις από LLM. Η ταξινόμηση αφορά τον κεντρικό ισχυρισμό κάθε κάρτας· τα όρια δηλώνονται στο κείμενο.",
+  "scopeNote": "Διακρίνουμε νομική εταιρεία, ενοποιημένο Όμιλο και κλινικές. Οι δημόσιες πηγές δεν αποδεικνύουν εσωτερικές αιτίες. Δεν δηλώνουμε ανεξάρτητη επιστημονική πρωτοτυπία.",
+  "classificationLabels": {
+    "fact": "Τεκμηριωμένο στοιχείο",
+    "claim": "Εταιρική δήλωση",
+    "interpretation": "Δική μας ερμηνεία",
+    "proposal": "Πρόταση ελέγχου",
+    "unknown": "Δεν γνωρίζουμε"
+  },
+  "topics": [
+    {
+      "id": "company",
+      "label": "Η εταιρεία"
+    },
+    {
+      "id": "findings",
+      "label": "Τα 3 ευρήματα"
+    },
+    {
+      "id": "management",
+      "label": "Πώς διοικείται"
+    },
+    {
+      "id": "methods",
+      "label": "Με απλά λόγια"
+    },
+    {
+      "id": "assignment",
+      "label": "Η εργασία"
+    }
+  ],
+  "suggestedQueries": [
+    "Τι κρύβει ο συνολικός NPS;",
+    "Γιατί 2028 και 2031 στο Ελληνικό;",
+    "Γιατί μεταβιβάστηκε η ΓΑΙΑ;",
+    "Τι γνωρίζουμε για το SAP;",
+    "Πώς απαντώνται τα θέματα της εργασίας;",
+    "Τι σημαίνει EBITDA;"
+  ],
+  "cards": [
+    {
+      "id": "company-scope",
+      "title": "Ποια εταιρεία μελετάμε;",
+      "aliases": [
+        "Ιατρικό Αθηνών",
+        "εταιρεία όμιλος κλινική",
+        "νομική οντότητα",
+        "ΓΕΜΗ",
+        "356301000"
+      ],
+      "answer": "Μελετάμε την ΙΑΤΡΙΚΟ ΑΘΗΝΩΝ ΕΜΠΟΡΙΚΗ ΑΝΩΝΥΜΟΣ ΕΤΑΙΡΕΙΑ, ΓΕΜΗ 356301000. Η εταιρεία, ο ενοποιημένος Όμιλος και κάθε κλινική δεν είναι το ίδιο επίπεδο ανάλυσης. Γι’ αυτό επισημαίνουμε κάθε αριθμό: εταιρικά οικονομικά, ομιλική δομή ή εμπειρία ασθενών συγκεκριμένης μονάδας.",
+      "classification": "fact",
+      "sourceIds": [
+        "project-company-registry",
+        "AC-COMPANY"
+      ],
+      "requirementIds": [
+        "q1a"
+      ],
+      "topic": "company"
+    },
+    {
+      "id": "company-figures",
+      "title": "Πόσο μεγάλη είναι η εταιρεία;",
+      "aliases": [
+        "μέγεθος εταιρείας",
+        "έσοδα 2025",
+        "κύκλος εργασιών",
+        "προσωπικό εργαζόμενοι",
+        "ζημία κερδοφορία"
+      ],
+      "answer": "Το 2025 η εταιρεία δημοσιεύει έσοδα €271,723 εκατ., EBITDA €18,829 εκατ., ζημία μετά φόρων €10,173 εκατ. και 3.273 εργαζομένους. Ο Όμιλος έχει διαφορετικά μεγέθη: έσοδα €275,752 εκατ. και 3.499 εργαζομένους. Οι συνεργαζόμενοι ιατροί δεν προστίθενται αυτόματα στους εργαζομένους.",
+      "classification": "fact",
+      "sourceIds": [
+        "AC-COMPANY"
+      ],
+      "requirementIds": [
+        "q1a"
+      ],
+      "topic": "company"
+    },
+    {
+      "id": "ebitda-explained",
+      "title": "Τι σημαίνει EBITDA;",
+      "aliases": [
+        "EBITDA",
+        "λειτουργική κερδοφορία",
+        "κέρδη πριν τόκους φόρους αποσβέσεις",
+        "cash flow ταμειακές ροές"
+      ],
+      "answer": "Το EBITDA είναι κέρδη πριν από τόκους, φόρους και αποσβέσεις. Δίνει μια ένδειξη λειτουργικής κερδοφορίας, αλλά δεν ισούται με καθαρό κέρδος ή διαθέσιμα μετρητά. Γι’ αυτό η εταιρεία μπορεί να εμφανίζει θετικό EBITDA και ταυτόχρονα ζημία μετά φόρων.",
+      "classification": "fact",
+      "sourceIds": [
+        "AC-COMPANY"
+      ],
+      "requirementIds": [
+        "q1a"
+      ],
+      "topic": "methods"
+    },
+    {
+      "id": "competition-trends",
+      "title": "Τι δείχνει η σύγκριση με το ΙΑΣΩ;",
+      "aliases": [
+        "ανταγωνισμός ανταγωνιστές",
+        "ΙΑΣΩ IASO",
+        "σύγκριση EBITDA",
+        "2023 2024",
+        "αύξηση εσόδων"
+      ],
+      "answer": "Από το 2023 στο 2024 τα ομιλικά έσοδα αυξάνονται στο Ιατρικό κατά 4,4% και στο ΙΑΣΩ κατά 5,8%. Το EBITDA κινείται διαφορετικά: −15,9% και +8,5%, αντίστοιχα. Οι διαφορετικές δραστηριότητες και ορισμοί δεν επιτρέπουν απλή κατάταξη διοικητικής ποιότητας. Το χρήσιμο ερώτημα είναι τι εξηγεί τη διαφορετική μετατροπή εσόδων σε αποτέλεσμα.",
+      "classification": "fact",
+      "sourceIds": [
+        "AC-COMPARE-I",
+        "AC-COMPARE-J"
+      ],
+      "requirementIds": [
+        "q1a"
+      ],
+      "topic": "company"
+    },
+    {
+      "id": "market-share-gap",
+      "title": "Ξέρουμε το μερίδιο αγοράς;",
+      "aliases": [
+        "μερίδιο αγοράς",
+        "market share",
+        "αγορά ιδιωτικής υγείας",
+        "ποσοστό αγοράς"
+      ],
+      "answer": "Δεν έχουμε επαληθευμένο κοινό σύνολο αγοράς, με ίδιο έτος, γεωγραφία και κατηγορίες υπηρεσιών. Επομένως δεν υπολογίζουμε μερίδιο αγοράς από δύο Ομίλους. Η έλλειψη στοιχείων δεν είναι μηδενικό μερίδιο. Συγκρίνουμε μόνο δημοσιευμένα οικονομικά μεγέθη και δηλώνουμε τους περιορισμούς.",
+      "classification": "unknown",
+      "sourceIds": [
+        "AC-COMPARE-I",
+        "AC-COMPARE-J",
+        "project-report"
+      ],
+      "requirementIds": [
+        "q1a"
+      ],
+      "topic": "company"
+    },
+    {
+      "id": "nps-explained",
+      "title": "Τι μετρά ο NPS;",
+      "aliases": [
+        "NPS net promoter score",
+        "δείκτης σύστασης",
+        "ικανοποίηση ασθενών",
+        "κλίμακα 0 10",
+        "ποιότητα περίθαλψης"
+      ],
+      "answer": "Ο NPS δείχνει πόσο πιθανό είναι να συστήσει κάποιος μια υπηρεσία. Στην κλίμακα 0–10, αφαιρούμε το ποσοστό όσων απαντούν 0–6 από το ποσοστό όσων απαντούν 9–10. Το αποτέλεσμα κυμαίνεται από −100 έως +100. Μετρά πρόθεση σύστασης, όχι κλινική ποιότητα ή κουλτούρα εργαζομένων.",
+      "classification": "fact",
+      "sourceIds": [
+        "am24-nps-method",
+        "am25-nps-method"
+      ],
+      "requirementIds": [
+        "q3a"
+      ],
+      "topic": "methods"
+    },
+    {
+      "id": "nps-hidden-variation",
+      "title": "Πώς κρύβεται μια πτώση μέσα σε μια άνοδο;",
+      "aliases": [
+        "NPS Παλαιό Φάληρο",
+        "47 48",
+        "62 49",
+        "13 μονάδες",
+        "διαφοροποίηση κλινικών",
+        "πρώτο εύρημα"
+      ],
+      "answer": "Ο συνολικός NPS έξι ελληνικών μονάδων ανεβαίνει από 47 σε 48 μεταξύ 2024 και 2025. Στο Παλαιό Φάληρο όμως πέφτει από 62 σε 49: −13 μονάδες. Το συνολικό αποτέλεσμα μπορεί να κρύβει τοπικές αποκλίσεις. Τα δείγματα διαφέρουν· δεν τεκμηριώνεται αιτία στο SAP, στην ηγεσία ή στην κλινική ποιότητα.",
+      "classification": "fact",
+      "sourceIds": [
+        "am24-nps-units",
+        "am25-nps-units",
+        "am25-nps-method"
+      ],
+      "requirementIds": [
+        "q3a",
+        "q2b"
+      ],
+      "topic": "findings"
+    },
+    {
+      "id": "nps-next-test",
+      "title": "Τι θα ελέγχαμε πίσω από τον NPS;",
+      "aliases": [
+        "NPS έλεγχος",
+        "εμπειρία ασθενών",
+        "διαδρομή ασθενή",
+        "παράπονα αναμονή",
+        "Παλαιό Φάληρο πρόταση"
+      ],
+      "answer": "Προτείνουμε μηνιαία σύγκριση ανά στάδιο εξυπηρέτησης, με κοινή μέθοδο και έλεγχο του δείγματος. Συνδέουμε αναμονή, παράπονα και NPS, χωρίς να προεξοφλούμε αιτία. Διοικητική αξία: εντοπισμός του σημείου που χρειάζεται παρέμβαση. Η διαφοροποίηση του δείγματος μπορεί επίσης να εξηγεί μέρος της μεταβολής.",
+      "classification": "proposal",
+      "sourceIds": [
+        "am24-nps-method",
+        "am24-nps-units",
+        "am25-nps-method",
+        "am25-nps-units"
+      ],
+      "requirementIds": [
+        "q2b",
+        "q3a"
+      ],
+      "topic": "findings"
+    },
+    {
+      "id": "elliniko-project",
+      "title": "Τι σχεδιάζεται στο Ελληνικό;",
+      "aliases": [
+        "Ελληνικό Ellinikon",
+        "Healthcare Park",
+        "LAMDA",
+        "μελλοντικά σχέδια",
+        "6000 τετραγωνικά",
+        "μίσθωση"
+      ],
+      "answer": "Η ανακοίνωση της 18/12/2025 περιγράφει συνεργασία LAMDA Development και Ομίλου Ιατρικού Αθηνών για Healthcare Park περίπου 6.000 τ.μ., με αρχική δεκαετή μίσθωση. Πρόκειται για σχεδιαζόμενη ανάπτυξη. Η ολοκλήρωση κατασκευής δεν σημαίνει αυτόματα έναρξη παροχής υπηρεσιών.",
+      "classification": "claim",
+      "sourceIds": [
+        "SE-PRESS"
+      ],
+      "requirementIds": [
+        "q1a",
+        "q1b"
+      ],
+      "topic": "company"
+    },
+    {
+      "id": "elliniko-two-dates",
+      "title": "Γιατί βλέπουμε 2028 και 2031;",
+      "aliases": [
+        "Ελληνικό 2028 2031",
+        "ασυμφωνία χρονοδιαγράμματος",
+        "τρεις χρονιές",
+        "δύο ημερομηνίες",
+        "δεύτερο εύρημα"
+      ],
+      "answer": "Η ετήσια έκθεση 2025 του Ιατρικού, υπογεγραμμένη στις 30/4/2026, αναφέρει τέλος 2031. Το μεταγενέστερο ενημερωτικό δελτίο LAMDA, στις 26/5/2026, αναφέρει τέλος 2028. Τεκμηριώνεται διαφορετική δημόσια πρόβλεψη για το συγκρότημα. Δεν τεκμηριώνεται καθυστέρηση, λάθος ή κοινός ορισμός του ορόσημου.",
+      "classification": "fact",
+      "sourceIds": [
+        "SE-I25",
+        "SE-LP26"
+      ],
+      "requirementIds": [
+        "q1b",
+        "q2b"
+      ],
+      "topic": "findings"
+    },
+    {
+      "id": "elliniko-coordination-test",
+      "title": "Ποια απόφαση γεννά το εύρημα του Ελληνικού;",
+      "aliases": [
+        "Ελληνικό συντονισμός",
+        "ορόσημα υπεύθυνος",
+        "readiness ετοιμότητα",
+        "στελέχωση εξοπλισμός",
+        "2028 2031 υπόθεση"
+      ],
+      "answer": "Προτείνουμε ένα κοινά ορισμένο ορόσημο: κατασκευή, παράδοση ή λειτουργική ετοιμότητα; Για κάθε στάδιο συνδέουμε υπεύθυνο, προθεσμία, εξοπλισμό και στελέχωση. Η ασυμφωνία μπορεί να αφορά διαφορετικά στάδια ή αναθεώρηση, αλλά αυτό μένει να ελεγχθεί. Δεν γνωρίζουμε αν η εταιρεία εφαρμόζει ήδη αντίστοιχο συντονισμό.",
+      "classification": "proposal",
+      "sourceIds": [
+        "SE-I25",
+        "SE-LP26",
+        "SE-PRESS"
+      ],
+      "requirementIds": [
+        "q2b"
+      ],
+      "topic": "findings"
+    },
+    {
+      "id": "gaia-ownership",
+      "title": "Η ΓΑΙΑ ανήκε στο Ιατρικό Αθηνών;",
+      "aliases": [
+        "ΓΑΙΑ GAIA",
+        "μαιευτική γυναικολογική",
+        "ανήκε ιδιοκτησία",
+        "μεταβίβαση ΙΑΣΩ",
+        "Μαρούσι 2021"
+      ],
+      "answer": "Η ΓΑΙΑ ήταν μαιευτική και γυναικολογική δραστηριότητα της κλινικής Μαρουσίου του Ιατρικού Αθηνών. Το 2021 μεταβιβάστηκε δραστηριότητα προς το ΙΑΣΩ. Αυτό δεν ταυτίζεται με πώληση ολόκληρου του κτιρίου ή με αποδεδειγμένη πώληση αυτοτελούς εταιρείας.",
+      "classification": "fact",
+      "sourceIds": [
+        "am21-gaia-transaction",
+        "iaso21-gaia"
+      ],
+      "requirementIds": [
+        "q1a"
+      ],
+      "topic": "company"
+    },
+    {
+      "id": "gaia-profitable-exit",
+      "title": "Γιατί μεταβιβάστηκε μια κερδοφόρα δραστηριότητα;",
+      "aliases": [
+        "ΓΑΙΑ κερδοφορία",
+        "930 χιλιάδες",
+        "κερδοφόρα μεταβίβαση",
+        "τρίτο εύρημα",
+        "αξία χώρου"
+      ],
+      "answer": "Η ΓΑΙΑ εμφανίζει κέρδος μετά φόρων €930 χιλ. έως τη μεταβίβαση το 2021, χωρίς το κέρδος πώλησης. Άρα η συναλλαγή δεν εξηγείται απλώς ως απομάκρυνση ζημιογόνου δραστηριότητας. Η πιθανή μεγαλύτερη αξία εναλλακτικής χρήσης χώρου είναι δική μας υπόθεση, όχι αποδεδειγμένο αποτέλεσμα.",
+      "classification": "interpretation",
+      "sourceIds": [
+        "am21-gaia-result",
+        "am21-gaia-rationale"
+      ],
+      "requirementIds": [
+        "q1a",
+        "q2b"
+      ],
+      "topic": "findings"
+    },
+    {
+      "id": "gaia-capacity",
+      "title": "Τι χώρος ανακοινώθηκε ότι απελευθερώνεται;",
+      "aliases": [
+        "ΓΑΙΑ 100 κλίνες",
+        "4 χειρουργεία",
+        "απελευθέρωση χώρου",
+        "δυναμικότητα Μαρούσι"
+      ],
+      "answer": "Η εταιρική ανακοίνωση της 17/12/2021 αναφέρει ότι η μεταφορά της ΓΑΙΑ απελευθερώνει 100 κλίνες και τέσσερα χειρουργεία στο Μαρούσι. Αυτό είναι εταιρική δήλωση για τη δυνατότητα νέας χρήσης χώρου. Δεν έχουμε ανεξάρτητη μέτρηση της μετέπειτα αξιοποίησης ή οικονομικής απόδοσής του.",
+      "classification": "claim",
+      "sourceIds": [
+        "am21-exchange-announcement"
+      ],
+      "requirementIds": [
+        "q1a",
+        "q2b"
+      ],
+      "topic": "findings"
+    },
+    {
+      "id": "gaia-value-test",
+      "title": "Πώς θα ελέγχαμε την αξία της αλλαγής χρήσης;",
+      "aliases": [
+        "ΓΑΙΑ απόδοση χώρου",
+        "ανά τετραγωνικό",
+        "κόστος ευκαιρίας",
+        "ROI",
+        "πληρότητα κλινών"
+      ],
+      "answer": "Θα συγκρίναμε λειτουργική συνεισφορά ανά τετραγωνικό πριν και μετά, σε συγκρίσιμες περιόδους. Χρειαζόμαστε πληρότητα, μίγμα περιστατικών και κόστος μετατροπής χώρου. Το κέρδος πώλησης εξετάζεται χωριστά. Έτσι ελέγχεται αν η νέα χρήση δημιουργεί μεγαλύτερη αξία· οι δημόσιες πηγές δεν δίνουν ακόμη αυτή την απάντηση.",
+      "classification": "proposal",
+      "sourceIds": [
+        "am21-gaia-result",
+        "am21-gaia-rationale",
+        "am21-exchange-announcement"
+      ],
+      "requirementIds": [
+        "q2b"
+      ],
+      "topic": "findings"
+    },
+    {
+      "id": "sap-boundary",
+      "title": "Τι γνωρίζουμε πραγματικά για το SAP;",
+      "aliases": [
+        "SAP ERP",
+        "ψηφιακός μετασχηματισμός",
+        "1 Ιανουαρίου 2025",
+        "πριν μετά SAP",
+        "πληροφοριακό σύστημα"
+      ],
+      "answer": "Το SAP είναι επιχειρησιακό πληροφοριακό σύστημα. Η εταιρεία αναφέρει παραγωγική λειτουργία από 1/1/2025 και στόχους αυτοματοποίησης και καλύτερης πληροφόρησης. Αυτό δεν αποδεικνύει εξοικονόμηση, αλλαγή ιεραρχίας ή επίδραση στον NPS. Το διοικητικό ερώτημα είναι αν τα κοινά δεδομένα οδηγούν σε καλύτερες τοπικές αποφάσεις.",
+      "classification": "claim",
+      "sourceIds": [
+        "AC-SAP"
+      ],
+      "requirementIds": [
+        "q1b",
+        "q2b"
+      ],
+      "topic": "management"
+    },
+    {
+      "id": "published-structure",
+      "title": "Πώς είναι οργανωμένη η διοίκηση;",
+      "aliases": [
+        "οργανόγραμμα διοίκηση",
+        "ΔΣ διευθύνων σύμβουλος",
+        "γενικός διευθυντής",
+        "διευθύνσεις κλινικών",
+        "γραμμές αναφοράς"
+      ],
+      "answer": "Το δημοσιευμένο οργανόγραμμα Ομίλου συνδέει ΔΣ και επιτροπές, εκτελεστική διοίκηση, Γενικό Διευθυντή Ομίλου, λειτουργικές διευθύνσεις και Γενικούς Διευθυντές Κλινικών. Ξεχωρίζουμε εποπτεία από καθημερινή λειτουργία. Δεν διαθέτουμε πλήρες οργανόγραμμα κάθε κλινικής ούτε τον πραγματικό αριθμό άμεσων υφισταμένων κάθε στελέχους.",
+      "classification": "fact",
+      "sourceIds": [
+        "AC-STRUCTURE"
+      ],
+      "requirementIds": [
+        "q2a",
+        "q3a"
+      ],
+      "topic": "management"
+    },
+    {
+      "id": "structure-tradeoffs",
+      "title": "Τι κερδίζει και τι διακινδυνεύει αυτή η δομή;",
+      "aliases": [
+        "δομή πλεονεκτήματα μειονεκτήματα",
+        "κεντρικός συντονισμός",
+        "αποκέντρωση",
+        "Mintzberg",
+        "γραφειοκρατία",
+        "αρμοδιότητες"
+      ],
+      "answer": "Ο κεντρικός συντονισμός μπορεί να προσφέρει κοινά πρότυπα, έλεγχο και εξειδικευμένη υποστήριξη. Η διοίκηση κλινικών επιτρέπει τοπική απόκριση. Πολλά επίπεδα ή ασαφείς αρμοδιότητες μπορεί να δυσκολεύουν τη συνεργασία. Αυτά είναι θεωρητικά οφέλη και κίνδυνοι, όχι διάγνωση αποδεδειγμένης εσωτερικής δυσλειτουργίας.",
+      "classification": "interpretation",
+      "sourceIds": [
+        "AC-STRUCTURE",
+        "AC-MINTZBERG",
+        "AC-THYS"
+      ],
+      "requirementIds": [
+        "q2a",
+        "q2b"
+      ],
+      "topic": "management"
+    },
+    {
+      "id": "culture-seven",
+      "title": "Πώς αξιολογούμε την κουλτούρα;",
+      "aliases": [
+        "κουλτούρα επτά διαστάσεις",
+        "καινοτομία λεπτομέρεια αποτελέσματα",
+        "άνθρωποι ομάδα σταθερότητα",
+        "επιθετικότητα",
+        "αποτελεσματικότητα αποδοτικότητα"
+      ],
+      "answer": "Εξετάζουμε επτά διαστάσεις: καινοτομία, λεπτομέρεια, αποτελέσματα, ανθρώπους, ομάδα, επιθετικότητα και σταθερότητα. Η επιθετικότητα αφορά εσωτερική ανταγωνιστικότητα, όχι την εξωτερική επέκταση. Οι δημόσιες διαδικασίες δείχνουν δηλωμένες προτεραιότητες. Δεν μετρούν τη βιωμένη εμπειρία εργαζομένων· γι’ αυτό δεν κατασκευάζουμε βαθμολογία κουλτούρας από τον NPS.",
+      "classification": "interpretation",
+      "sourceIds": [
+        "AC-CULTURE",
+        "AC-BRAITHWAITE",
+        "project-report"
+      ],
+      "requirementIds": [
+        "q3a"
+      ],
+      "topic": "management"
+    },
+    {
+      "id": "leadership-evidence",
+      "title": "Τι μπορούμε να πούμε για την ηγεσία;",
+      "aliases": [
+        "ηγεσία στυλ",
+        "συναλλακτική μετασχηματιστική",
+        "αυθεντική ηγεσία",
+        "CEO χαρακτηριστικά",
+        "θεωρίες ηγεσίας"
+      ],
+      "answer": "Οι δημοσιευμένοι έλεγχοι και στόχοι είναι συμβατοί με συναλλακτικά στοιχεία ηγεσίας. Οι επενδύσεις και η αλλαγή επιτρέπουν διερεύνηση μετασχηματιστικής διάστασης, χωρίς να την αποδεικνύουν. Χωρίς παρατήρηση συμπεριφοράς ή αξιολογήσεις εργαζομένων, δεν αποδίδουμε οριστικό στυλ ή χαρακτηριστικά προσωπικότητας σε στελέχη.",
+      "classification": "interpretation",
+      "sourceIds": [
+        "AC-STRUCTURE",
+        "AC-CULTURE",
+        "AC-SFANTOU"
+      ],
+      "requirementIds": [
+        "q3b"
+      ],
+      "topic": "management"
+    },
+    {
+      "id": "pestel-context",
+      "title": "Ποιες εξωτερικές δυνάμεις εξετάζουμε;",
+      "aliases": [
+        "PESTEL PEST DG",
+        "εξωτερικό περιβάλλον",
+        "πολιτικό οικονομικό κοινωνικό",
+        "τεχνολογικό περιβαλλοντικό νομικό",
+        "clawback rebate"
+      ],
+      "answer": "Η PESTEL καλύπτει πολιτικό, οικονομικό, κοινωνικό, τεχνολογικό, περιβαλλοντικό και νομικό πλαίσιο. Συνδέουμε χρηματοδότηση υγείας, κόστος, γήρανση, ψηφιοποίηση, ενεργειακή διαχείριση και rebate/clawback με διοικητικές ανάγκες. Η επίδραση στην εταιρεία δεν προκύπτει αυτόματα από εθνικά στοιχεία. Οι ανταγωνιστές ανήκουν στο άμεσο περιβάλλον.",
+      "classification": "interpretation",
+      "sourceIds": [
+        "AC-OECD",
+        "AC-RISK",
+        "AC-SAP",
+        "AC-CULTURE",
+        "project-report"
+      ],
+      "requirementIds": [
+        "q1b"
+      ],
+      "topic": "management"
+    },
+    {
+      "id": "assignment-map",
+      "title": "Πού απαντώνται τα ζητούμενα της εργασίας;",
+      "aliases": [
+        "εκφώνηση θέματα ερωτήματα",
+        "1α 1β 2α 2β 3α 3β",
+        "report εργασία",
+        "Word PowerPoint παραδοτέα"
+      ],
+      "answer": "Η εργασία καλύπτει: 1α επιχείρηση και μεγέθη, 1β PESTEL, 2α δομή, 2β οφέλη και κίνδυνοι δομής, 3α επτά διαστάσεις κουλτούρας, 3β ηγεσία. Τα τρία ευρήματα συνδέουν τις απαντήσεις με συγκεκριμένα διοικητικά ερωτήματα. Το πλήρες Word και η παρουσίαση παραμένουν διαθέσιμα από την αρχική οθόνη.",
+      "classification": "fact",
+      "sourceIds": [
+        "project-brief",
+        "project-report"
+      ],
+      "requirementIds": [
+        "q1a",
+        "q1b",
+        "q2a",
+        "q2b",
+        "q3a",
+        "q3b"
+      ],
+      "topic": "assignment"
+    },
+    {
+      "id": "ai-disclosure",
+      "title": "Πώς χρησιμοποιήθηκε η ΤΝ;",
+      "aliases": [
+        "AI ΤΝ τεχνητή νοημοσύνη",
+        "LLM μεγάλα γλωσσικά μοντέλα",
+        "δήλωση declaration",
+        "ChatGPT Codex",
+        "συγγραφή έλεγχος μελών"
+      ],
+      "answer": "Η ΤΝ συνέβαλε ουσιωδώς στη δομή, αναζήτηση πηγών, οργάνωση τεκμηρίων, πλήρη συγγραφή, αναθεώρηση, κώδικα και μορφοποίηση. Αυτό καταγράφεται στη δήλωση χρήσης ΤΝ. Δεν έγιναν συνεντεύξεις ή έρευνα εργαζομένων. Ο τελικός έλεγχος των μελών, οι υπογραφές και η καταγραφή πραγματικής προσωπικής συμβολής παραμένουν προς ολοκλήρωση.",
+      "classification": "fact",
+      "sourceIds": [
+        "project-report"
+      ],
+      "requirementIds": [],
+      "topic": "assignment"
+    },
+    {
+      "id": "retrieval-method",
+      "title": "Τι κάνει ο γράφος και η αναζήτηση;",
+      "aliases": [
+        "GraphRAG RAG",
+        "knowledge graph γράφος γνώσης",
+        "retrieval αναζήτηση",
+        "Neo4j",
+        "πηγές τεκμήρια",
+        "πώς λειτουργεί"
+      ],
+      "answer": "Ο γράφος συνδέει ευρήματα, διοικητικά θέματα και πηγές. Η αναζήτηση εντοπίζει επιμελημένες απαντήσεις με παραπομπές· δεν δημιουργεί νέες απαντήσεις μέσω ζωντανού LLM. Επιλέγεις μια σύνδεση ή ρωτάς ένα θέμα για να δεις όσα τεκμηριώνονται, τις δικές μας ερμηνείες και όσα παραμένουν άγνωστα.",
+      "classification": "fact",
+      "sourceIds": [],
+      "requirementIds": [],
+      "topic": "methods"
+    },
+    {
+      "id": "case-selection",
+      "title": "Γιατί επιλέξαμε το Ιατρικό Αθηνών;",
+      "aliases": [
+        "γιατί αυτή η εταιρεία",
+        "επιλογή μελέτης περίπτωσης",
+        "case study",
+        "πρωτοτυπία συνεισφορά",
+        "τρία ευρήματα"
+      ],
+      "answer": "Συνδυάζει δημοσιευμένη διοικητική δομή, πολλές μονάδες, SAP και σχεδιαζόμενη ανάπτυξη. Έτσι μπορούμε να συνδέσουμε διαφορετικές δημόσιες πηγές και να διατυπώσουμε ελέγξιμα ερωτήματα για εμπειρία ασθενών, συντονισμό και χρήση χώρου. Η συνεισφορά μας είναι ο συνδυασμός και η διοικητική ερμηνεία· δεν ισχυριζόμαστε ότι ανακαλύψαμε άγνωστα εσωτερικά γεγονότα.",
+      "classification": "interpretation",
+      "sourceIds": [
+        "AC-STRUCTURE",
+        "AC-SAP",
+        "SE-PRESS",
+        "project-report"
+      ],
+      "requirementIds": [
+        "q1a",
+        "q2b"
+      ],
+      "topic": "company"
+    }
+  ],
+  "sources": [
+    {
+      "id": "am24-nps-method",
+      "title": "Έκθεση 2024 — συνολικός NPS και μέθοδος",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=224",
+      "pdfPage": 224,
+      "printedPage": 224,
+      "locator": null,
+      "pageLabel": "PDF σ. 224"
+    },
+    {
+      "id": "am24-nps-units",
+      "title": "Έκθεση 2024 — NPS ανά μονάδα",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=225",
+      "pdfPage": 225,
+      "printedPage": 225,
+      "locator": null,
+      "pageLabel": "PDF σ. 225"
+    },
+    {
+      "id": "am25-nps-method",
+      "title": "Έκθεση 2025 — εμπειρία ασθενών και SAP",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=129",
+      "pdfPage": 129,
+      "printedPage": 131,
+      "locator": "Εμπειρία ασθενών και υποσημείωση 8: εγκαταστάσεις στην Ελλάδα",
+      "pageLabel": "PDF σ. 129"
+    },
+    {
+      "id": "am25-nps-units",
+      "title": "Έκθεση 2025 — NPS ανά μονάδα",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=130",
+      "pdfPage": 130,
+      "printedPage": 132,
+      "locator": null,
+      "pageLabel": "PDF σ. 130"
+    },
+    {
+      "id": "SE-I25",
+      "title": "Ιατρικό Αθηνών — Ετήσια Οικονομική Έκθεση 2025",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=7",
+      "scope": "Healthcare Park · συνέχεια παραγράφου συγκροτήματος",
+      "period": "Χρήση 2025 · υπογραφές 30/4/2026",
+      "locator": "PDF/έντυπες σ.6–7, υπογραφές σ.3",
+      "note": "Αναφέρει τέλος 2031. Επαληθεύτηκαν κείμενο και εικόνα PDF, καθώς και ισότητα του δημόσιου PDF με το διαθέσιμο αρχείο. Η απόκλιση δεν αποδεικνύει αναβολή ή συντακτικό σφάλμα.",
+      "pdfPage": 7,
+      "checkedAt": "2026-11-19",
+      "printedPage": null,
+      "pageLabel": "PDF σ. 7"
+    },
+    {
+      "id": "SE-LP26",
+      "title": "LAMDA — Ενημερωτικό Δελτίο 26.05.2026",
+      "url": "https://www.lamdadev.com/sites/default/files/2026-05/lamda-development-enimerotiko-deltio_26.05.2026_0.pdf#page=66",
+      "scope": "Healthcare Park · ίδιο συγκρότημα περίπου 6.000 τ.μ.",
+      "period": "Ενημερωτικό δελτίο 26/5/2026",
+      "locator": "PDF σ.66 / έντυπη 65",
+      "note": "Διατηρεί το τέλος 2028 μετά την υπογραφή της έκθεσης Ιατρικού 30/4/2026 που αναφέρει 2031. Το ορόσημο είναι ολοκλήρωση κτηρίου, όχι αποδεδειγμένη έναρξη υπηρεσιών.",
+      "pdfPage": 66,
+      "checkedAt": "2026-11-19",
+      "printedPage": null,
+      "pageLabel": "PDF σ. 66"
+    },
+    {
+      "id": "SE-PRESS",
+      "title": "Ανακοίνωση στρατηγικής συνεργασίας LAMDA–Ιατρικού",
+      "url": "https://www.iatriko.gr/i-lamda-development-kai-o-omilos-iatrikou-athinon-anakoinonoun-ti-stratigiki-tous-synergasia-gia-tin-anaptyxi-enos-ypersygchronou-kai-protoporiakou-healthcare-park/",
+      "scope": "Healthcare Park · ανακοινωμένοι ρόλοι developer/μισθωτή",
+      "period": "Ανακοίνωση 18/12/2025",
+      "locator": "Παράγραφοι συγκροτήματος, μίσθωσης και υπηρεσιών",
+      "note": "Προσύμφωνο μίσθωσης, περίπου 6.000 τ.μ., αρχική δεκαετία. Η κατασκευή ανατίθεται στην ΕΛΛΗΝΙΚΟ Μ.Α.Ε. Δεν τεκμηριώνονται εδώ πλήρεις όροι fit-out, μίσθωμα ή ακριβές νομικό πρόσωπο λειτουργίας μέσα στον Όμιλο.",
+      "pdfPage": null,
+      "checkedAt": "2026-11-19",
+      "printedPage": null,
+      "pageLabel": "Παράγραφοι συγκροτήματος, μίσθωσης και υπηρεσιών"
+    },
+    {
+      "id": "am21-gaia-result",
+      "title": "Έκθεση 2021 — κερδοφορία ΓΑΙΑ και κέρδος πώλησης",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2021.pdf#page=151",
+      "pdfPage": 151,
+      "printedPage": 151,
+      "locator": "Σημείωση 7",
+      "pageLabel": "PDF σ. 151"
+    },
+    {
+      "id": "am21-gaia-transaction",
+      "title": "Έκθεση 2021 — μεταβίβαση δραστηριότητας ΓΑΙΑ",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2021.pdf#page=150",
+      "pdfPage": 150,
+      "printedPage": 150,
+      "locator": "Σημείωση 7",
+      "pageLabel": "PDF σ. 150"
+    },
+    {
+      "id": "iaso21-gaia",
+      "title": "ΙΑΣΩ 2021 — απόκτηση ΓΑΙΑ και εργαζόμενοι",
+      "url": "https://iaso.blob.core.windows.net/userfiles/docs/default-source/oikonomikes-katastaseis/2021/etisia-oikonomiki-ekthesi-2021.pdf?sfvrsn=3d4f3e5f_3#page=82",
+      "pdfPage": 82,
+      "printedPage": 82,
+      "locator": "Σημείωση 10",
+      "pageLabel": "PDF σ. 82"
+    },
+    {
+      "id": "am21-gaia-rationale",
+      "title": "Έκθεση 2021 — αιτιολόγηση μεταβίβασης ΓΑΙΑ",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2021.pdf#page=6",
+      "pdfPage": 6,
+      "printedPage": 6,
+      "locator": null,
+      "pageLabel": "PDF σ. 6"
+    },
+    {
+      "id": "am21-exchange-announcement",
+      "title": "Ανακοίνωση Ιατρικού προς ΧΑ, 17/12/2021",
+      "url": "https://athens.euronext.com/el/documents/10180/6511763/%CE%97%CE%94%CE%A4-2021-240%20%2817%20%CE%94%CE%B5%CE%BA%29/a1fa4f4b-cfce-494d-9587-d4cd07f9375f",
+      "pdfPage": null,
+      "printedPage": null,
+      "locator": "Ανακοίνωση ΙΑΤΡΙΚΟ ΑΘΗΝΩΝ Ε.Α.Ε., ώρα 10:21· παράγραφος «Με την μεταφορά»",
+      "publishedDate": "2021-12-17",
+      "pageNote": "Δεν επαληθεύτηκε αριθμός σελίδας του συγκεντρωτικού δελτίου. Η θέση προσδιορίζεται με εκδότη, ημερομηνία και ώρα.",
+      "pageLabel": "Ανακοίνωση ΙΑΤΡΙΚΟ ΑΘΗΝΩΝ Ε.Α.Ε., ώρα 10:21· παράγραφος «Με την μεταφορά»"
+    },
+    {
+      "id": "AC-COMPANY",
+      "title": "Ιατρικό Αθηνών Ε.Α.Ε. (2026α) Ετήσια Οικονομική Έκθεση για τη χρήση που έληξε στις 31 Δεκεμβρίου 2025. Υπογραφή 30 Απριλίου 2026.",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=10",
+      "locator": "PDF σ. 9–10, 67, 120",
+      "scope": "Διακρίνονται εταιρικά και ενοποιημένα μεγέθη",
+      "pdfPage": 10,
+      "pageLabel": "PDF σ. 9–10, 67, 120"
+    },
+    {
+      "id": "AC-COMPARE-I",
+      "title": "Ιατρικό Αθηνών Ε.Α.Ε. (2025α) Ετήσια Οικονομική Έκθεση για τη χρήση που έληξε στις 31 Δεκεμβρίου 2024.",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=10",
+      "locator": "PDF σ. 10",
+      "scope": "Όμιλος Ιατρικού, χρήση 2024 και συγκριτική 2023",
+      "pdfPage": 10,
+      "pageLabel": "PDF σ. 10"
+    },
+    {
+      "id": "AC-COMPARE-J",
+      "title": "ΙΑΣΩ Α.Ε. (2025) Ετήσια Οικονομική Έκθεση για την περίοδο 1 Ιανουαρίου έως 31 Δεκεμβρίου 2024.",
+      "url": "https://iaso.blob.core.windows.net/userfiles/docs/default-source/oikonomikes-katastaseis/2024/iaso-etisia-oikonomiki-ekthesi-2024.pdf?sfvrsn=930815b1_1#page=5",
+      "locator": "PDF σ. 5–7, 29, 36",
+      "scope": "Όμιλος ΙΑΣΩ, μεταβαλλόμενη περίμετρος",
+      "pdfPage": 5,
+      "pageLabel": "PDF σ. 5–7, 29, 36"
+    },
+    {
+      "id": "AC-OECD",
+      "title": "OECD/European Observatory on Health Systems and Policies (2025) Greece: Country Health Profile 2025. State of Health in the EU. Paris: OECD Publishing. https://doi.org/10.1787/9ca0bb52-en",
+      "url": "https://doi.org/10.1787/9ca0bb52-en",
+      "locator": "PDF σ. 2, 8–10",
+      "scope": "Χώρα και σύστημα υγείας, όχι εταιρικά δεδομένα",
+      "pageLabel": "PDF σ. 2, 8–10"
+    },
+    {
+      "id": "AC-RISK",
+      "title": "Ιατρικό Αθηνών Ε.Α.Ε. (2026α) Ετήσια Οικονομική Έκθεση για τη χρήση που έληξε στις 31 Δεκεμβρίου 2025. Υπογραφή 30 Απριλίου 2026.",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=6",
+      "locator": "PDF σ. 6, 8–9",
+      "scope": "Εταιρική περιγραφή δράσεων και κινδύνων",
+      "pdfPage": 6,
+      "pageLabel": "PDF σ. 6, 8–9"
+    },
+    {
+      "id": "AC-SAP",
+      "title": "Ιατρικό Αθηνών Ε.Α.Ε. (2026β) Εξαμηνιαία Οικονομική Έκθεση για την περίοδο 1 Ιανουαρίου–30 Ιουνίου 2026. Υπογραφή 29 Σεπτεμβρίου 2026.",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/10/%CE%95%CE%9E%CE%91%CE%9C%CE%97%CE%9D%CE%99%CE%91%CE%99%CE%91-%CE%9F%CE%99%CE%9A%CE%9F%CE%9D%CE%9F%CE%9C%CE%99%CE%9A%CE%97-%CE%95%CE%9A%CE%98%CE%95%CE%A3%CE%97_30.06.2026.pdf#page=16",
+      "locator": "PDF σ. 15–16, 39–41",
+      "scope": "Δηλωμένη εφαρμογή SAP και εκτιμήσεις rebate και clawback",
+      "pdfPage": 16,
+      "pageLabel": "PDF σ. 15–16, 39–41"
+    },
+    {
+      "id": "AC-STRUCTURE",
+      "title": "Ιατρικό Αθηνών Ε.Α.Ε. (2026α) Ετήσια Οικονομική Έκθεση για τη χρήση που έληξε στις 31 Δεκεμβρίου 2025. Υπογραφή 30 Απριλίου 2026.",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=91",
+      "locator": "PDF σ. 22, 27–28, 91–94",
+      "scope": "Δημοσιευμένο οργανόγραμμα Ομίλου και αρμοδιότητες",
+      "pdfPage": 91,
+      "pageLabel": "PDF σ. 22, 27–28, 91–94"
+    },
+    {
+      "id": "AC-MINTZBERG",
+      "title": "Mintzberg, H. (1980) ‘Structure in 5’s: A synthesis of the research on organization design’, Management Science, 26(3), pp. 322–341. https://doi.org/10.1287/mnsc.26.3.322",
+      "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.26.3.322",
+      "locator": "Περίληψη εκδότη",
+      "scope": "Θεωρητικό πλαίσιο, όχι διάγνωση της εταιρείας",
+      "pageLabel": "Περίληψη εκδότη"
+    },
+    {
+      "id": "AC-THYS",
+      "title": "Thys, K., Vandekerkhof, P., Steijvers, T. and Corten, M. (2024) ‘Top management team and board of directors as the strategic leadership system: The effect of behavioral integration on strategic decision-making quality’, European Management Journal, 42(5), pp. 721–734. https://doi.org/10.1016/j.emj.2023.04.010",
+      "url": "https://www.sciencedirect.com/science/article/pii/S026323732300052X",
+      "locator": "σ. 721–734",
+      "scope": "Επιστημονική μελέτη ποιότητας στρατηγικών αποφάσεων",
+      "pageLabel": "σ. 721–734"
+    },
+    {
+      "id": "AC-CULTURE",
+      "title": "Ιατρικό Αθηνών Ε.Α.Ε. (2026α) Ετήσια Οικονομική Έκθεση για τη χρήση που έληξε στις 31 Δεκεμβρίου 2025. Υπογραφή 30 Απριλίου 2026.",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=119",
+      "locator": "PDF σ. 66–67, 93–94, 115–121",
+      "scope": "Δηλωμένες ομιλικές αξίες, διαδικασίες και δείκτες",
+      "pdfPage": 119,
+      "pageLabel": "PDF σ. 66–67, 93–94, 115–121"
+    },
+    {
+      "id": "AC-BRAITHWAITE",
+      "title": "Braithwaite, J., Herkes, J., Ludlow, K., Testa, L. and Lamprell, G. (2017) ‘Association between organisational and workplace cultures, and patient outcomes: Systematic review’, BMJ Open, 7(11), e017708. https://doi.org/10.1136/bmjopen-2017-017708",
+      "url": "https://bmjopen.bmj.com/content/7/11/e017708",
+      "locator": "Ενότητες Results, Discussion, Limitations",
+      "scope": "Συσχετίσεις κουλτούρας και εκβάσεων, χωρίς εταιρική αιτιώδη απόδειξη",
+      "pageLabel": "Ενότητες Results, Discussion, Limitations"
+    },
+    {
+      "id": "AC-SFANTOU",
+      "title": "Sfantou, D.F., Laliotis, A., Patelarou, A.E., Sifaki-Pistolla, D., Matalliotakis, M. and Patelarou, E. (2017) ‘Importance of leadership style towards quality of care measures in healthcare settings: A systematic review’, Healthcare, 5(4), 73. https://doi.org/10.3390/healthcare5040073",
+      "url": "https://www.mdpi.com/2227-9032/5/4/73",
+      "locator": "Ενότητες Results, Discussion, Conclusions",
+      "scope": "Ανασκόπηση ηγεσίας και ποιότητας φροντίδας",
+      "pageLabel": "Ενότητες Results, Discussion, Conclusions"
+    },
+    {
+      "id": "project-company-registry",
+      "title": "ΕΒΕΑ — Επιχειρηματικός Οδηγός: Ιατρικό Αθηνών",
+      "url": "https://directory.acci.gr/companies/details/21390",
+      "pdfPage": null,
+      "printedPage": null,
+      "locator": "Εταιρική ταυτότητα και ΓΕΜΗ",
+      "pageLabel": "Εταιρική ταυτότητα",
+      "note": "Πηγή ήδη καταγεγραμμένη στη βιβλιογραφία της εργασίας (acci)."
+    },
+    {
+      "id": "project-report",
+      "title": "Η μελέτη μας — κείμενο, αντιστοίχιση ζητουμένων και δήλωση ΤΝ",
+      "url": "./writing/paper-content.json",
+      "pdfPage": null,
+      "printedPage": null,
+      "locator": "sections, requirementCoverage, declaration",
+      "pageLabel": "Κείμενο της μελέτης",
+      "note": "Τεκμήριο του περιεχομένου και της μεθόδου της δικής μας εργασίας· δεν είναι εταιρική πηγή."
+    },
+    {
+      "id": "project-brief",
+      "title": "Επίσημη εκφώνηση Μάνατζμεντ 2026–2027 — τελική",
+      "url": "./downloads/Εκφώνηση-Μάνατζμεντ-2026-2027.pdf#page=2",
+      "pdfPage": 2,
+      "printedPage": null,
+      "locator": "PDF σ. 2–3: έξι υποερωτήματα",
+      "pageLabel": "PDF σ. 2–3",
+      "note": "Η ιστοσελίδα υποστηρίζει τη μελέτη· δεν αντικαθιστά τα επίσημα παραδοτέα."
+    }
+  ]
+}

@@ -1,0 +1,1725 @@
+{
+  "preparedDate": "2026-11-12",
+  "sources": [
+    {
+      "id": "BOARD26",
+      "title": "Αλλαγή σύνθεσης ΔΣ της Εταιρείας, 2 Ιανουαρίου 2026 — PDF σελίδες 1–2",
+      "url": "https://athens.euronext.com/sites/default/files/hermes_3/2026-01/el/1b4eba23-62e0-4a75-8eba-2362e05a75ff/230_12_2026_Greek_1.pdf#page=1",
+      "pdfPage": 1,
+      "published": "2026-01-02"
+    },
+    {
+      "id": "CFO25",
+      "title": "Γνωστοποίηση αλλαγής οικονομικής διοίκησης, 3 Νοεμβρίου 2025",
+      "url": "https://www.iatriko.gr/el/article/gnostopoiisi-allagis-anotaton-dieythyntikon-stelehon-neos-oikonomikos-dieythyntis",
+      "published": "2025-11-03"
+    },
+    {
+      "id": "HISTORY",
+      "title": "Ιατρικό Αθηνών — επίσημη ιστορική αναδρομή",
+      "url": "https://www.iatriko.gr/istoriki_anadromi/"
+    },
+    {
+      "id": "A07_ORIGIN",
+      "title": "Ετήσια έκθεση 2007 — ίδρυση / αρχική λειτουργία, PDF σελίδες 7–8",
+      "url": "https://athens.euronext.com/en/documents/10180/2341645/ATHENS%20MEDICAL%20C.S.A.%202007/52c8e8a1-2908-41a7-9e37-a8309c0c5c38#page=7",
+      "pdfPage": 7
+    },
+    {
+      "id": "A22_P61",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 61",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=61",
+      "pdfPage": 61,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A22_P62",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 62",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=62",
+      "pdfPage": 62,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A23_P68",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 68",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=68",
+      "pdfPage": 68,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A24_P51",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 51",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=51",
+      "pdfPage": 51,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A24_P52",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 52",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=52",
+      "pdfPage": 52,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A24_P53",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 53",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=53",
+      "pdfPage": 53,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A24_P54",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 54",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=54",
+      "pdfPage": 54,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A24_P55",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 55",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=55",
+      "pdfPage": 55,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A25_P42",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 42",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=42",
+      "pdfPage": 42,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A25_P44",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 44",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=44",
+      "pdfPage": 44,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A23_P71",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 71",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=71",
+      "pdfPage": 71,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A23_P72",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 72",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=72",
+      "pdfPage": 72,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A25_P46",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 46",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=46",
+      "pdfPage": 46,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A22_P73",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 73",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=73",
+      "pdfPage": 73,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A23_P79",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 79",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=79",
+      "pdfPage": 79,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A24_P61",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 61",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=61",
+      "pdfPage": 61,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A25_P52",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 52",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=52",
+      "pdfPage": 52,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A24_P62",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 62",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=62",
+      "pdfPage": 62,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A22_P74",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 74",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=74",
+      "pdfPage": 74,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A23_P80",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 80",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=80",
+      "pdfPage": 80,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A25_P53",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 53",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=53",
+      "pdfPage": 53,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A24_P63",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 63",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=63",
+      "pdfPage": 63,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A22_P75",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 75",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=75",
+      "pdfPage": 75,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A23_P81",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 81",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=81",
+      "pdfPage": 81,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A25_P54",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 54",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=54",
+      "pdfPage": 54,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A24_P64",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 64",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=64",
+      "pdfPage": 64,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A22_P76",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 76",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=76",
+      "pdfPage": 76,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A23_P82",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 82",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=82",
+      "pdfPage": 82,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A22_P77",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 77",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=77",
+      "pdfPage": 77,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A24_P65",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 65",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=65",
+      "pdfPage": 65,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A23_P83",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 83",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=83",
+      "pdfPage": 83,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A22_P78",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 78",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=78",
+      "pdfPage": 78,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A24_P31",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 31",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=31",
+      "pdfPage": 31,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A25_P28",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 28",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=28",
+      "pdfPage": 28,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A24_P33",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 33",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=33",
+      "pdfPage": 33,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A25_P30",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 30",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=30",
+      "pdfPage": 30,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A24_P34",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 34",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=34",
+      "pdfPage": 34,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A25_P31",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 31",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=31",
+      "pdfPage": 31,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    },
+    {
+      "id": "A22_P68",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2022 — PDF / έντυπη σελίδα 68",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2022.pdf#page=68",
+      "pdfPage": 68,
+      "published": "2023 (υπογραφές 27/04/2023)"
+    },
+    {
+      "id": "A23_P74",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2023 — PDF / έντυπη σελίδα 74",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2023.pdf#page=74",
+      "pdfPage": 74,
+      "published": "2024 (υπογραφές 29/04/2024)"
+    },
+    {
+      "id": "A24_P56",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2024 — PDF / έντυπη σελίδα 56",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/etisia_oikonomiki_ekthesi_2024.pdf#page=56",
+      "pdfPage": 56,
+      "published": "2025 (υπογραφές 29/04/2025)"
+    },
+    {
+      "id": "A25_P48",
+      "title": "Ετήσια οικονομική έκθεση χρήσης 2025 — PDF / έντυπη σελίδα 48",
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/oikonomika_apotelesmata_2025_pdf.pdf#page=48",
+      "pdfPage": 48,
+      "published": "2026 (υπογραφές 30/04/2026)"
+    }
+  ],
+  "people": [
+    {
+      "id": "george-apostolopoulos",
+      "name": "Γεώργιος Αποστολόπουλος",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Ιδρυτής Ιατρικού Κέντρου Αθηνών (ιστορική ιδιότητα)",
+          "scope": "clinic",
+          "unitIds": [
+            "marousi"
+          ],
+          "startYear": 1984,
+          "endYear": null,
+          "observedYears": [
+            1984,
+            2024,
+            2025,
+            2026
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A24_P51",
+            "A25_P44",
+            "HISTORY",
+            "A07_ORIGIN",
+            "BOARD26"
+          ],
+          "note": "Το 1984 ακολουθεί τη σημερινή εταιρική ιστορία και τις βιογραφίες. Η έκθεση 2007 αναφέρει 1983 για ίδρυση και αρχική λειτουργία· η απόκλιση δεν έχει συμφιλιωθεί. Η ιδιότητα ιδρυτή δεν αποδεικνύει αδιάλειπτη κατοχή συγκεκριμένου διοικητικού αξιώματος."
+        },
+        {
+          "title": "Πρόεδρος ΔΣ — εκτελεστικό μέλος",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": 2026,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42"
+          ],
+          "note": "Δεν προσδιορίζεται εδώ η πρώτη ανάληψη του ρόλου. Οι εκλογές του 2022 και του 2025 είναι τεκμηριωμένες θητείες, όχι κατ’ ανάγκη πρώτη είσοδος στη διοίκηση. Ο πίνακας της έκθεσης χρήσης 2025 δίνει λήξη αυτού του τίτλου την 01/01/2026 και διαφορετικό τίτλο από 02/01/2026.",
+          "endDate": "2026-01-01"
+        },
+        {
+          "title": "Εκτελεστικό μέλος ΔΣ — Επίτιμος Πρόεδρος",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2026,
+          "endYear": null,
+          "observedYears": [
+            2026
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Στιγμιότυπο της ανασυγκρότησης στις 02/01/2026. Δεν αποτελεί επιβεβαίωση όλων των μεταγενέστερων αλλαγών του 2026. Η προγραμματισμένη λήξη θητείας το 2028 δεν καταχωρίζεται ως πραγματική αποχώρηση.",
+          "startDate": "2026-01-02"
+        },
+        {
+          "title": "Ανώτατο εκτελεστικό στέλεχος με αναφορά στο ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2026,
+          "endYear": null,
+          "observedYears": [
+            2026
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "BOARD26"
+          ],
+          "note": "Υποστήριξη των λοιπών εκτελεστικών στελεχών στην υλοποίηση στρατηγικών αποφάσεων της Εταιρείας. Στιγμιότυπο της ανασυγκρότησης στις 02/01/2026. Δεν αποτελεί επιβεβαίωση όλων των μεταγενέστερων αλλαγών του 2026. Η προγραμματισμένη λήξη θητείας το 2028 δεν καταχωρίζεται ως πραγματική αποχώρηση.",
+          "startDate": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "id": "vasilis-apostolopoulos",
+      "name": "Βασίλειος Αποστολόπουλος",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Διευθύνων Σύμβουλος — εκτελεστικό μέλος ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": 2026,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42"
+          ],
+          "note": "Δεν προσδιορίζεται εδώ η πρώτη ανάληψη του ρόλου. Οι εκλογές του 2022 και του 2025 είναι τεκμηριωμένες θητείες, όχι κατ’ ανάγκη πρώτη είσοδος στη διοίκηση. Ο πίνακας της έκθεσης χρήσης 2025 δίνει λήξη αυτού του τίτλου την 01/01/2026 και διαφορετικό τίτλο από 02/01/2026. Οι βιογραφίες χρησιμοποιούν επίσης τον τίτλο CEO Ομίλου· εδώ αποτυπώνεται η θεσμική θέση στην Εταιρεία.",
+          "endDate": "2026-01-01"
+        },
+        {
+          "title": "Πρόεδρος ΔΣ — εκτελεστικό μέλος",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2026,
+          "endYear": null,
+          "observedYears": [
+            2026
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Στιγμιότυπο της ανασυγκρότησης στις 02/01/2026. Δεν αποτελεί επιβεβαίωση όλων των μεταγενέστερων αλλαγών του 2026. Η προγραμματισμένη λήξη θητείας το 2028 δεν καταχωρίζεται ως πραγματική αποχώρηση.",
+          "startDate": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "id": "christos-apostolopoulos",
+      "name": "Χρήστος Αποστολόπουλος",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Αντιπρόεδρος Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2002,
+          "endYear": null,
+          "observedYears": [
+            2024
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A24_P51"
+          ],
+          "note": "Ρητή αναδρομική χρονολόγηση από το 2002 στη βιογραφία του 2024. Δεν ταυτίζεται αυτόματα με την πρώτη ανάληψη της ειδικής θέσης Α΄ Αντιπροέδρου του ΔΣ της Εταιρείας. Δεν επεκτείνεται μετά το τελευταίο επαληθευμένο στιγμιότυπο."
+        },
+        {
+          "title": "Α΄ Αντιπρόεδρος ΔΣ — εκτελεστικό μέλος",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": 2026,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42"
+          ],
+          "note": "Δεν προσδιορίζεται εδώ η πρώτη ανάληψη του ρόλου. Οι εκλογές του 2022 και του 2025 είναι τεκμηριωμένες θητείες, όχι κατ’ ανάγκη πρώτη είσοδος στη διοίκηση. Ο πίνακας της έκθεσης χρήσης 2025 δίνει λήξη αυτού του τίτλου την 01/01/2026 και διαφορετικό τίτλο από 02/01/2026.",
+          "endDate": "2026-01-01"
+        },
+        {
+          "title": "Διευθύνων Σύμβουλος — εκτελεστικό μέλος ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2026,
+          "endYear": null,
+          "observedYears": [
+            2026
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Η ανακοίνωση αναφέρει ταυτόχρονα ανάληψη της ανώτατης διοίκησης του Ομίλου από κοινού με τον Πρόεδρο. Στιγμιότυπο της ανασυγκρότησης στις 02/01/2026. Δεν αποτελεί επιβεβαίωση όλων των μεταγενέστερων αλλαγών του 2026. Η προγραμματισμένη λήξη θητείας το 2028 δεν καταχωρίζεται ως πραγματική αποχώρηση.",
+          "startDate": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "id": "athanasios-askitis",
+      "name": "Αθανάσιος Ασκητής",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Β΄ Αντιπρόεδρος ΔΣ — ανεξάρτητο μη εκτελεστικό μέλος",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": 2026,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42"
+          ],
+          "note": "Δεν προσδιορίζεται εδώ η πρώτη ανάληψη του ρόλου. Οι εκλογές του 2022 και του 2025 είναι τεκμηριωμένες θητείες, όχι κατ’ ανάγκη πρώτη είσοδος στη διοίκηση. Ο πίνακας της έκθεσης χρήσης 2025 δίνει λήξη αυτού του τίτλου την 01/01/2026 και διαφορετικό τίτλο από 02/01/2026.",
+          "endDate": "2026-01-01"
+        },
+        {
+          "title": "Αντιπρόεδρος ΔΣ — ανεξάρτητο μη εκτελεστικό μέλος",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2026,
+          "endYear": null,
+          "observedYears": [
+            2026
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Στιγμιότυπο της ανασυγκρότησης στις 02/01/2026. Δεν αποτελεί επιβεβαίωση όλων των μεταγενέστερων αλλαγών του 2026. Η προγραμματισμένη λήξη θητείας το 2028 δεν καταχωρίζεται ως πραγματική αποχώρηση.",
+          "startDate": "2026-01-02"
+        }
+      ]
+    },
+    {
+      "id": "george-zerdilas",
+      "name": "Γεώργιος Ζέρδιλας",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Εκτελεστικό μέλος ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025,
+            2026
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Επαληθευμένη ιδιότητα σε επιλεγμένα στιγμιότυπα. Δεν τεκμαίρεται πρώτη ανάληψη το 2022 ή πραγματική λήξη από την προγραμματισμένη λήξη θητείας. Για το 2026 η επιβεβαίωση αφορά αποκλειστικά την 02/01/2026."
+        },
+        {
+          "title": "Γενικός Διευθυντής Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2020,
+          "endYear": null,
+          "observedYears": [
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A23_P71",
+            "A23_P72",
+            "A24_P53",
+            "A25_P46"
+          ],
+          "note": "Από τον Ιανουάριο 2020, σύμφωνα με τις βιογραφίες. Δεν τεκμηριώνεται ακριβής ημέρα ή λήξη. Η ιδιότητα ΓΔ Ομίλου διακρίνεται από τη συμμετοχή στο ΔΣ της Εταιρείας."
+        }
+      ]
+    },
+    {
+      "id": "alexandra-mikroulea",
+      "name": "Αλεξάνδρα Μικρουλέα",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Ανεξάρτητο μη εκτελεστικό μέλος ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025,
+            2026
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Επαληθευμένη ιδιότητα σε επιλεγμένα στιγμιότυπα. Δεν τεκμαίρεται πρώτη ανάληψη το 2022 ή πραγματική λήξη από την προγραμματισμένη λήξη θητείας. Για το 2026 η επιβεβαίωση αφορά αποκλειστικά την 02/01/2026."
+        }
+      ]
+    },
+    {
+      "id": "vasiliki-mengou",
+      "name": "Βασιλική Μέγγου",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Ανεξάρτητο μη εκτελεστικό μέλος ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025,
+            2026
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Επαληθευμένη ιδιότητα σε επιλεγμένα στιγμιότυπα. Δεν τεκμαίρεται πρώτη ανάληψη το 2022 ή πραγματική λήξη από την προγραμματισμένη λήξη θητείας. Για το 2026 η επιβεβαίωση αφορά αποκλειστικά την 02/01/2026."
+        }
+      ]
+    },
+    {
+      "id": "nikolaos-koritsas",
+      "name": "Νικόλαος Κορίτσας",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Μη εκτελεστικό μέλος ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025,
+            2026
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Επαληθευμένη ιδιότητα σε επιλεγμένα στιγμιότυπα. Δεν τεκμαίρεται πρώτη ανάληψη το 2022 ή πραγματική λήξη από την προγραμματισμένη λήξη θητείας. Για το 2026 η επιβεβαίωση αφορά αποκλειστικά την 02/01/2026."
+        }
+      ]
+    },
+    {
+      "id": "george-boutsioukos",
+      "name": "Γεώργιος Μπουτσιούκος",
+      "kind": "board",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Εκτελεστικό μέλος ΔΣ",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025,
+            2026
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P61",
+            "A22_P62",
+            "A23_P68",
+            "A24_P51",
+            "A24_P52",
+            "A24_P53",
+            "A24_P54",
+            "A24_P55",
+            "A25_P42",
+            "BOARD26"
+          ],
+          "note": "Επαληθευμένη ιδιότητα σε επιλεγμένα στιγμιότυπα. Δεν τεκμαίρεται πρώτη ανάληψη το 2022 ή πραγματική λήξη από την προγραμματισμένη λήξη θητείας. Για το 2026 η επιβεβαίωση αφορά αποκλειστικά την 02/01/2026."
+        },
+        {
+          "title": "Διευθυντής Διαχείρισης Ανθρώπινου Δυναμικού",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 1984,
+          "endYear": 2022,
+          "observedYears": [
+            1984,
+            2022
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A24_P55",
+            "A25_P46"
+          ],
+          "note": "Ρητά αναδρομικά δηλωμένο διάστημα 01/09/1984–16/02/2022. Δεν πρόκειται για 39 χωριστές ετήσιες παρατηρήσεις. Η λήξη αφορά τον ρόλο ανθρώπινου δυναμικού, όχι τη συμμετοχή στο ΔΣ.",
+          "startDate": "1984-09-01",
+          "endDate": "2022-02-16"
+        }
+      ]
+    },
+    {
+      "id": "emmanouil-markopoulos",
+      "name": "Εμμανουήλ Μαρκόπουλος",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Οικονομικός Διευθυντής Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2009,
+          "endYear": 2025,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P73",
+            "A23_P79",
+            "A24_P61",
+            "CFO25"
+          ],
+          "note": "Η έναρξη το 2009 δηλώνεται στις βιογραφίες. Η ανακοίνωση 03/11/2025 γνωστοποιεί αποχώρηση λόγω συνταξιοδότησης, χωρίς ακριβή ημέρα ισχύος· δεν χρησιμοποιείται η ημέρα ανακοίνωσης ως βέβαιη ημέρα λήξης."
+        },
+        {
+          "title": "Γενικός Διευθυντής Ιατρικού Κέντρου Αθηνών",
+          "scope": "clinic",
+          "unitIds": [
+            "marousi"
+          ],
+          "startYear": 2012,
+          "endYear": 2019,
+          "observedYears": [
+            2012,
+            2019
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P73",
+            "A23_P79",
+            "A24_P61"
+          ],
+          "note": "Αναδρομικά δηλωμένη θητεία 2012–2019. Τα observedYears δηλώνουν επαληθευμένα άκρα της περιόδου, όχι σύγχρονες ετήσιες πηγές."
+        }
+      ]
+    },
+    {
+      "id": "marina-mazaraki",
+      "name": "Μαρίνα Μαζαράκη",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Οικονομική Διευθύντρια Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2025,
+          "endYear": null,
+          "observedYears": [
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P52",
+            "CFO25"
+          ],
+          "note": "Από τον Νοέμβριο 2025. Η ανακοίνωση της 03/11/2025 και η βιογραφία δεν καθορίζουν ακριβή ημέρα ανάληψης."
+        }
+      ]
+    },
+    {
+      "id": "vlasios-leonardos",
+      "name": "Βλάσιος Λεονάρδος",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Νομικός Σύμβουλος Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 1999,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P73",
+            "A23_P79",
+            "A24_P61",
+            "A25_P52"
+          ],
+          "note": "Η βιογραφία δηλώνει ανάληψη από το 1999. Η ένταξη στα ανώτερα στελέχη δεν τεκμηριώνει συγκεκριμένη εργασιακή σχέση."
+        }
+      ]
+    },
+    {
+      "id": "eleni-petraki",
+      "name": "Ελένη Πετράκη",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Νομική Σύμβουλος της Εταιρείας",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2010,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P73",
+            "A23_P79",
+            "A24_P61",
+            "A25_P52"
+          ],
+          "note": "Η πηγή κατονομάζει ειδικά τη νομική Εταιρεία ΙΑΤΡΙΚΟ ΑΘΗΝΩΝ ΕΑΕ και χρονολογεί τον ρόλο από το 2010."
+        }
+      ]
+    },
+    {
+      "id": "stella-gkioni",
+      "name": "Στέλλα Γκιώνη",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Διευθύντρια Επιχειρησιακής Ανάπτυξης",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2024,
+          "endYear": null,
+          "observedYears": [
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A24_P61",
+            "A24_P62",
+            "A25_P52"
+          ],
+          "note": "Από τον Νοέμβριο 2024· αρμοδιότητες marketing, επικοινωνίας, εμπορικών συνεργασιών και στρατηγικής ανάπτυξης. Δεν αποδίδεται η αλλαγή στο SAP."
+        }
+      ]
+    },
+    {
+      "id": "theodoros-chamakiotis",
+      "name": "Θεόδωρος Χαμακιώτης",
+      "kind": "clinic",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Γενικός Διευθυντής Ιατρικού Ψυχικού",
+          "scope": "clinic",
+          "unitIds": [
+            "psychiko"
+          ],
+          "startYear": 2009,
+          "endYear": 2019,
+          "observedYears": [
+            2009,
+            2019
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P74",
+            "A23_P80",
+            "A24_P62",
+            "A25_P53"
+          ],
+          "note": "Αναδρομικά δηλωμένη θητεία 2009–2019, χωρίς ακριβείς ημέρες έναρξης και λήξης."
+        },
+        {
+          "title": "Γενικός Διευθυντής Ιατρικού Κέντρου Αθηνών",
+          "scope": "clinic",
+          "unitIds": [
+            "marousi"
+          ],
+          "startYear": 2019,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P74",
+            "A23_P80",
+            "A24_P62",
+            "A25_P53"
+          ],
+          "note": "Η βιογραφία τοποθετεί την ανάληψη το 2019. Πρόκειται για τη μονάδα Αμαρουσίου, όχι για τον τίτλο Γενικού Διευθυντή Ομίλου."
+        }
+      ]
+    },
+    {
+      "id": "polly-zisopoulou",
+      "name": "Πόλλυ Ζησοπούλου",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Σύμβουλος Διοίκησης Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2009,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P74",
+            "A23_P80",
+            "A24_P62",
+            "A25_P53"
+          ],
+          "note": "Από τον Μάρτιο 2009. Οι βιογραφίες περιγράφουν συμβολή στην εμπορική πολιτική και συνεργασίες με ασφαλιστικές εταιρείες."
+        },
+        {
+          "title": "Ευθύνη Παιδιατρικού Κέντρου Αθηνών",
+          "scope": "clinic",
+          "unitIds": [
+            "marousi"
+          ],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P74",
+            "A23_P80",
+            "A24_P62",
+            "A25_P53"
+          ],
+          "note": "Η πηγή δηλώνει ότι έχει υπό την ευθύνη της το Παιδιατρικό Κέντρο. Δεν την ονομάζει Γενική Διευθύντρια ούτε χρονολογεί χωριστά την έναρξη αυτής της συγκεκριμένης ευθύνης. Το Παιδιατρικό δεν προστίθεται ως ξεχωριστή πόλη."
+        }
+      ]
+    },
+    {
+      "id": "theodoros-talaris",
+      "name": "Θεόδωρος Τάλαρης",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Περιφερειακός Διευθυντής Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2024,
+          "endYear": null,
+          "observedYears": [
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A24_P62",
+            "A25_P53"
+          ],
+          "note": "Από τον Σεπτέμβριο 2024. Δεν συμπληρώνεται πλήρης κατάλογος εποπτευόμενων μονάδων χωρίς τεκμήριο."
+        },
+        {
+          "title": "Γενικός Διευθυντής Ιατρικού Παλαιού Φαλήρου",
+          "scope": "clinic",
+          "unitIds": [
+            "faliro"
+          ],
+          "startYear": 2025,
+          "endYear": null,
+          "observedYears": [
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P53"
+          ],
+          "note": "Επιπλέον ρόλος από τον Ιανουάριο 2025. Γνωστός μήνας, άγνωστη ακριβής ημέρα. Δεν συνάγεται αιτιώδης σύνδεση με SAP."
+        },
+        {
+          "title": "Γενικός Διευθυντής Ιατρικού Περιστερίου",
+          "scope": "clinic",
+          "unitIds": [
+            "peristeri"
+          ],
+          "startYear": 2025,
+          "endYear": null,
+          "observedYears": [
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P53"
+          ],
+          "note": "Επιπλέον ρόλος από τον Ιούλιο 2025. Η προσθήκη τίτλου ΓΔ δεν αποδεικνύει πρώτη περιφερειακή εποπτεία της μονάδας."
+        }
+      ]
+    },
+    {
+      "id": "george-katopodis",
+      "name": "Γεώργιος Κατωπόδης",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Διευθυντής Ανθρώπινου Δυναμικού Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2025,
+          "endYear": null,
+          "observedYears": [
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P53"
+          ],
+          "note": "Από τον Ιούνιο 2025. Η πηγή δεν προσδιορίζει ακριβή ημέρα ανάληψης ούτε αιτία διορισμού."
+        }
+      ]
+    },
+    {
+      "id": "thodoris-papafotopoulos",
+      "name": "Θοδωρής Παπαφωτόπουλος",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Διευθυντής Ανθρώπινου Δυναμικού Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2022,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P73",
+            "A22_P74",
+            "A23_P79",
+            "A23_P80"
+          ],
+          "note": "Από τον Ιανουάριο 2022. Η τελευταία επαληθευμένη παρουσία στη βιογραφική ενότητα δεν χρησιμοποιείται ως ημερομηνία αποχώρησης. Η φαινομενική συνύπαρξη με τον τίτλο του Μπουτσιούκου έως 16/02/2022 δεν συμφιλιώνεται με επινοημένη ιεραρχία."
+        }
+      ]
+    },
+    {
+      "id": "ioannis-pyrnokokis",
+      "name": "Ιωάννης Πυρνοκόκης",
+      "kind": "clinic",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Γενικός Διευθυντής Ιατρικού Παλαιού Φαλήρου",
+          "scope": "clinic",
+          "unitIds": [
+            "faliro"
+          ],
+          "startYear": 2008,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P74",
+            "A23_P80",
+            "A24_P63"
+          ],
+          "note": "Η βιογραφία δηλώνει τον ρόλο από το 2008. Δεν εντοπίστηκε ρητή ημερομηνία αποχώρησης· η επόμενη ανάληψη τίτλου από άλλον δεν χρησιμοποιείται για κατασκευή ακριβούς λήξης."
+        }
+      ]
+    },
+    {
+      "id": "despoina-papachristou",
+      "name": "Δέσποινα Παπαχρήστου",
+      "kind": "clinic",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Γενική Διευθύντρια Ιατρικού Περιστερίου",
+          "scope": "clinic",
+          "unitIds": [
+            "peristeri"
+          ],
+          "startYear": null,
+          "endYear": 2024,
+          "observedYears": [
+            2022,
+            2023,
+            2024
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P75",
+            "A23_P81",
+            "A24_P63"
+          ],
+          "note": "Άγνωστη έναρξη. Η έκθεση 2024 δηλώνει ρητά αποχώρηση λόγω συνταξιοδότησης στις 31/12/2024. Δεν εμφανίζεται ως ενεργή μετά αυτή την ημερομηνία.",
+          "endDate": "2024-12-31"
+        }
+      ]
+    },
+    {
+      "id": "stefanos-tapsis",
+      "name": "Στέφανος Ταψής",
+      "kind": "clinic",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Γενικός Διευθυντής Ιατρικού Ψυχικού",
+          "scope": "clinic",
+          "unitIds": [
+            "psychiko"
+          ],
+          "startYear": 2019,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P75",
+            "A23_P81",
+            "A24_P63"
+          ],
+          "note": "Από το 2019. Η απουσία από μεταγενέστερη επιλεγμένη βιογραφική ενότητα δεν τεκμηριώνει παύση ούτε επιτρέπει επιβεβαίωση ότι παραμένει σήμερα."
+        }
+      ]
+    },
+    {
+      "id": "varvara-pliatsika",
+      "name": "Βαρβάρα Πλιάτσικα",
+      "kind": "clinic",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Γενική Διευθύντρια Ιατρικού Δάφνης",
+          "scope": "clinic",
+          "unitIds": [
+            "dafni"
+          ],
+          "startYear": 2009,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P75",
+            "A23_P81",
+            "A24_P63",
+            "A25_P53"
+          ],
+          "note": "Η ανάληψη το 2009 δηλώνεται στα βιογραφικά. Προγενέστερες θέσεις στην ΙΑΣΙΣ Πειραιά δεν χρονολογούνται επαρκώς και δεν προστίθενται στο timeline."
+        }
+      ]
+    },
+    {
+      "id": "foteini-ofeidou",
+      "name": "Φωτεινή Οφείδου",
+      "kind": "clinic",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Οικονομική Διευθύντρια Ιατρικού Διαβαλκανικού",
+          "scope": "clinic",
+          "unitIds": [
+            "thessaloniki"
+          ],
+          "startYear": 2007,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P75",
+            "A23_P81",
+            "A24_P63",
+            "A25_P53",
+            "A25_P54"
+          ],
+          "note": "Από το 2007. Η πηγή χρησιμοποιεί γραμματικά τον τίτλο «Οικονομικός Διευθυντής»· αποδίδεται στα ελληνικά με συμφωνία γένους χωρίς αλλαγή του ρόλου."
+        },
+        {
+          "title": "Αναπληρώτρια Γενική Διευθύντρια Ιατρικού Διαβαλκανικού",
+          "scope": "clinic",
+          "unitIds": [
+            "thessaloniki"
+          ],
+          "startYear": 2013,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P75",
+            "A23_P81",
+            "A24_P63"
+          ],
+          "note": "Παράλληλα καθήκοντα από το 2013. Δεν υπάρχει ρητή ημερομηνία λήξης αυτού του τίτλου· η τελευταία αναφορά δεν μετατρέπεται σε αποχώρηση."
+        },
+        {
+          "title": "Άσκηση καθηκόντων Γενικής Διευθύντριας Ιατρικού Διαβαλκανικού",
+          "scope": "clinic",
+          "unitIds": [
+            "thessaloniki"
+          ],
+          "startYear": 2025,
+          "endYear": null,
+          "observedYears": [
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P53",
+            "A25_P54"
+          ],
+          "note": "Η βιογραφία αναφέρει ότι από το 2025 ασκεί καθήκοντα Γενικού Διευθυντή. Δεν δίνεται μήνας ή ημέρα και δεν προστίθεται χαρακτηρισμός μονιμότητας."
+        }
+      ]
+    },
+    {
+      "id": "giannis-kalofysoudis",
+      "name": "Γιάννης Καλοφυσούδης",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Διευθυντής Ποιότητας Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2011,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P75",
+            "A23_P81",
+            "A24_P63",
+            "A24_P64",
+            "A25_P54"
+          ],
+          "note": "Από τον Νοέμβριο 2011. Πρόκειται για προϋπάρχοντα ρόλο, όχι θέση που τεκμηριώνεται ότι δημιουργήθηκε από SAP."
+        },
+        {
+          "title": "Διευθυντής Βιώσιμης Ανάπτυξης",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2025,
+          "endYear": null,
+          "observedYears": [
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A25_P54"
+          ],
+          "note": "Παράλληλη ευθύνη από τον Σεπτέμβριο 2025. Δεν τεκμηριώνεται αιτιώδης σχέση με SAP."
+        }
+      ]
+    },
+    {
+      "id": "nikolaos-mperatis",
+      "name": "Νικόλαος Μπεράτης",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Τεχνικός Διευθυντής Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2016,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P76",
+            "A23_P82",
+            "A24_P64",
+            "A25_P54"
+          ],
+          "note": "Από το 2016· ευθύνη όλων των Τεχνικών Υπηρεσιών του Ομίλου και της Βιοϊατρικής Υπηρεσίας, όπως ορίζουν οι βιογραφίες."
+        }
+      ]
+    },
+    {
+      "id": "nikolaos-kavoulis",
+      "name": "Νικόλαος Καβούλης",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Chief Information Security Officer",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2018,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P76",
+            "A23_P82",
+            "A24_P64",
+            "A25_P54"
+          ],
+          "note": "Υπεύθυνος ασφάλειας πληροφοριακών συστημάτων από το 2018. Ο τίτλος CISO δεν ταυτίζεται με Διευθυντή Πληροφορικής / CIO."
+        }
+      ]
+    },
+    {
+      "id": "anastasios-tagaris",
+      "name": "Αναστάσιος Τάγαρης",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Διευθυντής Πληροφορικής Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2020,
+          "endYear": 2023,
+          "observedYears": [
+            2022,
+            2023
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P76",
+            "A22_P77"
+          ],
+          "note": "Ρητό διάστημα από Φεβρουάριο 2020 έως 18/04/2023 στην έκθεση χρήσης 2022, που υπογράφηκε το 2023. Δεν αποδίδεται η αποχώρηση σε SAP ή αποτυχία έργου.",
+          "endDate": "2023-04-18"
+        }
+      ]
+    },
+    {
+      "id": "xenia-malliou",
+      "name": "Ξένια Μάλλιου",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Εμπορική Διευθύντρια",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P77",
+            "A23_P82",
+            "A24_P64",
+            "A24_P65"
+          ],
+          "note": "Ανάπτυξη συνεργασίας με ασφαλιστικές εταιρείες. Η επαναλαμβανόμενη διατύπωση «τα τελευταία πέντε έτη» δεν μετατρέπεται σε ακριβές έτος ανάληψης. Δεν τεκμηριώθηκε λήξη."
+        }
+      ]
+    },
+    {
+      "id": "christina-doumpali",
+      "name": "Χριστίνα Δουμπαλή",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Αναπληρώτρια Διευθύντρια Παιδιατρικού Κέντρου Διαβαλκανικού",
+          "scope": "clinic",
+          "unitIds": [
+            "thessaloniki"
+          ],
+          "startYear": 2004,
+          "endYear": 2013,
+          "observedYears": [
+            2004,
+            2013
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P77",
+            "A23_P82",
+            "A23_P83",
+            "A24_P65",
+            "A25_P54"
+          ],
+          "note": "Αναδρομικά δηλωμένη θητεία 2004–2013. Περιλαμβάνεται λόγω διευθυντικής ευθύνης, όχι μόνο της ιατρικής της ιδιότητας."
+        },
+        {
+          "title": "Διευθύντρια Κέντρου Διεθνών Ασθενών Ομίλου",
+          "scope": "group",
+          "unitIds": [],
+          "startYear": 2013,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P77",
+            "A23_P82",
+            "A23_P83",
+            "A24_P65",
+            "A25_P54"
+          ],
+          "note": "Από το 2013. Η πηγή περιγράφει τέσσερα Τμήματα Διεθνών Ασθενών και Τμήμα Διεθνών Ασφαλιστικών / Assistance, χωρίς επαρκή ονομαστική αντιστοίχιση όλων σε unitIds."
+        }
+      ]
+    },
+    {
+      "id": "dimitrios-tsapogas",
+      "name": "Δημήτριος Τσαπόγας",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Υπεύθυνος Διαχείρισης Κινδύνων μέσω MAZARS",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2022,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P78",
+            "A23_P83",
+            "A24_P31",
+            "A25_P28"
+          ],
+          "note": "Ανάθεση της λειτουργίας στη MAZARS και ειδικά στον Δημήτριο Τσαπόγα. Εξωτερική ανάθεση, όχι τεκμήριο πρόσληψης στην Εταιρεία. Η μονάδα εξυπηρετεί και σημαντικές θυγατρικές, χωρίς να ταυτίζεται με πλήρες οργανόγραμμα όλου του Ομίλου.",
+          "startDate": "2022-12-31"
+        }
+      ]
+    },
+    {
+      "id": "irakleia-peppa",
+      "name": "Ηρακλεία Πέππα",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Υπεύθυνη Κανονιστικής Συμμόρφωσης",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2022,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A22_P78",
+            "A23_P83",
+            "A24_P33",
+            "A25_P30"
+          ],
+          "note": "Ρητή απόφαση ΔΣ 31/12/2022. Η πηγή την περιγράφει ως δικηγόρο Αθηνών· δεν τεκμαίρεται συγκεκριμένη εργασιακή σχέση.",
+          "startDate": "2022-12-31"
+        },
+        {
+          "title": "Υπεύθυνη Παραλαβής και Παρακολούθησης Αναφορών",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2023,
+          "endYear": null,
+          "observedYears": [
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A23_P83",
+            "A24_P33",
+            "A25_P30"
+          ],
+          "note": "Πρόσθετη ιδιότητα με απόφαση ΔΣ 03/05/2023 σύμφωνα με τον Ν.4990/2022. Καταγράφεται η εταιρική γνωστοποίηση, χωρίς νομική αξιολόγηση συμμόρφωσης.",
+          "startDate": "2023-05-03"
+        }
+      ]
+    },
+    {
+      "id": "nikolaos-kalatzis",
+      "name": "Νικόλαος Καλατζής",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Επικεφαλής Διεύθυνσης Εσωτερικού Ελέγχου",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": 2015,
+          "endYear": null,
+          "observedYears": [
+            2024,
+            2025
+          ],
+          "precision": "dated",
+          "sourceIds": [
+            "A24_P34",
+            "A25_P31"
+          ],
+          "note": "Ρητή ανάληψη στις 09/02/2015. Η πηγή αναφέρει πλήρη / αποκλειστική απασχόληση και προσωπική / λειτουργική ανεξαρτησία. Η κατηγορία executive στο αρχείο δεν καταργεί αυτή την ανεξαρτησία.",
+          "startDate": "2015-02-09"
+        }
+      ]
+    },
+    {
+      "id": "anna-xydia",
+      "name": "Άννα Ξυδιά",
+      "kind": "executive",
+      "portrait": null,
+      "roles": [
+        {
+          "title": "Εταιρική Γραμματέας",
+          "scope": "company",
+          "unitIds": [],
+          "startYear": null,
+          "endYear": null,
+          "observedYears": [
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "precision": "snapshot",
+          "sourceIds": [
+            "A22_P68",
+            "A23_P74",
+            "A24_P56",
+            "A25_P48"
+          ],
+          "note": "Καθήκοντα εταιρικού γραμματέα αναφέρονται ρητά στις τέσσερις εκθέσεις. Η έναρξη και η λήξη του ρόλου δεν προσδιορίζονται."
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Επιλεγμένο μητρώο ονομαστικών προσώπων από τις εκθέσεις χρήσεων 2022–2025 και ειδικές εταιρικές γνωστοποιήσεις. Δεν αποτελεί πλήρη απογραφή όλων των διευθυντών, όλων των εργαζομένων, όλων των ιατρικών τμημάτων ή των διοικήσεων θυγατρικών.",
+    "Τα 9 μέλη ΔΣ είναι μέλη του ΔΣ της νομικής Εταιρείας. Το πλήθος προσώπων του παρόντος αρχείου δεν είναι πλήθος ταυτόχρονα ενεργών διευθυντών ούτε μέγεθος διοικητικού οργανογράμματος.",
+    "Το kind είναι κατηγορία παρουσίασης προσώπου, όχι νομικός χαρακτηρισμός. Το executive περιλαμβάνει ανώτερα στελέχη, συμβούλους και υπευθύνους λειτουργιών ελέγχου. Δεν σημαίνει αυτομάτως εκτελεστικό μέλος ΔΣ ή σχέση εξαρτημένης εργασίας. Η scope κάθε ρόλου προσδιορίζει χωριστά Εταιρεία, Όμιλο ή κλινική.",
+    "startYear/endYear και προαιρετικά startDate/endDate προέρχονται από ρητές χρονολογήσεις. Null σημαίνει άγνωστο, όχι ότι ο ρόλος δεν άρχισε ή δεν έληξε. Η πρώτη και η τελευταία αναφορά δεν μετατρέπονται σε διορισμό ή αποχώρηση.",
+    "observedYears καταγράφει επιβεβαιωμένα έτη στα οποία αφορά ο ρόλος. Σε αναδρομικά δηλωμένα ιστορικά διαστήματα πριν το 2022 καταγράφονται μόνο τα επαληθευμένα άκρα και αυτό εξηγείται στη note. Δεν είναι ημερομηνίες δημοσίευσης των πηγών ούτε ετήσιες ανεξάρτητες επιβεβαιώσεις.",
+    "Η ετήσια έκθεση χρήσης 2025 δημοσιεύθηκε το 2026 και περιέχει μεταγενέστερες αλλαγές. Χρησιμοποιούμε τον χρονολογημένο πίνακα PDF 42: παλιοί τίτλοι έως 01/01/2026, νέοι από 02/01/2026. Η PDF 89 / έντυπη 90 δεν χρησιμοποιείται για αναδρομική απόδοση των νέων τίτλων στο 2025.",
+    "Η επιβεβαίωση των ρόλων του 2026 αφορά μόνο την ανασυγκρότηση της 02/01/2026. Δεν ελέγχθηκαν εδώ όλες οι αλλαγές έως 12/11/2026. Οι προβλεπόμενες λήξεις θητειών στο 2028 δεν αποτελούν πραγματικές λήξεις.",
+    "Για ρόλο με άγνωστη λήξη δεν επιτρέπεται προέκταση μετά το τελευταίο observedYear. Η απουσία από επόμενη βιογραφική ενότητα δεν αποδεικνύει αποχώρηση. Ακριβής λήξη υπερισχύει του ετήσιου φίλτρου.",
+    "Οι μονάδες συνδέονται μόνο όπου κατονομάζονται. marousi είναι γεωγραφική περιοχή και μπορεί να αφορά Ιατρικό Κέντρο ή Παιδιατρικό Κέντρο, όπως διευκρινίζει ο τίτλος. Κλινική, τοποθεσία και ξεχωριστή εταιρεία δεν ταυτίζονται.",
+    "Δεν προστίθενται γραμμές υπαγωγής από συνύπαρξη ονομάτων ή διαδοχή τίτλων. Οι διοικητικές μεταβολές δεν αποδίδονται αιτιωδώς στο SAP.",
+    "Η ένδειξη published στις ετήσιες εκθέσεις διακρίνει το έτος δημοσιοποίησης από την ημερομηνία υπογραφών. Δεν υποστηρίζεται ακριβής ημέρα ανάρτησης του PDF.",
+    "Δεν περιλαμβάνονται φωτογραφίες ή στοιχεία επικοινωνίας. Η κανονικοποίηση ονομάτων περιορίζεται σε σειρά ονόματος/επωνύμου και τόνους, χωρίς συγχώνευση διαφορετικών προσώπων."
+  ]
+}

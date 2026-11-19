@@ -1,0 +1,22 @@
+# Τοπικά και προσωρινά αρχεία Python.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Διαπιστευτήρια και τοπικές ρυθμίσεις.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Προσωρινά αρχεία λειτουργικού και συντακτών.
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+*~
+.idea/
+.vscode/

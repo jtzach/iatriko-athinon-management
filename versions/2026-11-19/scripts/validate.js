@@ -1,0 +1,42 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const root = path.resolve(__dirname, '..');
+const core = require('../assets/core.js');
+const data = JSON.parse(fs.readFileSync(path.join(root,'data/knowledge.json'),'utf8'));
+assert.deepEqual(core.validate(data), [], 'Ακεραιότητα βάσης');
+const sandbox={window:{}};
+vm.runInNewContext(fs.readFileSync(path.join(root,'data/knowledge.js'),'utf8'),sandbox);
+assert.deepEqual(JSON.parse(JSON.stringify(sandbox.window.KNOWLEDGE_BASE)),data,'Ταυτότητα JSON και browser dataset');
+const used=new Set([...data.nodes,...data.edges].flatMap(x=>x.evidenceIds));
+data.evidence.forEach(e=>{
+  assert(used.has(e.id),'Αχρησιμοποίητο τεκμήριο '+e.id);
+  e.refs.forEach(r=>{const source=data.sources.find(s=>s.id===r.sourceId);r.pdfPages.forEach(p=>assert(p<=source.pageCount,'Σελίδα εκτός PDF '+e.id));});
+});
+const all={topic:'all',scope:'all',period:'all',search:'',context:true};
+assert.equal(core.filterGraph(data,all).nodes.length,data.nodes.length);
+for(const scope of ['company','group','clinic','national','mixed']){
+  const result=core.filterGraph(data,{...all,scope});
+  assert(result.nodes.every(n=>n.scopes.includes(scope)),'Διαχωρισμός περιμέτρου '+scope);
+  const visible=new Set(result.nodes.map(n=>n.id));
+  assert(result.edges.every(e=>visible.has(e.source)&&visible.has(e.target)),'Ορατά άκρα σχέσεων');
+}
+assert(core.filterGraph(data,{...all,period:'2023'}).nodes.length>0,'Δεδομένα εθνικού περιβάλλοντος 2023');
+assert(core.filterGraph(data,{...all,context:false}).edges.every(e=>e.kind==='reported'),'Απόκρυψη θεματικών συσχετίσεων');
+assert.equal(core.filterGraph(data,{...all,search:'xyznotpresentabc'}).nodes.length,0,'Κενή αναζήτηση');
+assert.equal(core.retrieve(data,'πώς').length,0,'Λέξεις αποκλεισμού με τελικό σίγμα');
+assert.equal(core.retrieve(data,'SAP')[0].evidence.id,'Ε09','Ανάκτηση SAP');
+assert.equal(core.retrieve(data,'διαχείριση κινδύνων')[0].evidence.id,'Ε14','Ανάκτηση κινδύνων');
+assert.equal(core.retrieve(data,'εκπαίδευση προσωπικού')[0].evidence.id,'Ε22','Ανάκτηση εκπαίδευσης');
+assert.deepEqual(core.retrieve(data,'ΕΚΠΑΙΔΕΥΣΗ ΠΡΟΣΩΠΙΚΟΥ').map(x=>x.evidence.id),core.retrieve(data,'εκπαίδευση προσωπικού').map(x=>x.evidence.id),'Τόνοι και κεφαλαία');
+assert.equal(data.evidence.find(e=>e.id==='Ε30').kind,'gap','Η ασυμφωνία ΔΣ παραμένει ανοιχτή');
+assert(data.evidence.find(e=>e.id==='ΕΞ04').scope==='national','Ο εθνικός δείκτης δεν είναι εταιρικός');
+assert(data.evidence.find(e=>e.id==='Ε02').finding.includes('271.723 χιλ. ευρώ'),'Μονάδες εταιρικών εσόδων');
+assert(data.evidence.find(e=>e.id==='Ε03').finding.includes('275.752 χιλ. ευρώ'),'Χωριστή περίμετρος ενοποιημένων εσόδων');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const assets=[...html.matchAll(/(?:src|href)="([^"#:]+)"/g)].map(x=>x[1]).filter(x=>!x.startsWith('http'));
+assets.forEach(file=>assert(fs.existsSync(path.join(root,file)),'Λείπει τοπικό asset '+file));
+assert(!/<script[^>]+src="https?:/i.test(html),'Η σελίδα λειτουργεί χωρίς εξωτερικά scripts');
+console.log(`Επιτυχής έλεγχος: ${data.nodes.length} κόμβοι, ${data.edges.length} σχέσεις, ${data.evidence.length} τεκμήρια, ${data.sources.length} πηγές. Ακεραιότητα, περίμετροι, σελίδες, offline assets και ανάκτηση επαληθεύθηκαν.`);

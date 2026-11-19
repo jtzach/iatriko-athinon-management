@@ -1,0 +1,657 @@
+{
+  "passed": true,
+  "provenance": {
+    "engine": "Neo4j Kernel",
+    "version": "2026.10.2",
+    "edition": "community",
+    "exportMode": "actual-neo4j-query-export",
+    "liveConnection": false,
+    "generatedAt": "2026-11-12T15:14:26.609577+00:00",
+    "datasetSHA256": "c4bd0dc1e06ecd8cceca0ef2e0071bead2ef0ea168379f35e24657ffe2de053e",
+    "imageDigest": "neo4j@sha256:4a2fd4f41ce384aa7d6a74b399f22c202e154f3966119c28a18ed9a500904f5e",
+    "nodesImported": 113,
+    "observationsImported": 378,
+    "sourcesImported": 72,
+    "yearsQueried": 43,
+    "queriesExecuted": 19,
+    "relationshipCounts": [
+      {
+        "type": "HOLDS_ROLE",
+        "count": 174
+      },
+      {
+        "type": "MEMBER_OF",
+        "count": 48
+      },
+      {
+        "type": "REPORTS_TO",
+        "count": 35
+      },
+      {
+        "type": "RESPONSIBLE_FOR",
+        "count": 121
+      }
+    ],
+    "roundTripVerified": true,
+    "authenticationVerified": true,
+    "note": "Εξαγωγή από πραγματική Neo4j. Η ιστοσελίδα διαβάζει αυτό το στιγμιότυπο, χωρίς ζωντανή σύνδεση στη βάση."
+  },
+  "yearChecks": [
+    {
+      "year": 1984,
+      "observations": 3,
+      "observationIds": [
+        "org-1984-528518a6c1dd",
+        "org-1984-b8c6eb8e6395",
+        "org-1984-05a594ea395c"
+      ]
+    },
+    {
+      "year": 1985,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1986,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1987,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1988,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1989,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1990,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1991,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1992,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1993,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1994,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1995,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1996,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1997,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1998,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 1999,
+      "observations": 2,
+      "observationIds": [
+        "org-1999-0d91880af248",
+        "org-1999-70f1610b9a98"
+      ]
+    },
+    {
+      "year": 2000,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2001,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2002,
+      "observations": 1,
+      "observationIds": [
+        "org-2002-33403c561ebc"
+      ]
+    },
+    {
+      "year": 2003,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2004,
+      "observations": 2,
+      "observationIds": [
+        "org-2004-1dcf2e5d8a7e",
+        "org-2004-163bbedee2e8"
+      ]
+    },
+    {
+      "year": 2005,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2006,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2007,
+      "observations": 2,
+      "observationIds": [
+        "org-2007-7c665e5549a8",
+        "org-2007-9dd11fac7872"
+      ]
+    },
+    {
+      "year": 2008,
+      "observations": 2,
+      "observationIds": [
+        "org-2008-6e603c014f0d",
+        "org-2008-269992b04bd0"
+      ]
+    },
+    {
+      "year": 2009,
+      "observations": 8,
+      "observationIds": [
+        "org-2009-22333eb44224",
+        "org-2009-318c763b4c6c",
+        "org-2009-f670c4b771f6",
+        "org-2009-011fdbc4537b",
+        "org-2009-cee29b0d84d5",
+        "org-2009-45bb0b41e6c0",
+        "org-2009-f0da46d2fa1d",
+        "org-2009-dbf51eeec367"
+      ]
+    },
+    {
+      "year": 2010,
+      "observations": 2,
+      "observationIds": [
+        "org-2010-19c86cd0bfae",
+        "org-2010-5fd6d647cdf2"
+      ]
+    },
+    {
+      "year": 2011,
+      "observations": 2,
+      "observationIds": [
+        "org-2011-95a8c5dc2693",
+        "org-2011-3e9403b0c7f1"
+      ]
+    },
+    {
+      "year": 2012,
+      "observations": 2,
+      "observationIds": [
+        "org-2012-8a5b74d5c5bf",
+        "org-2012-4cc425ece54a"
+      ]
+    },
+    {
+      "year": 2013,
+      "observations": 6,
+      "observationIds": [
+        "org-2013-36e081b61e70",
+        "org-2013-c0b43c424e6d",
+        "org-2013-0c369a374418",
+        "org-2013-99b060c45a4c",
+        "org-2013-3af3bde193cc",
+        "org-2013-12e100d3fd79"
+      ]
+    },
+    {
+      "year": 2014,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2015,
+      "observations": 2,
+      "observationIds": [
+        "org-2015-fe8e809b5844",
+        "org-2015-4119fe41f3eb"
+      ]
+    },
+    {
+      "year": 2016,
+      "observations": 2,
+      "observationIds": [
+        "org-2016-67d4619eb295",
+        "org-2016-f0803858df13"
+      ]
+    },
+    {
+      "year": 2017,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2018,
+      "observations": 2,
+      "observationIds": [
+        "org-2018-eb0ca9fbfb2b",
+        "org-2018-43fa4bf7207b"
+      ]
+    },
+    {
+      "year": 2019,
+      "observations": 6,
+      "observationIds": [
+        "org-2019-3977f023a9d7",
+        "org-2019-174f1f9efe93",
+        "org-2019-e36b529017f2",
+        "org-2019-3d3b2bd535b7",
+        "org-2019-5614268a0ebf",
+        "org-2019-bc6ac58f19d3"
+      ]
+    },
+    {
+      "year": 2020,
+      "observations": 3,
+      "observationIds": [
+        "org-2020-4776894c27a7",
+        "org-2020-4ae05c8cfeaa",
+        "org-2020-e10d94659e51"
+      ]
+    },
+    {
+      "year": 2021,
+      "observations": 0,
+      "observationIds": []
+    },
+    {
+      "year": 2022,
+      "observations": 65,
+      "observationIds": [
+        "org-2022-009434a89ef9",
+        "org-2022-127a46177614",
+        "org-2022-258301c88b82",
+        "org-2022-81debc1e38b5",
+        "org-2022-e0c3459016f1",
+        "org-2022-55cc3435ee65",
+        "org-2022-a5043814f4b2",
+        "org-2022-532384b7f40a",
+        "org-2022-852ad541bbc5",
+        "org-2022-8487a4469e38",
+        "org-2022-041ce3ed4d88",
+        "org-2022-c21fd3b6a88f",
+        "org-2022-f16204c24251",
+        "org-2022-285deea5efe0",
+        "org-2022-8cc6120c0d9a",
+        "org-2022-e615d8db1e11",
+        "org-2022-ee00116c594e",
+        "org-2022-6efedf644d17",
+        "org-2022-14fdb692c752",
+        "org-2022-062aa11a9605",
+        "org-2022-0158db9200b7",
+        "org-2022-8f2ebb0f3b29",
+        "org-2022-0cdcc20c36fa",
+        "org-2022-ffc29d2c5a9f",
+        "org-2022-e191f5c32e86",
+        "org-2022-fc8740a75641",
+        "org-2022-31a9b947ef1e",
+        "org-2022-bba11d151d20",
+        "org-2022-633af72daab1",
+        "org-2022-e91b30b84693",
+        "org-2022-c4e302e4a558",
+        "org-2022-307ae6e0df69",
+        "org-2022-17bc391f7224",
+        "org-2022-5cb2afd4aeac",
+        "org-2022-ef1febe09861",
+        "org-2022-c072133da2e2",
+        "org-2022-21bf2c6ead41",
+        "org-2022-12c35f6e293e",
+        "org-2022-90d5172d76dc",
+        "org-2022-f4f7c447ecb7",
+        "org-2022-928a36b8634d",
+        "org-2022-422397f514d9",
+        "org-2022-2a9218814375",
+        "org-2022-9ca3045a4bd6",
+        "org-2022-a76ea4eb4e03",
+        "org-2022-bf54c236f686",
+        "org-2022-9ad25158285b",
+        "org-2022-8d8a52e27a2e",
+        "org-2022-599b3377426b",
+        "org-2022-43a6ea361333",
+        "org-2022-a3abb9272455",
+        "org-2022-3dcbd077a8a7",
+        "org-2022-78a0736e6ef7",
+        "org-2022-1325c420ac64",
+        "org-2022-249e88f3db97",
+        "org-2022-0499a572904c",
+        "org-2022-f73fb070cab5",
+        "org-2022-b5d86e615375",
+        "org-2022-895584657070",
+        "org-2022-b8733c0ef81f",
+        "org-2022-2632efff0d17",
+        "org-2022-53eb94b0081e",
+        "org-2022-130876e7b406",
+        "org-2022-ff79b6011632",
+        "org-2022-46ea68945126"
+      ]
+    },
+    {
+      "year": 2023,
+      "observations": 67,
+      "observationIds": [
+        "org-2023-6fef8a0b7193",
+        "org-2023-2bb927a8fd17",
+        "org-2023-7ab8ab24e92a",
+        "org-2023-3e30bba1de48",
+        "org-2023-bdbfa09f5387",
+        "org-2023-75f5732a3961",
+        "org-2023-0914513b8a4d",
+        "org-2023-906b938499e8",
+        "org-2023-72acdac54a01",
+        "org-2023-8339c625baf0",
+        "org-2023-9f2bda3de5d9",
+        "org-2023-a38f100e55dc",
+        "org-2023-865239106f40",
+        "org-2023-1e0c7710b7ff",
+        "org-2023-8fd35b9ca56f",
+        "org-2023-adb9e8a1ab69",
+        "org-2023-6b8d9c063f4a",
+        "org-2023-b5ec9e7feb78",
+        "org-2023-bd96462c4fbf",
+        "org-2023-f9e1191da709",
+        "org-2023-60794b46a3e6",
+        "org-2023-e18d3b842080",
+        "org-2023-46d2eb3841e5",
+        "org-2023-387b53f859db",
+        "org-2023-0f0e3ddb1f8f",
+        "org-2023-46415c9fa735",
+        "org-2023-73350faf7990",
+        "org-2023-e04d5d2ab63e",
+        "org-2023-b91e5d848991",
+        "org-2023-1eb9b6e59c5c",
+        "org-2023-59695406dd90",
+        "org-2023-8251af34e350",
+        "org-2023-2e64b9f55ac1",
+        "org-2023-6be183eef194",
+        "org-2023-d9ea86729eff",
+        "org-2023-5a2f1c4c42cb",
+        "org-2023-db1d5b5a8419",
+        "org-2023-9c1763169dd8",
+        "org-2023-82a7289b3ff0",
+        "org-2023-d6e66331f024",
+        "org-2023-364a27f71b3b",
+        "org-2023-856257c65b8b",
+        "org-2023-11dcf25a99ad",
+        "org-2023-a4b66e8f8b47",
+        "org-2023-106cada10f6c",
+        "org-2023-c3de2b2d1af6",
+        "org-2023-10a16efc02f7",
+        "org-2023-f2a977ba1da0",
+        "org-2023-7498812a7f50",
+        "org-2023-d61794affe15",
+        "org-2023-5518c0fca9fb",
+        "org-2023-307fbd3c0392",
+        "org-2023-28948cb74661",
+        "org-2023-e24f3c5dbe9a",
+        "org-2023-d102e1491fd3",
+        "org-2023-dbb79f214bda",
+        "org-2023-cd39c3121dc0",
+        "org-2023-875fafd07838",
+        "org-2023-3c4f2e1c01eb",
+        "org-2023-652fbbae5357",
+        "org-2023-4b0a12135b48",
+        "org-2023-7ad2a9ed33da",
+        "org-2023-1eb5805a9ea5",
+        "org-2023-5773a53f0169",
+        "org-2023-4a861703ffdc",
+        "org-2023-370b48823515",
+        "org-2023-37a78e377148"
+      ]
+    },
+    {
+      "year": 2024,
+      "observations": 76,
+      "observationIds": [
+        "org-2024-79a31b365531",
+        "org-2024-fa11871e384f",
+        "org-2024-75c3024de82f",
+        "org-2024-88857dd0b9fa",
+        "org-2024-dc6d7d7fd3a3",
+        "org-2024-2dd1290587e4",
+        "org-2024-adc697c13a8e",
+        "org-2024-345a23573d29",
+        "org-2024-7e004940fe50",
+        "org-2024-806601b79a52",
+        "org-2024-4dd9f25d8f50",
+        "org-2024-6caddf314500",
+        "org-2024-594d73574702",
+        "org-2024-0e3f78be68d4",
+        "org-2024-9b4160c3ae08",
+        "org-2024-65d4307fbf1b",
+        "org-2024-aa3b5a07e99e",
+        "org-2024-bad31c5ec7f5",
+        "org-2024-3172cf45db4f",
+        "org-2024-28f1fecef161",
+        "org-2024-cc9c654874d9",
+        "org-2024-0a8be8aeebf1",
+        "org-2024-bc567c8e0bba",
+        "org-2024-e8837429064a",
+        "org-2024-c6c69bbfb9e0",
+        "org-2024-ed54272c8bb8",
+        "org-2024-1d32d54c1020",
+        "org-2024-b516bcabfc89",
+        "org-2024-ae95c0fffb40",
+        "org-2024-f0900375a84f",
+        "org-2024-f9e434f75fe5",
+        "org-2024-4d9a4c470d1b",
+        "org-2024-976546aa0e16",
+        "org-2024-a1fb702b927e",
+        "org-2024-f112dab9c037",
+        "org-2024-e90565c95abd",
+        "org-2024-2da96d113b21",
+        "org-2024-f7606bddc62b",
+        "org-2024-8cc5ba5a6a21",
+        "org-2024-30839f54ffbb",
+        "org-2024-a5ac24178b48",
+        "org-2024-ec3f1544f276",
+        "org-2024-91c91d77e691",
+        "org-2024-0e7d93e75d5e",
+        "org-2024-bd5403c79da6",
+        "org-2024-43914d20ec89",
+        "org-2024-d3037e203277",
+        "org-2024-81a94919ee12",
+        "org-2024-bcd62684cb52",
+        "org-2024-a615abae62a1",
+        "org-2024-ac2459bdc62f",
+        "org-2024-d9a444a4c70b",
+        "org-2024-a28a9c81c478",
+        "org-2024-7b597058c3f5",
+        "org-2024-8e3f6439776a",
+        "org-2024-ab5c7f6dce64",
+        "org-2024-aef63228cfd7",
+        "org-2024-dc1415e6cc9c",
+        "org-2024-ba4e08a09506",
+        "org-2024-bb73b9c1e961",
+        "org-2024-d95b5159c5b1",
+        "org-2024-773098a96d2b",
+        "org-2024-bb9ed1a58e85",
+        "org-2024-e936fda66583",
+        "org-2024-ea2ad1ca7169",
+        "org-2024-f31d4b1d0a23",
+        "org-2024-f6baed459809",
+        "org-2024-67259fdcc7ac",
+        "org-2024-6dc365f2fc72",
+        "org-2024-9caa8556fda3",
+        "org-2024-dca44c5e73ed",
+        "org-2024-6d166ee8f80e",
+        "org-2024-8ed493675756",
+        "org-2024-2cf43bcfa87e",
+        "org-2024-b7ec3feba5bf",
+        "org-2024-433547c9b586"
+      ]
+    },
+    {
+      "year": 2025,
+      "observations": 94,
+      "observationIds": [
+        "org-2025-168574a7a01e",
+        "org-2025-71cdc7af15c0",
+        "org-2025-f1d21268972a",
+        "org-2025-e02432ab2a4b",
+        "org-2025-176184130800",
+        "org-2025-fb176b9275ec",
+        "org-2025-c5f4f20377f3",
+        "org-2025-c2f806ea0754",
+        "org-2025-6e04717bc536",
+        "org-2025-9ecaccdd8c83",
+        "org-2025-f771f0b3d4df",
+        "org-2025-09738cfd969b",
+        "org-2025-c09bc691d509",
+        "org-2025-df079c03a8dd",
+        "org-2025-5081f0456d74",
+        "org-2025-801b740ee148",
+        "org-2025-09f0ccf1cca3",
+        "org-2025-0721e6bcea6d",
+        "org-2025-843d984c48cb",
+        "org-2025-7e87805199a7",
+        "org-2025-80e733a83b87",
+        "org-2025-b6bde3ffbc77",
+        "org-2025-89c83045ad57",
+        "org-2025-7707c437d2a0",
+        "org-2025-0448a9eadc7b",
+        "org-2025-9c2a88130a50",
+        "org-2025-700109a87a7a",
+        "org-2025-d211c75eae78",
+        "org-2025-965b16217d46",
+        "org-2025-827f0ab6ae19",
+        "org-2025-bda979792365",
+        "org-2025-991381fc1230",
+        "org-2025-7e18c229ec1e",
+        "org-2025-0c16373030b8",
+        "org-2025-734331fba672",
+        "org-2025-fbdd607a6998",
+        "org-2025-146447ebb959",
+        "org-2025-d35dff3e4dbe",
+        "org-2025-37026cdf8d22",
+        "org-2025-d87f75462aa2",
+        "org-2025-a4e04faf054e",
+        "org-2025-ac1e04080ff1",
+        "org-2025-9efa776e2e7f",
+        "org-2025-1245ccc5e499",
+        "org-2025-1352a8c27707",
+        "org-2025-ac51959b23df",
+        "org-2025-c1957268ff0e",
+        "org-2025-09314d150eae",
+        "org-2025-f0c609c2d874",
+        "org-2025-21ac34926a98",
+        "org-2025-dab6ac04e845",
+        "org-2025-4236c357a168",
+        "org-2025-324a1bbeff8c",
+        "org-2025-c7a064e87493",
+        "org-2025-f52d0e923266",
+        "org-2025-c4616f88a6eb",
+        "org-2025-61ff28872e2a",
+        "org-2025-a601b0bcdd5a",
+        "org-2025-592f3265a7eb",
+        "org-2025-330051b848d7",
+        "org-2025-197af4981a37",
+        "org-2025-e8bc11481341",
+        "org-2025-e0409fe95372",
+        "org-2025-8d60e61ce06e",
+        "org-2025-0b8c0bb298d4",
+        "org-2025-146083ea5df8",
+        "org-2025-c7b5ebab391e",
+        "org-2025-b77f51db24f2",
+        "org-2025-13e0cb5cc30f",
+        "org-2025-d5e9952bf1c2",
+        "org-2025-0bc08d4573ed",
+        "org-2025-fdac6d776535",
+        "org-2025-70bbcdd46b97",
+        "org-2025-397b3b7a0993",
+        "org-2025-388fabca7817",
+        "org-2025-3d6d07425e24",
+        "org-2025-5f0d28a041bc",
+        "org-2025-5888290c2b7c",
+        "org-2025-2c6f5afb868f",
+        "org-2025-36d505cd6505",
+        "org-2025-8c4ab236dabe",
+        "org-2025-36a12a9f2960",
+        "org-2025-09380ffb3ba9",
+        "org-2025-27957dd41507",
+        "org-2025-72a01a896db4",
+        "org-2025-4f1c208ad5ea",
+        "org-2025-4f567c5c3711",
+        "org-2025-6484193c96f0",
+        "org-2025-cc280cafabf7",
+        "org-2025-472de46bc02b",
+        "org-2025-af1df1b2f016",
+        "org-2025-835f57973509",
+        "org-2025-ab04ce9ed8ba",
+        "org-2025-271d07615386"
+      ]
+    },
+    {
+      "year": 2026,
+      "observations": 29,
+      "observationIds": [
+        "org-2026-78623ec50f74",
+        "org-2026-a613b005bb52",
+        "org-2026-b3a38b83e98e",
+        "org-2026-3672487a61dd",
+        "org-2026-9b324e27d2e7",
+        "org-2026-bfecf569c93e",
+        "org-2026-f9eea0c00030",
+        "org-2026-2066bb42e3e8",
+        "org-2026-d5c213685595",
+        "org-2026-5ec546ecc428",
+        "org-2026-0e4286885ed8",
+        "org-2026-4b00a6a0274e",
+        "org-2026-6f2bcf39181c",
+        "org-2026-8337ced1b873",
+        "org-2026-a57e499a3927",
+        "org-2026-47bed43cf912",
+        "org-2026-d71f2a4c7891",
+        "org-2026-ce9586d04090",
+        "org-2026-7d90802cceeb",
+        "org-2026-09ad7e94c490",
+        "org-2026-0891a25284ad",
+        "org-2026-b060332385cc",
+        "org-2026-0e689ebb282d",
+        "org-2026-dc19c9233e21",
+        "org-2026-4abbaf04e032",
+        "org-2026-c69b4c4d31e9",
+        "org-2026-e0dca5201664",
+        "org-2026-942c6b7d84eb",
+        "org-2026-b0c70578e3af"
+      ]
+    }
+  ],
+  "namedRoleQueryRows": 174,
+  "outputSHA256": "949bfd61fc95ca457eb956f92fd2bf9f3bcaae7800da74428242f88a8ea47ebc"
+}
