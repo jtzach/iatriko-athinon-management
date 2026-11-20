@@ -34,6 +34,3 @@
   .deck-stage { max-height:50dvh; }
   .deck-stage img { max-height:50dvh; }
 }
-/* The programme's blue and red belong to the website background graphics. */
-body::before { background:linear-gradient(123deg,transparent 0 61%,#5391cc12 61% 61.2%,transparent 61.2%),linear-gradient(123deg,transparent 0 80%,#b5121b12 80% 80.25%,transparent 80.25%),radial-gradient(ellipse at 8% 5%,#5391cc38,transparent 48%),radial-gradient(ellipse at 98% 82%,#b5121b30,transparent 48%); }
-html[data-theme="light"] body::before { background:linear-gradient(123deg,transparent 0 61%,#5391cc14 61% 61.2%,transparent 61.2%),linear-gradient(123deg,transparent 0 80%,#b5121b12 80% 80.25%,transparent 80.25%),radial-gradient(ellipse at 8% 5%,#5391cc18,transparent 48%),radial-gradient(ellipse at 98% 82%,#b5121b12,transparent 48%); }
