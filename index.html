@@ -14,9 +14,11 @@
   <link rel="stylesheet" href="assets/presentation-viewer.css?v=2.4">
   <script defer src="assets/console-retrieval.js?v=2.0"></script>
   <script defer src="assets/console-terms.js?v=2.1"></script>
-  <script defer src="assets/console.js?v=2.6"></script>
+  <script defer src="assets/console.js?v=2.7"></script>
   <script defer src="assets/console-tour.js?v=2.6"></script>
-  <script defer src="assets/presentation-viewer.js?v=2.6"></script>
+  <link rel="stylesheet" href="assets/narrated-demo.css?v=2.7">
+  <script defer src="assets/presentation-viewer.js?v=2.7"></script>
+  <script defer src="assets/narrated-demo.js?v=2.7"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
@@ -29,7 +31,7 @@
       <p class="eyebrow">ΜΕΛΕΤΗ ΠΕΡΙΠΤΩΣΗΣ / ΤΜΗΜΑ 4 / 2026</p>
       <h1 id="home-title">Ιατρικό Αθηνών: <span>διοίκηση με στοιχεία.</span></h1>
       <p class="lead">Διαδραστική μελέτη διοίκησης. Τρία ευρήματα, οι πηγές τους και οι απαντήσεις της εργασίας.</p>
-      <div class="tour-choices" aria-label="Διαδραστική περιήγηση στην ιστοσελίδα"><button class="tour-launch" data-start-tour="short"><span aria-hidden="true">▶</span> Γνώρισέ τη σε 2 λεπτά</button><button class="tour-full" data-start-tour="full">Πλήρης περιήγηση · 27 στάσεις</button></div>
+      <div class="tour-choices" aria-label="Παρουσίαση και περιηγήσεις"><button class="tour-launch" data-open-demo><span aria-hidden="true">▶</span> Παρουσίαση με αφήγηση · 8 λεπτά</button><button class="tour-full" data-start-tour="short"><span aria-hidden="true">▶</span> Γνώρισέ τη σε 2 λεπτά</button><button class="tour-full" data-start-tour="full">Πλήρης περιήγηση · 27 στάσεις</button></div>
       <nav class="mindmap" aria-label="Χάρτης της μελέτης">
         <svg class="map-lines" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true"><path d="M500 150 C400 150 400 70 260 70 M500 150 C600 150 600 70 740 70 M500 150 C400 150 400 230 260 230 M500 150 C600 150 600 230 740 230"/></svg>
         <a class="map-card cyan" href="#findings" data-route="findings"><span class="card-index">01 / ΑΝΑΚΑΛΥΨΕ</span><strong>Τα 3 ευρήματα <span aria-hidden="true">↗</span></strong><span>Τι αξίζει να προσέξει η διοίκηση;</span></a>
@@ -57,6 +59,33 @@
   </main>
   <footer class="site-footer"><span>Ανεξάρτητη ακαδημαϊκή μελέτη · Τζαχρήστας / Χρήστου / Σταματόπουλος</span><div><button class="link-button" data-action="method">Πηγές & χρήση ΤΝ</button><a href="versions/2026-11-19/index.html">Έκδοση 19 Nov 2026 ↗</a></div></footer>
   <dialog id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span id="dialog-eyebrow" class="eyebrow"></span><div class="dialog-actions"><button class="secondary" data-action="dialog-home" aria-label="Αρχική" title="Αρχική">⌂</button><button id="close-dialog" aria-label="Κλείσιμο παραθύρου">×</button></div></div><h2 id="dialog-title"></h2><div id="dialog-body"></div></dialog>
+  <dialog id="narrated-demo" aria-labelledby="demo-title"></dialog>
+  <template id="narrated-demo-content">
+    <header><div><p class="eyebrow">15 ΔΙΑΦΑΝΕΙΕΣ · 8 ΛΕΠΤΑ</p><h2 id="demo-title">Τρία ευρήματα για τη διοίκηση</h2></div><button class="secondary" type="button" data-close-demo aria-label="Κλείσιμο παρουσίασης">Κλείσιμο</button></header>
+    <video controls playsinline preload="none" poster="assets/slides/slide-01.webp" src="assets/demo/iatriko-athinon-8min.mp4" aria-label="Παρουσίαση με ελληνική αφήγηση">
+      <track kind="captions" srclang="el" label="Ελληνικά" src="assets/demo/subtitles-el.vtt">
+      <a href="assets/demo/iatriko-athinon-8min.mp4">Άνοιξε το βίντεο</a>
+    </video>
+    <p role="status"></p>
+    <div class="demo-toolbar"><label for="demo-chapter">Διαφάνεια</label><select id="demo-chapter">
+            <option value="0.0">0:00 · 1. Τρία ευρήματα για τη διοίκηση</option>
+            <option value="27.4">0:27 · 2. Τα έσοδα αυξήθηκαν. Το 2025 έκλεισε με ζημία.</option>
+            <option value="62.9">1:02 · 3. PESTEL: τι αλλάζει έξω και πώς απαντά η διοίκηση;</option>
+            <option value="95.1">1:35 · 4. Ο συνολικός δείκτης ανεβαίνει ελαφρά</option>
+            <option value="118.2">1:58 · 5. Στο Παλαιό Φάληρο η πτώση είναι 13 μονάδες</option>
+            <option value="151.1">2:31 · 6. Σε ποιο σημείο της εξυπηρέτησης;</option>
+            <option value="177.0">2:57 · 7. Ελληνικό: δύο δημόσιες προβλέψεις</option>
+            <option value="211.1">3:31 · 8. Το 2028 υπάρχει και στη νεότερη πηγή</option>
+            <option value="243.1">4:03 · 9. Ποιος αποφασίζει στο Ιατρικό Αθηνών;</option>
+            <option value="283.1">4:43 · 10. Ελληνικό: τι έχει υπογραφεί και τι απομένει;</option>
+            <option value="321.0">5:21 · 11. Η ΓΑΙΑ είχε κέρδη πριν μεταβιβαστεί</option>
+            <option value="353.1">5:53 · 12. Η εταιρεία επικαλείται περιορισμένο χώρο</option>
+            <option value="381.0">6:21 · 13. Πόση αξία δημιούργησε η νέα χρήση;</option>
+            <option value="410.6">6:50 · 14. Κουλτούρα: πόσα γνωρίζουμε για κάθε διάσταση;</option>
+            <option value="444.2">7:24 · 15. Ηγεσία: από την παρατήρηση στον έλεγχο</option>
+    </select></div>
+    <footer class="demo-links"><span>Συνθετική ελληνική φωνή</span><a href="assets/demo/narration-el.txt" download>Κείμενο αφήγησης</a><a href="assets/demo/iatriko-athinon-8min.mp4" download>Λήψη βίντεο</a></footer>
+  </template>
   <div id="announcer" class="sr-only" aria-live="polite"></div>
   <noscript><p>Ενεργοποίησε JavaScript για τις διαδραστικές εξηγήσεις. Τα αρχεία της αρχικής και η προηγούμενη έκδοση είναι διαθέσιμα από τους παραπάνω συνδέσμους.</p></noscript>
 </body>

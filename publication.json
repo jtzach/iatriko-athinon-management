@@ -1,19 +1,18 @@
 {
-  "release": "2.6",
+  "release": "2.7",
   "preparedDate": "2026-11-26",
-  "researchCommit": "8f8ea8853fdc5e8cc384641a7fd6acf4803e71ad",
+  "researchCommit": "0503a0cc7d0c29d26a7310b8da0dac1d6dfc954d",
   "site": "https://jtzach.github.io/iatriko-athinon-management/",
   "archive": "versions/2026-11-19/index.html",
   "archiveCommit": "3d18cb4c4fafbbbe05521d90ea561189ee2f81e1",
   "changesFromResearch": [
-    "Το Σχήμα 2 του Word παρουσιάζεται στη διαφάνεια 9.",
-    "Η αρχική σελίδα δίνει την εργασία σε Word ή PDF και την παρουσίαση σε PowerPoint ή PDF."
+    "Παρουσίαση οκτώ λεπτών με ελληνική συνθετική αφήγηση, 15 κεφάλαια, υπότιτλους και κείμενο."
   ],
   "files": {
-    ".gitattributes": "b3c01b6a13298b0e19746cdd291174d1fe6bd32e2d32849e73aaedbdabec42f6",
+    ".gitattributes": "ededc1371d08cc54471dd441c2be0d8e0f11bd574fe618686adf4092c065d11b",
     ".gitignore": "98d336046ec76f55ab98f2879dccb44b94b7764d2a806846e96387b14ad14ec5",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "README.txt": "e81a38b574d22b5c46acf6d561dcf9f534806e6ffe882ae264780967e946fe40",
+    "README.txt": "0ee4eb7d8e6069cf678a041b8653d3be3a26a26ac3159ad517539c83c8732612",
     "assets/app.js": "2fcc8c3a2311563306b889b03e4214d4d88f9320753ecc811ad9ded7ed0da122",
     "assets/atlas.css": "ab5ec9d07dd9f284f95c5d9924b301f6d78045babf1c5bba0eaef459adc882d6",
     "assets/atlas.js": "067a8d338430d9f495f264be93dc0fc1b3be63ceee06a5b36c3e406af3e2d88b",
@@ -27,7 +26,7 @@
     "assets/console-tour.css": "aea37174f22842acae52748797db45bf7af977260c8e18e3915757ea96de79da",
     "assets/console-tour.js": "174d34324d6e30b88679a7197b66bcde63da8705c4ebd7a5d74856c4bdb24bf8",
     "assets/console.css": "e3da90c77381e20e2c771740e602fb80362dbdc3d7fc0576cc1339cff4e7bfc4",
-    "assets/console.js": "69608994e63cfd6cbadd058e694c064617ce4a12cc557ded05fddd35d4a2eca4",
+    "assets/console.js": "3dcc147bfbab26c80da8132767b6cc86c0b06504bd4ccaa29bbc4b4b2b5ac937",
     "assets/core.js": "450d2f9ac187e8800df20f35090ace0ebe0c91b08a069891412d9dab099825c2",
     "assets/executive.css": "26e1452552ef479d342e56b27dc1cb135090b12313fe130d50f8cec384bab4b7",
     "assets/executive.js": "debe8e63c1c7a6235a65e9bb23185d24eb61ac01dc09015d139d4eaf510ef153",
@@ -66,7 +65,7 @@
     "assets/organization.css": "1ec92e90eed14e6a5e3a0ea22a2324826816110789351c537b840a9eaea88088",
     "assets/organization.js": "cbee62f5a19d0e9b078cbb6e7d8fbdfb50e07e4306dc2e051bea7072f76efafc",
     "assets/presentation-viewer.css": "2d4d23f313fe05ac85de46269e9e29924590f19d2d4e5ab9ace980440ff8513f",
-    "assets/presentation-viewer.js": "4dbff16c77f7e225de9b1ef901b0c759ab09f256012866156ba2abacef9e51b9",
+    "assets/presentation-viewer.js": "ebf6117c9a46848153e057eb09d50bcdd38c634c928656c90d870ec84ceb83ea",
     "assets/presentation.css": "1dbdf403382b4e5f4475cb656136c67b94c9058531ce9c65960df5d731049310",
     "assets/presentation.js": "73213402d69b8aefb8ffde579e392ee2fe3929b8a16377b6cb509d66b588b505",
     "assets/sap-timeline.css": "b590ddf864a5b99065f327c1916fcbf846cef115631d4f96903d086c9542607e",
@@ -131,7 +130,7 @@
     "graph.html": "d36ca59587c75bd1ae1ed8b5860b66c27cc6db5eb42a58e162a432f86646e4cb",
     "historical-presentation.html": "cb63aa2fd59548ab557cd878845179d0550038001a93a2fa63ac743a021375bc",
     "history.html": "c71338b9a2c954612abfecb9852aec1cc187afd652b7e3bcd818d2debead7da6",
-    "index.html": "e8b5f91a0df6bb8a979ba6210c431aa18687136d8e2da682d8aad281e7cc66b0",
+    "index.html": "713d71b1d9d0e5aec1829e0169dd5169539bea29542c568eacdf409d86bcfb55",
     "neo4j/README.txt": "306ba04b174c4cab162326e0708183368c5eb23b52482005302a9f47690200bc",
     "neo4j/build_snapshot.py": "eb2cb6698802d4cf3a8984f92ee0781e9db64ce5d19b5bb382dbffc863e886c1",
     "neo4j/generate_import.py": "870bf9cc263bb57f80cfb021d919af7566c740eb46ae4d109e8025320696fa91",
@@ -275,6 +274,11 @@
     "writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx": "f5dd67f12ebbf627267271944cb74a5606145cbc1f4d36d525df374b49cdb122",
     "writing/ΥΔ_Τζαχρήστας_Χρήστου_Σταματόπουλος.docx": "b69e5bcf2d8435548fa4dfdb20f94db54920895499ea4775ea44b137e32af127",
     "writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pdf": "e43af924b544bc0eb5228c3260f3a6e8fa4482b837134f59c00f1cca50b706f7",
-    "writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.pdf": "df44b9480c96b491b4c3ff89b00bbe364e2ffc9845fc57b5123205868e00a871"
+    "writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.pdf": "df44b9480c96b491b4c3ff89b00bbe364e2ffc9845fc57b5123205868e00a871",
+    "assets/narrated-demo.js": "82a6683488bc7069b6385437eb4c33810543cb034ccf630526ea4bcb65e0e290",
+    "assets/narrated-demo.css": "15111110df7fe967446503272fe6c786cfe2bda14a84c8ad5cbd84a9add603b6",
+    "assets/demo/iatriko-athinon-8min.mp4": "d8f96162e2c266cc359909ab4f08b04cc61d171aebed550f448a07170878d95d",
+    "assets/demo/subtitles-el.vtt": "ae0e82c2834cbebdd0828727347ca4543932eb736afd6c6b8849716836b47242",
+    "assets/demo/narration-el.txt": "18994b0e00e3910d747e3581dfba3e793f7e8f58b7e508676198aedd3612552f"
   }
 }
