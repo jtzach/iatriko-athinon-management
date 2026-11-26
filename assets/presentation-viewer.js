@@ -38,7 +38,7 @@
   }
   async function load() {
     if (deck) return deck;
-    if (!pending) pending=fetch('data/presentation-slides.json?v=2.3').then(response=>{
+    if (!pending) pending=fetch('data/presentation-slides.json?v=2.5').then(response=>{
       if (!response.ok) throw new Error('manifest');
       return response.json();
     }).then(value=>{
@@ -75,7 +75,7 @@
     stage.classList.remove('is-zoomed'); stage.scrollTop=0; stage.scrollLeft=0;
     $('#deck-zoom').setAttribute('aria-pressed','false'); $('#deck-zoom').textContent='Μεγέθυνση';
     const img=document.createElement('img'), status=document.createElement('p');
-    img.src=slide.image; img.alt=`Διαφάνεια ${index+1}: ${slide.title}`;
+    img.src=slide.image + '?v=2.5'; img.alt=`Διαφάνεια ${index+1}: ${slide.title}`;
     img.width=slide.width; img.height=slide.height; img.decoding='async';
     status.setAttribute('role','status');status.textContent='Φόρτωση διαφάνειας…';
     img.addEventListener('load',()=>{if(img.isConnected) status.hidden=true;});
@@ -87,6 +87,12 @@
     $('#deck-text').hidden=false;
     window.ConsoleTerms?.annotate($('#deck-transcript'));
     window.ConsoleTerms?.annotate($('#deck-caption'));
+    if (index === 8) {
+      const graph = document.createElement('a');
+      graph.href = 'subsidiaries.html';
+      graph.textContent = 'Γράφος των οκτώ θυγατρικών';
+      $('#deck-caption').append(' · ', graph);
+    }
     if (focused?.disabled && dialog.contains(focused)) $('#deck-select').focus({preventScroll:true});
   }
   document.addEventListener('click',event=>{const button=event.target.closest('[data-open-presentation]');if(button) open(button);});

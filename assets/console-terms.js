@@ -7,7 +7,7 @@
   'use strict';
 
   const definitions = [
-    ['nps', 'NPS', [], 'Net Promoter Score / δείκτης πρόθεσης σύστασης'],
+    ['nps', 'NPS', [], 'Net Promoter Score / δείκτης πρόθεσης σύστασης: ποσοστό απαντήσεων 9–10 μείον ποσοστό 0–6, σε κλίμακα −100 έως +100'],
     ['ebitda', 'EBITDA', [], 'κέρδη πριν από τόκους, φόρους και αποσβέσεις'],
     ['ebit', 'EBIT', [], 'κέρδη πριν από τόκους και φόρους'],
     ['sap', 'SAP', [], 'Systems, Applications and Products in Data Processing / λογισμικό διαχείρισης επιχειρησιακών λειτουργιών'],

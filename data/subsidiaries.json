@@ -1,0 +1,186 @@
+{
+  "asOf": "2026-06-30",
+  "source": "https://www.iatriko.gr/wp-content/uploads/2026/10/%CE%95%CE%9E%CE%91%CE%9C%CE%97%CE%9D%CE%99%CE%91%CE%99%CE%91-%CE%9F%CE%99%CE%9A%CE%9F%CE%9D%CE%9F%CE%9C%CE%99%CE%9A%CE%97-%CE%95%CE%9A%CE%98%CE%95%CE%A3%CE%97_30.06.2026.pdf",
+  "entities": [
+    {
+      "id": "techniki",
+      "name": "Ιατρική Τεχνική",
+      "country": "Ελλάδα",
+      "share": "100%",
+      "activity": "Ιατρικός εξοπλισμός και υγειονομικό υλικό",
+      "model": "Χωριστή προεδρία και εκτελεστική διοίκηση",
+      "people": [
+        [
+          "Βασίλειος Γ. Αποστολόπουλος",
+          "Πρόεδρος διοικητικού συμβουλίου"
+        ],
+        [
+          "Χρήστος Γ. Αποστολόπουλος",
+          "Αντιπρόεδρος διοικητικού συμβουλίου"
+        ],
+        [
+          "Γεώργιος Αποστολόπουλος",
+          "Διευθύνων σύμβουλος"
+        ],
+        [
+          "Ευγενία Γουλιάρα",
+          "Προϊσταμένη λογιστηρίου"
+        ]
+      ],
+      "year": 2025,
+      "page": 41,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/iatriki_techniki_notes_2025.pdf"
+    },
+    {
+      "id": "physio",
+      "name": "Κέντρο Φυσιοθεραπείας και Αποκατάστασης Αθλητικών Κακώσεων",
+      "country": "Ελλάδα",
+      "share": "51%",
+      "activity": "Φυσιοθεραπεία και αποκατάσταση",
+      "model": "Χωριστή προεδρία και εκτελεστική διοίκηση",
+      "people": [
+        [
+          "Γεώργιος Β. Αποστολόπουλος",
+          "Πρόεδρος διοικητικού συμβουλίου"
+        ],
+        [
+          "Νικόλαος Πανταζής",
+          "Διευθύνων σύμβουλος"
+        ]
+      ],
+      "year": 2025,
+      "page": 38,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/07/kentro_fysiotherapeias_e.a.e._hrimatooikonomikes_katastaseis.pdf"
+    },
+    {
+      "id": "eurosite",
+      "name": "EUROSITE Υπηρεσίες Υγείας",
+      "country": "Ελλάδα",
+      "share": "100%",
+      "activity": "Εκμετάλλευση χώρου στάθμευσης στο Μαρούσι",
+      "model": "Προεδρία και εκτελεστική διοίκηση στο ίδιο πρόσωπο",
+      "people": [
+        [
+          "Βασίλειος Γ. Αποστολόπουλος",
+          "Πρόεδρος διοικητικού συμβουλίου και διευθύνων σύμβουλος"
+        ],
+        [
+          "Χρήστος Γ. Αποστολόπουλος",
+          "Αντιπρόεδρος διοικητικού συμβουλίου"
+        ],
+        [
+          "Κωνσταντίνα Μπικούλη",
+          "Υπεύθυνη λογιστηρίου"
+        ]
+      ],
+      "year": 2025,
+      "page": 29,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/07/eurosite_ypiresies_ygeias_monoprosoli_a.e._hrimatooikonomikes_katastaseis.pdf"
+    },
+    {
+      "id": "medsana-ro",
+      "name": "Medsana Bucharest Medical Center",
+      "country": "Ρουμανία",
+      "share": "100%",
+      "activity": "Διαγνωστικά κέντρα",
+      "model": "Νόμιμη εκπροσώπηση και οικονομική διεύθυνση",
+      "people": [
+        [
+          "Vasileios Chaniotis",
+          "Νόμιμος εκπρόσωπος"
+        ],
+        [
+          "Cristina Oboroceanu",
+          "Οικονομική διευθύντρια"
+        ]
+      ],
+      "year": 2025,
+      "page": 1,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/07/annual_financial_statements_ended_on_31.12.2025_medsana_bmc_en_1.pdf"
+    },
+    {
+      "id": "bioaxis",
+      "name": "BIOAXIS",
+      "country": "Ρουμανία",
+      "share": "78,90%",
+      "activity": "Χωρίς δραστηριότητα κατά την έκθεση της 30/6/2026",
+      "model": "Διαχειριστής στην έκθεση χρήσης 2023",
+      "people": [
+        [
+          "Christos Apostolopoulos",
+          "Διαχειριστής στη χρήση 2023. Η ιδιότητα το 2026 παραμένει ανεπιβεβαίωτη."
+        ]
+      ],
+      "year": 2023,
+      "page": 1,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/06/bioaxis_31.12.2023.pdf"
+    },
+    {
+      "id": "hai",
+      "name": "Hospital Affiliates International",
+      "country": "Ελλάδα",
+      "share": "68,89%",
+      "activity": "Σε εκκαθάριση",
+      "model": "Δύο εκκαθαριστές",
+      "people": [
+        [
+          "Βλάσιος Λεονάρδος",
+          "Εκκαθαριστής"
+        ],
+        [
+          "Ευγενία Γουλιάρα",
+          "Εκκαθαρίστρια"
+        ]
+      ],
+      "year": 2025,
+      "page": 5,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/07/hospital_affiliates_international_a.e._hrimatooikonomikes_katastaseis.pdf"
+    },
+    {
+      "id": "gaia",
+      "name": "ΓΑΙΑ Μαιευτικό και Γυναικολογικό Κέντρο Αθηνών",
+      "country": "Ελλάδα",
+      "share": "100%",
+      "activity": "Η εταιρεία παρέμεινε στον Όμιλο μετά τη μεταβίβαση της μαιευτικής δραστηριότητας το 2021.",
+      "model": "Ο αντιπρόεδρος ασκεί την εκτελεστική διοίκηση",
+      "people": [
+        [
+          "Χρήστος Γ. Αποστολόπουλος",
+          "Πρόεδρος διοικητικού συμβουλίου"
+        ],
+        [
+          "Γεώργιος Β. Αποστολόπουλος",
+          "Αντιπρόεδρος και διευθύνων σύμβουλος"
+        ],
+        [
+          "Γεώργιος Γ. Λάμπου",
+          "Προϊστάμενος λογιστηρίου"
+        ]
+      ],
+      "year": 2025,
+      "page": 23,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/07/gaia_monoprosopi_a.e._hrimatooikonomikes_katastaseis.pdf"
+    },
+    {
+      "id": "medsana-gr",
+      "name": "Medsana Ιδιωτικό Ιατρείο",
+      "country": "Ελλάδα",
+      "share": "100%",
+      "activity": "Υπηρεσίες διαγνωστικού ιατρικού κέντρου",
+      "model": "Δύο διαχειριστές",
+      "people": [
+        [
+          "Απόστολος Κ. Οικονόμου",
+          "Διαχειριστής"
+        ],
+        [
+          "Στέφανος Ν. Χρόνης",
+          "Διαχειριστής"
+        ]
+      ],
+      "year": 2025,
+      "page": 30,
+      "url": "https://www.iatriko.gr/wp-content/uploads/2026/07/medsana_iatriki_mon._i.k.e._hrimatooikonomikes_katastaseis_2025.pdf"
+    }
+  ]
+}

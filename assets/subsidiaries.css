@@ -1,0 +1,28 @@
+.ownership {width:min(1120px,calc(100% - 36px));margin:32px auto 60px}
+.ownership-grid {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,4vw,56px);align-items:start}
+.parent-node,.entity {border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:20px}
+.parent-node {font-weight:750;border-inline-start:5px solid var(--cyan)}
+.parent-node small,.people span {display:block;color:var(--muted);font-size:16px}
+.countries {margin-left:16px;border-left:2px solid var(--line);padding-left:22px}
+.countries h3 {font-size:20px;margin:14px 0 8px;color:var(--cyan)}
+.branches,.people {list-style:none;margin:0;padding:0}
+.branches li {position:relative;margin:6px 0}
+.branches li::before {content:"";position:absolute;left:-22px;top:50%;width:22px;border-top:1px solid var(--line)}
+.node {display:flex;gap:8px;align-items:center;justify-content:space-between;padding:9px 12px;min-height:44px;color:var(--text);border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:17px}
+.node b {font:700 16px var(--mono);color:var(--cyan)}
+.node[aria-current],.node:hover {border-color:var(--cyan);background:var(--panel-raised);color:var(--text)}
+.node[aria-current] {border-inline-start-width:5px;font-weight:700}
+.entity h2 {font-size:clamp(24px,3vw,36px);margin:0 0 8px}
+.entity h3 {font-size:22px;margin:20px 0 5px}
+.entity p,.ownership-grid nav>p,.profiles>.muted,.entity>a {font-size:16px}
+.muted {color:var(--muted)}
+.people {border-inline-start:2px solid var(--line);padding-left:18px;margin:18px 0}
+.people li {position:relative;display:flex;align-items:center;gap:12px;margin:14px 0}
+.people li::before {content:"";position:absolute;left:-18px;top:50%;width:13px;border-top:1px solid var(--line)}
+.people strong {font-size:18px}
+.portrait img {border-radius:6px;max-width:none;object-fit:cover}
+.profiles {min-width:0}
+.entity {scroll-margin-top:145px}
+.profiles>.muted {margin-top:14px}
+@media(max-width:800px){.ownership-grid{grid-template-columns:1fr}.ownership{margin-top:20px}.countries{margin-left:8px}.entity{scroll-margin-top:180px}}
+
