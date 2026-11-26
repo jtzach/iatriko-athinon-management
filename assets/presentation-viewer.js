@@ -10,7 +10,7 @@
     dialog=document.createElement('dialog');
     dialog.id='presentation-dialog';
     dialog.setAttribute('aria-labelledby','presentation-title');
-    dialog.innerHTML=`<header class="deck-header"><div><p class="eyebrow">Η ΠΑΡΟΥΣΙΑΣΗ ΤΗΣ ΕΡΓΑΣΙΑΣ</p><h2 id="presentation-title">Οι 15 διαφάνειες</h2></div><div class="deck-header-actions"><button class="secondary" id="deck-home">Αρχική</button><button id="deck-close" aria-label="Κλείσιμο παρουσίασης">×</button></div></header><div class="deck-controls"><button class="secondary" id="deck-prev" disabled>Προηγούμενη</button><label class="sr-only" for="deck-select">Διαφάνεια</label><select id="deck-select" disabled aria-label="Διαφάνεια"></select><button class="secondary" id="deck-next" disabled>Επόμενη</button><button class="secondary" id="deck-zoom" aria-pressed="false" disabled>Μεγέθυνση</button></div><div id="deck-stage" class="deck-stage" tabindex="0" aria-label="Προβολή διαφάνειας"><p role="status">Ανοίγουμε την παρουσίαση…</p></div><p id="deck-caption" class="deck-caption" aria-live="polite"></p><details id="deck-text" hidden><summary>Κείμενο διαφάνειας & σημειώσεις ομιλητή</summary><div id="deck-transcript"></div></details><footer class="deck-footer"><a class="secondary" download href="${sourcePath}">Λήψη PowerPoint</a><span>Οι ίδιες διαφάνειες με το αρχείο λήψης.</span></footer>`;
+    dialog.innerHTML=`<header class="deck-header"><div><p class="eyebrow">Η ΠΑΡΟΥΣΙΑΣΗ ΤΗΣ ΕΡΓΑΣΙΑΣ</p><h2 id="presentation-title">Οι 15 διαφάνειες</h2></div><div class="deck-header-actions"><button class="secondary" id="deck-home">Αρχική</button><button id="deck-close" aria-label="Κλείσιμο παρουσίασης">×</button></div></header><div class="deck-controls"><button class="secondary" id="deck-prev" disabled>Προηγούμενη</button><label class="sr-only" for="deck-select">Διαφάνεια</label><select id="deck-select" disabled aria-label="Διαφάνεια"></select><button class="secondary" id="deck-next" disabled>Επόμενη</button><button class="secondary" id="deck-zoom" aria-pressed="false" disabled>Μεγέθυνση</button></div><div id="deck-stage" class="deck-stage" tabindex="0" aria-label="Προβολή διαφάνειας"><p role="status">Ανοίγουμε την παρουσίαση…</p></div><p id="deck-caption" class="deck-caption" aria-live="polite"></p><details id="deck-text" hidden><summary>Κείμενο διαφάνειας & σημειώσεις ομιλητή</summary><div id="deck-transcript"></div></details><footer class="deck-footer"><a class="secondary" download href="${sourcePath}?v=2.6">Λήψη PowerPoint</a><a class="secondary" download href="writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pdf?v=2.6">Λήψη PDF</a><span>Οι ίδιες διαφάνειες με το αρχείο λήψης.</span></footer>`;
     document.body.append(dialog);
     $('#deck-close').addEventListener('click',close);
     $('#deck-home').addEventListener('click',()=>{close(false); document.querySelector('#detail-dialog[open]')?.close(); location.hash='home'; document.querySelector('.home-button')?.focus();});
@@ -38,7 +38,7 @@
   }
   async function load() {
     if (deck) return deck;
-    if (!pending) pending=fetch('data/presentation-slides.json?v=2.5').then(response=>{
+    if (!pending) pending=fetch('data/presentation-slides.json?v=2.6').then(response=>{
       if (!response.ok) throw new Error('manifest');
       return response.json();
     }).then(value=>{
@@ -75,7 +75,7 @@
     stage.classList.remove('is-zoomed'); stage.scrollTop=0; stage.scrollLeft=0;
     $('#deck-zoom').setAttribute('aria-pressed','false'); $('#deck-zoom').textContent='Μεγέθυνση';
     const img=document.createElement('img'), status=document.createElement('p');
-    img.src=slide.image + '?v=2.5'; img.alt=`Διαφάνεια ${index+1}: ${slide.title}`;
+    img.src=slide.image + '?v=2.6'; img.alt=`Διαφάνεια ${index+1}: ${slide.title}`;
     img.width=slide.width; img.height=slide.height; img.decoding='async';
     status.setAttribute('role','status');status.textContent='Φόρτωση διαφάνειας…';
     img.addEventListener('load',()=>{if(img.isConnected) status.hidden=true;});

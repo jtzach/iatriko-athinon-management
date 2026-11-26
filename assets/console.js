@@ -145,7 +145,7 @@
     openDialog(c.title, `${badge(c.classification)}<p class="modal-answer">${esc(c.answer)}</p>${sourceList(c.sourceIds)}${c.requirementIds.map(q => `<button class="secondary" data-requirement="${q}">Σύνδεση με το θέμα ${esc(q.slice(1).replace('a','α').replace('b','β'))} ↗</button>`).join('')}`, 'ΜΕ ΑΠΛΑ ΛΟΓΙΑ');
   }
   async function loadPaper() {
-    if (!paper) { const response = await fetch('writing/paper-content.json?v=2.5'); if (!response.ok) throw new Error('paper'); paper = await response.json(); }
+    if (!paper) { const response = await fetch('writing/paper-content.json?v=2.6'); if (!response.ok) throw new Error('paper'); paper = await response.json(); }
     return paper;
   }
   async function fullAnswer(id, button) {
@@ -162,7 +162,7 @@
     } catch { if (expectedRevision === dialogRevision && button.isConnected) { button.disabled = false; button.textContent = 'Δεν άνοιξε — δοκίμασε ξανά'; } }
   }
   function deliverables() {
-    openDialog('Η πλήρης εργασία, μαζί σου.', `<div class="modal-links"><a download href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Εργασία · Word</a><a download href="writing/Μελέτη-με-εκφωνήσεις-Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Έκδοση μελέτης · γκρι εκφωνήσεις</a><a download href="writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pptx">Παρουσίαση · 15 διαφάνειες</a><a download href="writing/ΥΔ_Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Δήλωση χρήσης ΤΝ · Word</a><a download href="downloads/Εκφώνηση-Μάνατζμεντ-2026-2027.pdf">Επίσημη εκφώνηση · PDF</a><a download href="writing/Πίνακας-συνεισφοράς-Τζαχρήστας_Χρήστου_Σταματόπουλος.xlsx">Πίνακας συνεισφοράς · προς συμπλήρωση</a></div><p class="limits">Τα αρχεία είναι υλικό της ομάδας προς τελικό έλεγχο. Αριθμοί μητρώου, υπεύθυνος επικοινωνίας και υπογραφές παραμένουν για συμπλήρωση.</p>`, 'ΑΡΧΕΙΑ / ΛΗΨΗ');
+    openDialog('Η πλήρης εργασία, μαζί σου.', `<div class="modal-links"><a download href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx?v=2.6">Εργασία · Word</a><a download href="writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.pdf?v=2.6">Εργασία · PDF</a><a download href="writing/Μελέτη-με-εκφωνήσεις-Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Έκδοση μελέτης · γκρι εκφωνήσεις</a><a download href="writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pptx?v=2.6">Παρουσίαση · PowerPoint</a><a download href="writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pdf?v=2.6">Παρουσίαση · PDF</a><a download href="writing/ΥΔ_Τζαχρήστας_Χρήστου_Σταματόπουλος.docx">Δήλωση χρήσης ΤΝ · Word</a><a download href="downloads/Εκφώνηση-Μάνατζμεντ-2026-2027.pdf">Επίσημη εκφώνηση · PDF</a><a download href="writing/Πίνακας-συνεισφοράς-Τζαχρήστας_Χρήστου_Σταματόπουλος.xlsx">Πίνακας συνεισφοράς · προς συμπλήρωση</a></div><p class="limits">Τα αρχεία είναι υλικό της ομάδας προς τελικό έλεγχο. Αριθμοί μητρώου, υπεύθυνος επικοινωνίας και υπογραφές παραμένουν για συμπλήρωση.</p>`, 'ΑΡΧΕΙΑ / ΛΗΨΗ');
   }
   async function action(name, trigger) {
     if (name === 'dialog-home') { closeDialog(); if (location.hash === '#home') renderRoute(); else location.hash = 'home'; return; }
