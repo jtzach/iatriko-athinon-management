@@ -1,14 +1,12 @@
 {
-  "release": "2.5",
+  "release": "2.5.1",
   "preparedDate": "2026-11-26",
-  "researchCommit": "95f6e116a3a643f8918a041e23f7dcc7e4272d7d",
+  "researchCommit": "99a74fb8be4459e876bee40034244e08fa670a08",
   "site": "https://jtzach.github.io/iatriko-athinon-management/",
   "archive": "versions/2026-11-19/index.html",
   "archiveCommit": "3d18cb4c4fafbbbe05521d90ea561189ee2f81e1",
   "changesFromResearch": [
-    "Οκτώ θυγατρικές με ποσοστά, διοικήσεις και παραπομπές ανά εταιρεία.",
-    "Επτά σχήματα για έξι ερωτήματα, μέτοχοι και συμφωνίες για το Ελληνικό.",
-    "Ενημέρωση του Word, των 15 διαφανειών, των σημειώσεων και της δήλωσης χρήσης ΤΝ."
+    "Το σχήμα μετόχων συνδέει τη γενική συνέλευση, τη διοίκηση της μητρικής και τις οκτώ θυγατρικές."
   ],
   "files": {
     ".gitattributes": "b3c01b6a13298b0e19746cdd291174d1fe6bd32e2d32849e73aaedbdabec42f6",
@@ -261,7 +259,7 @@
     "versions/2026-11-19/writing/Παρουσίαση-Τζαχρήστας_Χρήστου_Σταματόπουλος.pptx": "4d27c0362efbe61bce5bda7dca2d99b490a9c0b4905098ace5333e8f39da2e19",
     "versions/2026-11-19/writing/Τζαχρήστας_Χρήστου_Σταματόπουλος.docx": "760468025307550457bec354d921228e80bdb359f63d43cace5215796a0354ea",
     "versions/2026-11-19/writing/ΥΔ_Τζαχρήστας_Χρήστου_Σταματόπουλος.docx": "5258f8fcad47e07d555bababfbd46053ede5abb70560dfc9d5aa05b72c3bd3a7",
-    "visuals.html": "64428774e804eed9bc352c5fcca8e8679dd4bdce24d9fcdb6e0679191ba1f25d",
+    "visuals.html": "609fe19447967f0d09cbf03c2e3952b837c8d9a40e53e03b60b8e9b2b83b59a5",
     "writing/CEO-Ιατρικό-Αθηνών-3-Ευρήματα.pptx": "fc1347dc2b446b7dda99dd558024e0345f989c6badb930017ed210e89f1339c0",
     "writing/CEO-Σημειώσεις-ομιλητή.txt": "fe4e4def82567e31060420c4a8bcec9dd710ebb8401130e8f2c62db91e38175a",
     "writing/academic-bridge-slides.json": "bfeef935613932a232903d0a294818b18321a915497744bab2a4964a64b953cf",
